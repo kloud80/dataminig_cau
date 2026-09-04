@@ -1,0 +1,73 @@
+# 이 저장소는 학생용 공개 사이트다 — present.html 이 실제로 불러오는 것만 올린다.
+# 목록은 `python .dcpull/publish_files.py` 가 브라우저 요청을 그대로 받아 만든다.
+# 덱 원본(.dc.html)·빌드 스크립트·.env 는 로컬에만 둔다.
+
+# 기본은 전부 무시
+/*
+
+# 루트
+!/.gitignore
+!/.nojekyll
+!/README.md
+!/index.html
+!/present.html
+
+# _ds/ — 디자인 시스템 — CSS 토큰과 자체 호스팅 한글/영문 가변폰트
+!/_ds/
+
+# assets/ — 원본 PPTX 에서 추출한 그림
+!/assets/
+# 쓰이지 않는 파일은 올리지 않는다
+/assets/*
+!/assets/image1.png
+!/assets/image11.jpeg
+!/assets/image16.jpeg
+!/assets/image17.jpeg
+!/assets/image18.jpeg
+!/assets/image21.png
+!/assets/image22.png
+!/assets/image3.jpeg
+!/assets/image30.png
+!/assets/image7.gif
+!/assets/image7_last.png
+!/assets/image9.gif
+!/assets/image9_last.png
+!/assets/loss-surface-2.svg
+
+# uploads/ — OpenAI 로 생성했거나 직접 만든 그림
+!/uploads/
+# 쓰이지 않는 파일은 올리지 않는다
+/uploads/*
+!/uploads/ensemble_acorns.png
+!/uploads/in_leopard.png
+!/uploads/in_mushroom.png
+!/uploads/in_retriever.png
+!/uploads/in_scooter.png
+!/uploads/in_ship.png
+!/uploads/n1_signal.png
+!/uploads/n4_descent.png
+!/uploads/s10_gauss.png
+!/uploads/s11_sky.png
+!/uploads/s18_galton.png
+!/uploads/s1_bg.png
+!/uploads/s20_pearson.png
+!/uploads/s24_height_age.png
+!/uploads/s27_fisher.png
+!/uploads/s2_map.png
+!/uploads/s50_population.png
+!/uploads/s60_birth.png
+!/uploads/s63_winter1.png
+!/uploads/s66_rules.png
+!/uploads/s67_winter2.png
+
+# vendor/ — React UMD + 차트 런타임 (네트워크 없이도 렌더된다)
+!/vendor/
+
+# 로컬 전용 — 실수로 되살아나지 않게 못 박아 둔다
+.env
+.venv/
+__pycache__/
+*.zip
+*.pdf
+.print.html
+.idea/
