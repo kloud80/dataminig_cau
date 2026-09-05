@@ -6,6 +6,8 @@
 
 브라우저로 열고 `F` 를 누르면 전체화면입니다. 설치할 것은 없습니다.
 
+수업 시작 전 안내 화면(QR + 커리큘럼) → **https://kloud80.github.io/dataminig_cau/qr.html**
+
 | 키 | 동작 |
 |---|---|
 | `←` `→` | 앞/뒤 슬라이드 |
@@ -36,6 +38,7 @@
 
 ```
 present.html   발표용 뷰어 (이 파일 하나만 열면 된다)
+qr.html        수업 전에 띄우는 QR·커리큘럼 화면
 index.html     present.html 로 보내는 첫 페이지
 _ds/           디자인시스템 — 폰트·색·타이포
 uploads/       생성·가공한 이미지

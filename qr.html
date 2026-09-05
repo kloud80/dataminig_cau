@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI를 활용한 도시 빅데이터 분석 — 강의안 주소</title>
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/styles.css">
+<style>
+  /* 디자인 기준은 1920x1080. --u 가 1 디자인 픽셀이라 어떤 프로젝터에서도
+     비율 그대로 커지고 줄어든다. */
+  :root {
+    --stage: min(100vw, 177.7778vh);
+    --u: calc(var(--stage) / 1920);
+    --ink: #0C0B17; --green: #00E49B; --mut: #9E9AB8; --dim: #6E6890;
+    --kr: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    --en: 'Mona Sans', 'Pretendard Variable', Pretendard, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0; overflow: hidden;
+    background: radial-gradient(calc(900*var(--u)) calc(620*var(--u))
+                at 78% 18%, rgba(68,52,226,.34), transparent 62%), var(--ink);
+    color: #fff; font-family: var(--kr); word-break: keep-all;
+    display: grid; place-items: center;
+  }
+  main {
+    width: var(--stage); height: calc(var(--stage) / 1.7778);
+    padding: calc(84*var(--u)) calc(96*var(--u));
+    display: grid; grid-template-columns: calc(640*var(--u)) 1fr;
+    gap: calc(92*var(--u)); align-items: center;
+  }
+
+  /* ── 왼쪽: QR ─────────────────────────────────────────────── */
+  .scan { display: flex; flex-direction: column; gap: calc(28*var(--u)); }
+  .card {
+    background: #fff; border-radius: calc(28*var(--u));
+    padding: calc(26*var(--u)); line-height: 0;
+    box-shadow: 0 calc(18*var(--u)) calc(52*var(--u)) rgba(0,0,0,.45);
+  }
+  .card svg { width: 100%; height: auto; display: block; }
+  .url {
+    font-family: var(--en); font-size: calc(27*var(--u)); font-weight: 600;
+    color: var(--green); text-align: center; word-break: break-all;
+    line-height: 1.35;
+  }
+  .hint {
+    font-size: calc(24*var(--u)); color: var(--mut); text-align: center;
+    margin-top: calc(-14*var(--u));
+  }
+
+  /* ── 오른쪽: 제목과 목차 ──────────────────────────────────── */
+  .info { display: flex; flex-direction: column; height: 100%;
+           justify-content: center; gap: calc(26*var(--u)); }
+  .eyebrow {
+    font-family: var(--en); font-size: calc(25*var(--u)); font-weight: 700;
+    letter-spacing: .05em; color: var(--green);
+  }
+  h1 {
+    margin: 0; font-size: calc(84*var(--u)); font-weight: 800;
+    line-height: 1.08; letter-spacing: -.028em;
+  }
+  .rule {
+    height: calc(3*var(--u)); border-radius: calc(3*var(--u));
+    background: linear-gradient(90deg, #4434E2, #9E5DF9, var(--green));
+  }
+  ul { list-style: none; margin: 0; padding: 0; display: flex;
+        flex-direction: column; }
+  .wk {
+    display: grid; grid-template-columns: calc(250*var(--u)) 1fr auto;
+    gap: calc(30*var(--u)); align-items: center;
+    padding: calc(21*var(--u)) 0;
+    border-top: 1px solid rgba(255,255,255,.10);
+  }
+  .wk.now { border-top-color: rgba(255,255,255,.24); }
+  .no {
+    display: flex; align-items: center; gap: calc(12*var(--u)); flex-wrap: wrap;
+    font-family: var(--en); font-size: calc(29*var(--u)); font-weight: 700;
+    color: #7C7797;
+  }
+  .wk.now .no { color: var(--green); }
+  .date { font-size: calc(23*var(--u)); font-weight: 400; color: var(--dim);
+           width: 100%; }
+  .ttl { font-size: calc(37*var(--u)); font-weight: 700; color: #C9C6DA;
+          line-height: 1.25; }
+  .wk.now .ttl { color: #fff; }
+  .chips { display: flex; gap: calc(10*var(--u)); }
+  .chip {
+    font-size: calc(22*var(--u)); white-space: nowrap;
+    padding: calc(8*var(--u)) calc(18*var(--u));
+    border-radius: 999px; background: rgba(255,255,255,.07); color: #A9A5BE;
+  }
+  .chip.on { background: var(--green); color: var(--ink); font-weight: 600; }
+  .today {
+    font-family: var(--en); font-size: calc(20*var(--u)); font-weight: 700;
+    color: var(--ink); background: var(--green);
+    border-radius: 999px; padding: calc(3*var(--u)) calc(12*var(--u));
+  }
+  .by { font-size: calc(23*var(--u)); color: var(--dim); line-height: 1.6; }
+
+  /* 세로 화면(태블릿·휴대폰)에서는 한 줄로 세운다. */
+  @media (max-aspect-ratio: 1/1) {
+    :root { --u: calc(100vw / 900); }
+    body { overflow: auto; place-items: start center; }
+    main { width: 100vw; height: auto; grid-template-columns: 1fr;
+            gap: calc(48*var(--u)); padding: calc(56*var(--u)); }
+    .scan { max-width: calc(560*var(--u)); margin: 0 auto; }
+    h1 { font-size: calc(64*var(--u)); }
+  }
+</style>
+
+<main>
+  <div class="scan">
+    <div class="card"><svg viewBox="0 0 41 41" shape-rendering="crispEdges" role="img" aria-label="강의안 주소 QR 코드"><rect width="41" height="41" fill="#fff"/><path d="M2 2h7v1h-7zM11 2h1v1h-1zM14 2h2v1h-2zM17 2h1v1h-1zM19 2h4v1h-4zM24 2h3v1h-3zM28 2h1v1h-1zM30 2h1v1h-1zM32 2h7v1h-7zM2 3h1v1h-1zM8 3h1v1h-1zM14 3h5v1h-5zM22 3h1v1h-1zM24 3h2v1h-2zM30 3h1v1h-1zM32 3h1v1h-1zM38 3h1v1h-1zM2 4h1v1h-1zM4 4h3v1h-3zM8 4h1v1h-1zM12 4h1v1h-1zM14 4h1v1h-1zM16 4h5v1h-5zM26 4h2v1h-2zM30 4h1v1h-1zM32 4h1v1h-1zM34 4h3v1h-3zM38 4h1v1h-1zM2 5h1v1h-1zM4 5h3v1h-3zM8 5h1v1h-1zM11 5h2v1h-2zM14 5h1v1h-1zM18 5h4v1h-4zM23 5h3v1h-3zM27 5h2v1h-2zM32 5h1v1h-1zM34 5h3v1h-3zM38 5h1v1h-1zM2 6h1v1h-1zM4 6h3v1h-3zM8 6h1v1h-1zM10 6h1v1h-1zM13 6h4v1h-4zM19 6h2v1h-2zM23 6h1v1h-1zM28 6h2v1h-2zM32 6h1v1h-1zM34 6h3v1h-3zM38 6h1v1h-1zM2 7h1v1h-1zM8 7h1v1h-1zM11 7h4v1h-4zM16 7h1v1h-1zM18 7h1v1h-1zM23 7h1v1h-1zM25 7h1v1h-1zM27 7h1v1h-1zM32 7h1v1h-1zM38 7h1v1h-1zM2 8h7v1h-7zM10 8h1v1h-1zM12 8h1v1h-1zM14 8h1v1h-1zM16 8h1v1h-1zM18 8h1v1h-1zM20 8h1v1h-1zM22 8h1v1h-1zM24 8h1v1h-1zM26 8h1v1h-1zM28 8h1v1h-1zM30 8h1v1h-1zM32 8h7v1h-7zM10 9h8v1h-8zM19 9h1v1h-1zM21 9h3v1h-3zM26 9h1v1h-1zM28 9h3v1h-3zM4 10h2v1h-2zM8 10h4v1h-4zM13 10h2v1h-2zM16 10h1v1h-1zM18 10h4v1h-4zM23 10h3v1h-3zM27 10h1v1h-1zM29 10h4v1h-4zM34 10h1v1h-1zM2 11h2v1h-2zM9 11h1v1h-1zM11 11h2v1h-2zM14 11h4v1h-4zM19 11h4v1h-4zM25 11h3v1h-3zM29 11h1v1h-1zM33 11h1v1h-1zM35 11h2v1h-2zM2 12h1v1h-1zM6 12h1v1h-1zM8 12h1v1h-1zM10 12h1v1h-1zM14 12h1v1h-1zM18 12h1v1h-1zM22 12h1v1h-1zM26 12h2v1h-2zM30 12h2v1h-2zM33 12h1v1h-1zM35 12h1v1h-1zM37 12h1v1h-1zM2 13h1v1h-1zM4 13h1v1h-1zM7 13h1v1h-1zM12 13h1v1h-1zM17 13h2v1h-2zM27 13h3v1h-3zM33 13h1v1h-1zM35 13h2v1h-2zM38 13h1v1h-1zM8 14h2v1h-2zM13 14h1v1h-1zM15 14h4v1h-4zM20 14h1v1h-1zM24 14h5v1h-5zM30 14h3v1h-3zM34 14h3v1h-3zM38 14h1v1h-1zM7 15h1v1h-1zM11 15h3v1h-3zM16 15h1v1h-1zM18 15h1v1h-1zM22 15h2v1h-2zM28 15h3v1h-3zM32 15h1v1h-1zM34 15h1v1h-1zM36 15h1v1h-1zM38 15h1v1h-1zM2 16h1v1h-1zM4 16h1v1h-1zM8 16h1v1h-1zM10 16h1v1h-1zM12 16h4v1h-4zM20 16h1v1h-1zM22 16h2v1h-2zM25 16h1v1h-1zM27 16h2v1h-2zM34 16h1v1h-1zM36 16h2v1h-2zM4 17h3v1h-3zM9 17h1v1h-1zM11 17h2v1h-2zM14 17h1v1h-1zM16 17h2v1h-2zM22 17h2v1h-2zM25 17h2v1h-2zM29 17h1v1h-1zM32 17h3v1h-3zM37 17h1v1h-1zM2 18h2v1h-2zM5 18h1v1h-1zM7 18h3v1h-3zM11 18h2v1h-2zM14 18h1v1h-1zM16 18h2v1h-2zM20 18h1v1h-1zM25 18h1v1h-1zM27 18h1v1h-1zM31 18h1v1h-1zM33 18h1v1h-1zM35 18h2v1h-2zM38 18h1v1h-1zM5 19h1v1h-1zM9 19h1v1h-1zM14 19h1v1h-1zM17 19h1v1h-1zM19 19h1v1h-1zM21 19h1v1h-1zM23 19h2v1h-2zM27 19h1v1h-1zM29 19h1v1h-1zM32 19h2v1h-2zM35 19h2v1h-2zM38 19h1v1h-1zM2 20h1v1h-1zM5 20h1v1h-1zM7 20h2v1h-2zM11 20h1v1h-1zM13 20h2v1h-2zM17 20h1v1h-1zM20 20h1v1h-1zM22 20h1v1h-1zM24 20h3v1h-3zM29 20h3v1h-3zM37 20h2v1h-2zM2 21h2v1h-2zM5 21h1v1h-1zM9 21h1v1h-1zM16 21h3v1h-3zM21 21h3v1h-3zM25 21h2v1h-2zM29 21h2v1h-2zM32 21h1v1h-1zM35 21h1v1h-1zM37 21h1v1h-1zM2 22h2v1h-2zM7 22h2v1h-2zM10 22h1v1h-1zM12 22h2v1h-2zM15 22h2v1h-2zM18 22h4v1h-4zM23 22h3v1h-3zM28 22h1v1h-1zM30 22h2v1h-2zM34 22h1v1h-1zM38 22h1v1h-1zM4 23h2v1h-2zM7 23h1v1h-1zM10 23h4v1h-4zM15 23h2v1h-2zM19 23h2v1h-2zM24 23h4v1h-4zM33 23h1v1h-1zM36 23h1v1h-1zM6 24h4v1h-4zM14 24h3v1h-3zM20 24h2v1h-2zM27 24h1v1h-1zM31 24h1v1h-1zM34 24h1v1h-1zM36 24h1v1h-1zM2 25h6v1h-6zM10 25h1v1h-1zM12 25h3v1h-3zM16 25h1v1h-1zM19 25h5v1h-5zM25 25h1v1h-1zM29 25h3v1h-3zM35 25h2v1h-2zM38 25h1v1h-1zM4 26h1v1h-1zM6 26h3v1h-3zM12 26h1v1h-1zM18 26h3v1h-3zM22 26h3v1h-3zM26 26h1v1h-1zM28 26h1v1h-1zM31 26h2v1h-2zM34 26h4v1h-4zM3 27h2v1h-2zM6 27h1v1h-1zM10 27h2v1h-2zM14 27h1v1h-1zM17 27h3v1h-3zM23 27h1v1h-1zM25 27h5v1h-5zM32 27h4v1h-4zM37 27h2v1h-2zM3 28h2v1h-2zM6 28h3v1h-3zM10 28h3v1h-3zM14 28h1v1h-1zM16 28h1v1h-1zM20 28h1v1h-1zM22 28h1v1h-1zM24 28h2v1h-2zM34 28h2v1h-2zM37 28h1v1h-1zM2 29h1v1h-1zM5 29h1v1h-1zM7 29h1v1h-1zM11 29h1v1h-1zM15 29h3v1h-3zM19 29h1v1h-1zM21 29h2v1h-2zM24 29h2v1h-2zM28 29h4v1h-4zM33 29h2v1h-2zM37 29h2v1h-2zM4 30h5v1h-5zM11 30h3v1h-3zM15 30h3v1h-3zM20 30h1v1h-1zM24 30h1v1h-1zM27 30h1v1h-1zM30 30h6v1h-6zM10 31h1v1h-1zM12 31h2v1h-2zM16 31h1v1h-1zM19 31h3v1h-3zM25 31h2v1h-2zM30 31h1v1h-1zM34 31h3v1h-3zM38 31h1v1h-1zM2 32h7v1h-7zM10 32h3v1h-3zM14 32h2v1h-2zM17 32h1v1h-1zM20 32h1v1h-1zM22 32h1v1h-1zM24 32h1v1h-1zM30 32h1v1h-1zM32 32h1v1h-1zM34 32h2v1h-2zM37 32h2v1h-2zM2 33h1v1h-1zM8 33h1v1h-1zM14 33h2v1h-2zM20 33h3v1h-3zM24 33h2v1h-2zM28 33h3v1h-3zM34 33h2v1h-2zM37 33h1v1h-1zM2 34h1v1h-1zM4 34h3v1h-3zM8 34h1v1h-1zM13 34h1v1h-1zM16 34h3v1h-3zM21 34h2v1h-2zM25 34h2v1h-2zM28 34h1v1h-1zM30 34h6v1h-6zM37 34h2v1h-2zM2 35h1v1h-1zM4 35h3v1h-3zM8 35h1v1h-1zM10 35h2v1h-2zM13 35h1v1h-1zM15 35h1v1h-1zM20 35h2v1h-2zM23 35h2v1h-2zM26 35h4v1h-4zM32 35h1v1h-1zM34 35h1v1h-1zM2 36h1v1h-1zM4 36h3v1h-3zM8 36h1v1h-1zM10 36h4v1h-4zM17 36h3v1h-3zM22 36h1v1h-1zM24 36h3v1h-3zM29 36h1v1h-1zM32 36h3v1h-3zM37 36h1v1h-1zM2 37h1v1h-1zM8 37h1v1h-1zM12 37h1v1h-1zM16 37h1v1h-1zM22 37h3v1h-3zM27 37h2v1h-2zM31 37h2v1h-2zM36 37h1v1h-1zM2 38h7v1h-7zM11 38h4v1h-4zM16 38h4v1h-4zM22 38h1v1h-1zM24 38h1v1h-1zM26 38h3v1h-3zM34 38h1v1h-1zM36 38h3v1h-3z" fill="#0C0B17"/></svg></div>
+    <div class="url">https://kloud80.github.io/dataminig_cau/</div>
+    <div class="hint">휴대폰 카메라로 찍으면 강의안이 열립니다</div>
+  </div>
+
+  <div class="info">
+    <div class="eyebrow">스마트시티 AI · 데이터 분석 역량 강화를 위한 실습 세미나</div>
+    <h1>AI를 활용한<br>도시 빅데이터 분석</h1>
+    <div class="rule"></div>
+    <ul>
+      <li class="wk now">
+        <div class="no">1주차<span class="today">오늘</span><span class="date">9월 5일</span></div>
+        <div class="ttl">데이터 분석과 기계학습</div>
+        <div class="chips"><span class="chip on">회귀분석 · 통계</span><span class="chip on">기계학습</span><span class="chip on">인공신경망</span></div>
+      </li>
+      <li class="wk">
+        <div class="no">2주차<span class="date">9월 12일</span></div>
+        <div class="ttl">시계열과 언어 모델</div>
+        <div class="chips"><span class="chip">시계열 분석</span><span class="chip">LLM</span></div>
+      </li>
+      <li class="wk">
+        <div class="no">3주차<span class="date">9월 19일</span></div>
+        <div class="ttl">차원 축소와 이미지</div>
+        <div class="chips"><span class="chip">차원 축소</span><span class="chip">이미지 분석</span></div>
+      </li>
+      <li class="wk">
+        <div class="no">4주차<span class="date">10월 10일</span></div>
+        <div class="ttl">이미지 생성 실습</div>
+        <div class="chips"><span class="chip">생성 모델</span><span class="chip">실습</span></div>
+      </li>
+    </ul>
+    <div class="by">빅밸류 구름 대표 &nbsp;·&nbsp; 중앙대학교 도시공학과 Urban D&amp;A 연구실 &nbsp;·&nbsp; 310관 417호</div>
+  </div>
+</main>

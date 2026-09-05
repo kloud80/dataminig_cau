@@ -2189,10 +2189,10 @@
   </div>
 </section>
 
-<section data-deck="1" data-label="다섯 갈래로 퍼졌다" data-screen-label="95" data-speaker-notes="마지막으로 정리. 우리가 지금까지 본 건 방법 하나다 — 층을 쌓고, 오차를 뒤로 흘려 가중치를 고치고, GPU로 빠르게 돌린다. 그 하나가 분야마다 다른 시계로 퍼졌다. 이미지가 2012년에 먼저 터지고, 언어는 2017년 트랜스포머부터, 과학과 유전자는 2021년 이후다. 축을 보면 순서가 보인다. 그리고 여기 있는 것 중 어느 것도 도시 문제 전용으로 만들어진 게 아니다 — 다음 주부터 우리가 할 일은 이 도구를 도시 데이터에 가져오는 것이다." style="padding:var(--pad-t) var(--pad-x) var(--pad-b);background:var(--dark);color:#fff;font-family:var(--kr);word-break:keep-all;text-wrap:pretty;display:flex;flex-direction:column;overflow:hidden">
-  <div style="font-family:var(--en);font-size:var(--t-small);letter-spacing:0.08em;text-transform:uppercase;color:#3CEEB5;font-weight:700">ONE METHOD · FIVE FIELDS</div>
-  <h2 style="font-size:var(--t-title);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin:20px 0 0">하나의 방법이 다섯 갈래로 퍼졌다</h2>
-  <p style="font-size:var(--t-body);color:#B9B6CC;margin:18px 0 0;line-height:1.4">층을 쌓고 · 오차를 뒤로 흘리고 · GPU로 돌린다 — <b style="color:#fff">같은 방법이 분야마다 다른 시계로 도착했다</b></p>
+<section data-deck="1" data-label="지금도 번지는 중" data-screen-label="95" data-speaker-notes="마지막으로 정리. 우리가 지금까지 본 건 방법 하나다 — 층을 쌓고, 오차를 뒤로 흘려 가중치를 고치고, GPU로 빠르게 돌린다. 여기 이름을 붙인 다섯 개는 이야기하기 좋은 표본일 뿐이고, 실제로는 수백 개 분야에서 같은 일이 벌어지고 있고 아직 진행 중이다. 다만 이 다섯을 축 위에 놓으면 순서가 보인다 — 이미지가 2012년에 먼저 터지고, 언어는 2017년 트랜스포머부터, 과학과 유전자는 2021년 이후다. 화살표가 오른쪽으로 열려 있는 건 이 표가 아직 안 끝났다는 뜻이다. 그리고 여기 있는 것 중 어느 것도 도시 문제 전용으로 만들어진 게 아니다 — 다음 주부터 우리가 할 일은 이 도구를 도시 데이터에 가져오는 것이다." style="padding:var(--pad-t) var(--pad-x) var(--pad-b);background:var(--dark);color:#fff;font-family:var(--kr);word-break:keep-all;text-wrap:pretty;display:flex;flex-direction:column;overflow:hidden">
+  <div style="font-family:var(--en);font-size:var(--t-small);letter-spacing:0.08em;text-transform:uppercase;color:#3CEEB5;font-weight:700">ONE METHOD · STILL SPREADING</div>
+  <h2 style="font-size:var(--t-title);font-weight:800;line-height:1.1;letter-spacing:-0.03em;margin:20px 0 0">하나의 방법이 거의 모든 분야로 번지고 있다</h2>
+  <p style="font-size:var(--t-body);color:#B9B6CC;margin:18px 0 0;line-height:1.4">층을 쌓고 · 오차를 뒤로 흘리고 · GPU로 돌린다 — <b style="color:#fff">아래 다섯은 표본일 뿐이고, 지금도 늘어나는 중이다</b></p>
   <div style="flex:1;min-height:0;display:flex;align-items:center;margin-top:8px"><span data-dc-slot="nnFanout"></span></div>
   <div data-dc-if="showFooter">
     <div style="position:absolute;left:var(--pad-x);right:var(--pad-x);bottom:36px;display:flex;justify-content:space-between;font-size:var(--t-cap);color:#9998A8;font-family:var(--kr)"><span>Kloud</span><span style="font-family:var(--en);font-weight:600">95</span></div>
@@ -2323,7 +2323,7 @@
 <button class="ov-card" data-go="91"><div class="ov-thumb"><div class="ov-num">92</div></div><div class="ov-label">한계③ 해결 · Optimizer</div></button>
 <button class="ov-card" data-go="92"><div class="ov-thumb"><div class="ov-num">93</div></div><div class="ov-label">정리 · 세 한계와 해법</div></button>
 <button class="ov-card" data-go="93"><div class="ov-thumb"><div class="ov-num">94</div></div><div class="ov-label">규모와 셈법의 변화</div></button>
-<button class="ov-card" data-go="94"><div class="ov-thumb"><div class="ov-num">95</div></div><div class="ov-label">다섯 갈래로 퍼졌다</div></button>
+<button class="ov-card" data-go="94"><div class="ov-thumb"><div class="ov-num">95</div></div><div class="ov-label">지금도 번지는 중</div></button>
   </div>
 </div>
 
@@ -3419,18 +3419,23 @@ class Component extends DCLogic {
       const LX = 430, X0 = 620, X1 = 1500;
       const px = y => X0 + (y - Y0) / (Y1 - Y0) * (X1 - X0);
       const LANES = [
-        { f: '이미지', en: 'Vision', c: '#00E49B', y: 96, m: [
+        { f: '이미지', en: 'Vision', c: '#00E49B', y: 88, m: [
           [2012, 'AlexNet'], [2015, 'ResNet'], [2020, 'ViT'], [2022, 'Diffusion'] ] },
-        { f: '음성', en: 'Speech', c: '#F59E0B', y: 214, m: [
+        { f: '음성', en: 'Speech', c: '#F59E0B', y: 192, m: [
           [2016, 'WaveNet'], [2022, 'Whisper'] ] },
-        { f: '언어', en: 'Language', c: '#9E5DF9', y: 332, m: [
+        { f: '언어', en: 'Language', c: '#9E5DF9', y: 296, m: [
           [2017, 'Transformer'], [2020, 'GPT-3'], [2022, 'ChatGPT'] ] },
-        { f: '과학', en: 'Science', c: '#4FC3F7', y: 450, m: [
+        { f: '과학', en: 'Science', c: '#4FC3F7', y: 400, m: [
           [2021, 'AlphaFold 2'], [2023, 'GraphCast'] ] },
-        { f: '유전자', en: 'Genomics', c: '#FF7AA2', y: 568, m: [
+        { f: '유전자', en: 'Genomics', c: '#FF7AA2', y: 504, m: [
           [2018, 'DeepVariant'], [2023, 'AlphaMissense'] ] },
       ];
-      const RY = 332;
+      const RY = 296;
+      // 연도를 붙이지 않는다 — 한 분야를 대표할 논문 하나를 고르는 순간
+      // 방어할 수 없는 주장을 슬라이드에 올리게 된다.
+      const MORE_FIELDS = ['의료 영상', '신약 개발', '로보틱스', '재료과학',
+                           '기후 · 기상', '금융', '농업', '교육', '법률', '도시계획'];
+      const MY = 596;
       const CW = m => Math.max(122, m[1].length * 15 + 34);
       LANES.forEach(l => {
         let prev = -1e9;
@@ -3460,7 +3465,29 @@ class Component extends DCLogic {
             stroke: '#2C2748', strokeWidth: 1 }),
           h('text', { x: px(y), y: 26, textAnchor: 'middle', fontFamily: EN,
             fontSize: 23, fill: '#6E6890' }, y))),
+        h('g', null,
+          h('line', { x1: 1508, y1: 26, x2: 1580, y2: 26, stroke: '#3CEEB5',
+            strokeWidth: 2.5, markerEnd: 'url(#fan-now)' }),
+          h('defs', null, h('marker', { id: 'fan-now', viewBox: '0 0 10 10',
+            refX: 8, refY: 5, markerWidth: 6, markerHeight: 6,
+            orient: 'auto-start-reverse' },
+            h('path', { d: 'M0,0 L10,5 L0,10 z', fill: '#3CEEB5' })))),
         // 뿌리에서 각 레인으로 뻗는 가지
+        // 이름 붙인 다섯 갈래 아래로, 세지 않은 갈래들
+        h('path', { d: 'M 250 ' + RY + ' C 340 ' + RY + ', 330 ' + MY + ', 430 ' + MY,
+          fill: 'none', stroke: '#6E6890', strokeWidth: 2.5, opacity: 0.4,
+          strokeDasharray: '2 9', strokeLinecap: 'round' }),
+        h('text', { x: 412, y: MY - 4, textAnchor: 'end', fontFamily: KR,
+          fontSize: 27, fontWeight: 700, fill: '#8F8AA6' }, '그 외'),
+        h('text', { x: 412, y: MY + 22, textAnchor: 'end', fontFamily: KR,
+          fontSize: 20, fill: '#5C5778' }, '수백 개 분야'),
+        MORE_FIELDS.map((f, k) => {
+          const x = 470 + (k % 5) * 208, y = MY - 14 + Math.floor(k / 5) * 34;
+          return h('text', { key: 'm' + k, x: x, y: y, fontFamily: KR,
+            fontSize: 23, fill: '#6E6890' }, f);
+        }),
+        h('text', { x: 1512, y: MY + 6, fontFamily: KR, fontSize: 26,
+          fontWeight: 700, fill: '#8F8AA6' }, '⋯'),
         LANES.map(l => h('path', { key: 'b' + l.f,
           d: 'M 250 ' + RY + ' C 340 ' + RY + ', 330 ' + l.y + ', ' + LX + ' ' + l.y,
           fill: 'none', stroke: l.c, strokeWidth: 3, opacity: 0.55 })),
