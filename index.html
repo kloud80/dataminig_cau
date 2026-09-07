@@ -1,8 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
 <title>도시빅데이터와 머신러닝 — 강의안</title>
-<meta http-equiv="refresh" content="0; url=present.html">
-<link rel="canonical" href="present.html">
+<link rel="canonical" href="중앙대26특강/present.html">
 <style>
   body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0C0B17;
        color:#EDEBF5;font-family:system-ui,-apple-system,sans-serif;text-align:center}
@@ -10,5 +9,15 @@
 </style>
 <div>
   <p>강의안을 여는 중…</p>
-  <p><a href="present.html">열리지 않으면 여기를 누르세요</a></p>
+  <p><a id="go" href="중앙대26특강/present.html">열리지 않으면 여기를 누르세요</a></p>
 </div>
+<script>
+  // 강의안이 폴더로 옮겨 갔다. 이 주소는 QR 과 학생들이 받아 간 링크에 남아
+  // 있으므로 계속 살려 둔다. #12 같은 위치까지 그대로 넘겨야 "보던 자리에서
+  // 이어진다"는 약속이 깨지지 않는다.
+  (function () {
+    var to = '중앙대26특강/present.html' + location.search + location.hash;
+    document.getElementById('go').href = to;
+    location.replace(to);
+  })();
+</script>
