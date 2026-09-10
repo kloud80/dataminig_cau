@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="ko">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI를 활용한 도시 빅데이터 분석 — 강의안</title>
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/styles.css">
+<style>
+  :root {
+    --ink: #0C0B17; --green: #00E49B; --mut: #9E9AB8; --dim: #6E6890;
+    --kr: 'Pretendard Variable', Pretendard, -apple-system, sans-serif;
+    --en: 'Mona Sans', 'Pretendard Variable', Pretendard, sans-serif;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100vh; padding: 64px 32px;
+    background: radial-gradient(900px 620px at 78% 8%, rgba(68,52,226,.34),
+                transparent 62%), var(--ink);
+    color: #fff; font-family: var(--kr); word-break: keep-all;
+    display: flex; flex-direction: column; align-items: center;
+  }
+  main { width: 100%; max-width: 1080px; }
+  .eyebrow {
+    font-family: var(--en); font-size: 17px; font-weight: 700;
+    letter-spacing: .05em; color: var(--green); margin-bottom: 14px;
+  }
+  h1 { margin: 0 0 10px; font-size: 52px; font-weight: 800; line-height: 1.15;
+       letter-spacing: -.03em; }
+  .by { color: var(--dim); font-size: 16px; line-height: 1.6; }
+  .rule { height: 2px; background: rgba(255,255,255,.12); margin: 34px 0 28px; }
+  ul, .list { list-style: none; margin: 0; padding: 0;
+               display: flex; flex-direction: column; gap: 16px; }
+  .wk {
+    display: block; text-decoration: none; color: inherit;
+    background: rgba(255,255,255,.05); border: 2px solid rgba(255,255,255,.10);
+    border-radius: 18px; padding: 26px 30px; transition: none;
+  }
+  a.wk:hover { border-color: var(--green); background: rgba(0,228,155,.08); }
+  .wk.soon { opacity: .45; }
+  .no { font-family: var(--en); font-size: 19px; font-weight: 800;
+         color: var(--green); display: flex; align-items: baseline; gap: 14px; }
+  .wk.soon .no { color: var(--mut); }
+  .date { font-weight: 600; color: var(--dim); font-size: 16px; }
+  .ttl { font-size: 30px; font-weight: 800; margin: 8px 0 14px;
+          letter-spacing: -.02em; }
+  .chips { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip { font-size: 15px; color: var(--mut); background: rgba(255,255,255,.07);
+           border-radius: 999px; padding: 7px 14px; }
+  .go { margin-top: 18px; font-family: var(--en); font-size: 16px;
+         font-weight: 700; color: var(--green); }
+  .wk.soon .go { color: var(--dim); }
+  .foot { margin-top: 34px; color: var(--dim); font-size: 15px; line-height: 1.7; }
+  .foot a { color: var(--green); }
+  kbd { font-family: var(--en); background: rgba(255,255,255,.10);
+         border-radius: 6px; padding: 2px 7px; font-size: 14px; }
+  @media (max-width: 640px) { h1 { font-size: 38px; } .ttl { font-size: 24px; } }
+</style>
+
+<main>
+  <div class="eyebrow">스마트시티 AI · 데이터 분석 역량 강화를 위한 실습 세미나</div>
+  <h1>AI를 활용한 도시 빅데이터 분석</h1>
+  <div class="by">빅밸류 구름 대표 · 중앙대학교 도시공학과 Urban D&amp;A 연구실 · 310관 417호</div>
+  <div class="rule"></div>
+  <div class="list">
+    <a class="wk" href="W01_데이터분석과_기계학습/present.html">
+      <div class="no">1주차<span class="date">9월 5일</span></div>
+      <div class="ttl">데이터 분석과 기계학습</div>
+      <div class="chips"><span class="chip">회귀분석 · 통계</span><span class="chip">기계학습</span><span class="chip">인공신경망</span></div>
+      <div class="go">강의안 열기 &rarr;</div>
+    </a>
+    <a class="wk" href="W02_시계열과_언어모델/present.html">
+      <div class="no">2주차<span class="date">9월 12일</span></div>
+      <div class="ttl">시계열, 언어 모델, 에이전트</div>
+      <div class="chips"><span class="chip">시계열 분석</span><span class="chip">순환신경망 · LSTM</span><span class="chip">어텐션</span><span class="chip">LLM</span><span class="chip">프롬프트 · RAG</span><span class="chip">하네스 엔지니어링</span></div>
+      <div class="go">강의안 열기 &rarr;</div>
+    </a>
+    <div class="wk soon">
+      <div class="no">3주차<span class="date">9월 19일</span></div>
+      <div class="ttl">차원 축소와 이미지</div>
+      <div class="chips"><span class="chip">차원 축소</span><span class="chip">이미지 분석</span></div>
+      <div class="go">자료 준비 중</div>
+    </div>
+    <div class="wk soon">
+      <div class="no">4주차<span class="date">10월 10일</span></div>
+      <div class="ttl">이미지 생성 실습</div>
+      <div class="chips"><span class="chip">생성 모델</span><span class="chip">실습</span></div>
+      <div class="go">자료 준비 중</div>
+    </div>
+  </div>
+  <div class="foot">
+    강의안을 열고 <kbd>F</kbd> 전체화면, <kbd>O</kbd> 목차, <kbd>N</kbd> 발표자 노트,
+    <kbd>&larr;</kbd> <kbd>&rarr;</kbd> 로 넘깁니다.
+    주소 끝의 <kbd>#12</kbd> 로 위치가 남아 새로고침해도 보던 자리에서 이어집니다.<br>
+    수업 시작 전 안내 화면 &rarr; <a href="qr.html">qr.html</a>
+  </div>
+</main>

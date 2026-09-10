@@ -1,7 +1,7 @@
 <!doctype html>
 <meta charset="utf-8">
-<title>도시빅데이터와 머신러닝 — 강의안</title>
-<link rel="canonical" href="중앙대26특강/present.html">
+<title>AI를 활용한 도시 빅데이터 분석 — 강의안</title>
+<link rel="canonical" href="중앙대26특강/index.html">
 <style>
   body{margin:0;min-height:100vh;display:grid;place-items:center;background:#0C0B17;
        color:#EDEBF5;font-family:system-ui,-apple-system,sans-serif;text-align:center}
@@ -9,14 +9,19 @@
 </style>
 <div>
   <p>강의안을 여는 중…</p>
-  <p><a id="go" href="중앙대26특강/present.html">열리지 않으면 여기를 누르세요</a></p>
+  <p><a id="go" href="중앙대26특강/index.html">열리지 않으면 여기를 누르세요</a></p>
 </div>
 <script>
-  // 강의안이 폴더로 옮겨 갔다. 이 주소는 QR 과 학생들이 받아 간 링크에 남아
-  // 있으므로 계속 살려 둔다. #12 같은 위치까지 그대로 넘겨야 "보던 자리에서
-  // 이어진다"는 약속이 깨지지 않는다.
+  // 이 주소는 QR 과 학생들이 받아 간 링크에 남아 있으므로 계속 살려 둔다.
+  //
+  // 위치(#12)가 붙어 있으면 1주차 강의안을 보다가 저장해 둔 링크다 — 주차 목록이
+  // 아니라 그 자리로 보내야 한다. 중앙대26특강/present.html 이 1주차로 다시
+  // 넘겨 주므로 위치가 끝까지 따라간다. 위치가 없으면 어느 주차인지 고를 수
+  // 있게 목록을 준다.
   (function () {
-    var to = '중앙대26특강/present.html' + location.search + location.hash;
+    var to = location.hash
+      ? '중앙대26특강/present.html' + location.search + location.hash
+      : '중앙대26특강/index.html' + location.search;
     document.getElementById('go').href = to;
     location.replace(to);
   })();

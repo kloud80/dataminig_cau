@@ -73,6 +73,7 @@
     border-top: 1px solid rgba(255,255,255,.10);
   }
   .wk.now { border-top-color: rgba(255,255,255,.24); }
+  .wk a { text-decoration: none; color: inherit; display: block; }
   .no {
     display: flex; align-items: center; gap: calc(12*var(--u)); flex-wrap: wrap;
     font-family: var(--en); font-size: calc(29*var(--u)); font-weight: 700;
@@ -121,16 +122,16 @@
     <h1>AI를 활용한<br>도시 빅데이터 분석</h1>
     <div class="rule"></div>
     <ul>
-      <li class="wk now">
-        <div class="no">1주차<span class="today">오늘</span><span class="date">9월 5일</span></div>
+      <li class="wk"><a href="W01_데이터분석과_기계학습/present.html">
+        <div class="no">1주차<span class="date">9월 5일</span></div>
         <div class="ttl">데이터 분석과 기계학습</div>
-        <div class="chips"><span class="chip on">회귀분석 · 통계</span><span class="chip on">기계학습</span><span class="chip on">인공신경망</span></div>
-      </li>
-      <li class="wk">
-        <div class="no">2주차<span class="date">9월 12일</span></div>
-        <div class="ttl">시계열과 언어 모델</div>
-        <div class="chips"><span class="chip">시계열 분석</span><span class="chip">LLM</span></div>
-      </li>
+        <div class="chips"><span class="chip">회귀분석 · 통계</span><span class="chip">기계학습</span><span class="chip">인공신경망</span></div>
+      </a></li>
+      <li class="wk now"><a href="W02_시계열과_언어모델/present.html">
+        <div class="no">2주차<span class="today">오늘</span><span class="date">9월 12일</span></div>
+        <div class="ttl">시계열, 언어 모델, 에이전트</div>
+        <div class="chips"><span class="chip on">시계열 분석</span><span class="chip on">순환신경망 · LSTM</span><span class="chip on">어텐션</span><span class="chip on">LLM</span><span class="chip on">프롬프트 · RAG</span><span class="chip on">하네스 엔지니어링</span></div>
+      </a></li>
       <li class="wk">
         <div class="no">3주차<span class="date">9월 19일</span></div>
         <div class="ttl">차원 축소와 이미지</div>
