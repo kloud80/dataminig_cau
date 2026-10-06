@@ -1,0 +1,1549 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI를 활용한 도시 빅데이터 분석 — 주소 한 줄에서 3D 건물까지</title>
+
+<!-- design-system styles, same order as the deck's <helmet> -->
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/tokens/fonts.css">
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/tokens/colors.css">
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/tokens/typography.css">
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/base.css">
+<link rel="stylesheet" href="_ds/bigvalue-design-system-eebf2065-478c-436d-9671-1cf70d2fb9dd/styles.css">
+
+<style>
+#stage > section[data-deck="0"] {
+  --type-hero:94px; --type-title:60px; --type-subtitle:40px; --type-formula:44px;
+  --type-body:31px; --type-small:26px; --type-eyebrow:24px; --type-note:22px;
+  --pad-top:82px; --pad-bottom:70px; --pad-x:94px;
+  --gap-title:42px; --gap-item:24px;
+}
+#stage > section[data-deck="0"] {word-break:keep-all;text-wrap:pretty}
+#stage > section[data-deck="0"] .eb {font-family:var(--font-display);font-size:var(--type-eyebrow);letter-spacing:.08em;text-transform:uppercase;font-weight:700;color:var(--primary-main)}
+#stage > section[data-deck="0"] .eb.red {color:#D93636}
+#stage > section[data-deck="0"] .eb.grn {color:#00B37A}
+#stage > section[data-deck="0"] .eb.mut {color:var(--neutral-medium)}
+#stage > section[data-deck="0"] .eb.lime {color:var(--accent-green)}
+#stage > section[data-deck="0"] .h {margin:0;font-size:var(--type-title);font-weight:700;line-height:1.15;letter-spacing:-.02em}
+#stage > section[data-deck="0"] .hx {margin:0;font-size:68px;font-weight:800;line-height:1.2;letter-spacing:-.025em}
+#stage > section[data-deck="0"] .sub {font-family:var(--font-display);font-size:var(--type-note);color:var(--neutral-medium)}
+#stage > section[data-deck="0"] .row {display:flex;align-items:baseline;gap:24px}
+#stage > section[data-deck="0"] .g2 {display:grid;grid-template-columns:1fr 1fr;gap:28px}
+#stage > section[data-deck="0"] .g3 {display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+#stage > section[data-deck="0"] .g4 {display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+#stage > section[data-deck="0"] .card {background:var(--surface-app);border-radius:16px;padding:26px 30px;display:flex;flex-direction:column;gap:10px}
+#stage > section[data-deck="0"] .card.w {background:#fff}
+#stage > section[data-deck="0"] .card.p {background:var(--primary-pale)}
+#stage > section[data-deck="0"] .card.k {background:var(--neutral-black);color:#fff}
+#stage > section[data-deck="0"] .card.top {border-top:8px solid var(--primary-main)}
+#stage > section[data-deck="0"] .card.topg {border-top:8px solid #00B37A}
+#stage > section[data-deck="0"] .card.topr {border-top:8px solid #D93636}
+#stage > section[data-deck="0"] .card.topo {border-top:8px solid #E8873A}
+#stage > section[data-deck="0"] .ct {font-size:var(--type-subtitle);font-weight:800;line-height:1.2}
+#stage > section[data-deck="0"] .cb {font-size:var(--type-body);font-weight:800;line-height:1.3}
+#stage > section[data-deck="0"] .body {margin:0;font-size:var(--type-body);color:var(--fg-3);line-height:1.5}
+#stage > section[data-deck="0"] .sm {margin:0;font-size:var(--type-small);color:var(--fg-3);line-height:1.5}
+#stage > section[data-deck="0"] .k .sm, #stage > section[data-deck="0"] .k .body {color:var(--neutral-lighter)}
+#stage > section[data-deck="0"] .num {font-family:var(--font-display);font-size:58px;font-weight:800;line-height:1.05}
+#stage > section[data-deck="0"] .dark {background:var(--neutral-black);color:#fff;border-radius:16px;padding:28px 34px;font-size:var(--type-body);line-height:1.5}
+#stage > section[data-deck="0"] .dark .s {color:var(--neutral-lighter);font-size:var(--type-small)}
+#stage > section[data-deck="0"] .pale {background:var(--primary-pale);border-radius:16px;padding:26px 32px;font-size:var(--type-body);color:var(--fg-3);line-height:1.5}
+#stage > section[data-deck="0"] .code {font-family:var(--font-mono,ui-monospace,Consolas,monospace);font-size:21px;line-height:1.5;background:#14121F;color:#E6E4F0;border-radius:14px;padding:24px 30px;white-space:pre;overflow:hidden;margin:0}
+#stage > section[data-deck="0"] .code .c {color:#8E8AA6}
+#stage > section[data-deck="0"] .code .y {color:#FFB86B}
+#stage > section[data-deck="0"] .code .g {color:#00E49B}
+#stage > section[data-deck="0"] .code .p {color:#C9A7FF}
+#stage > section[data-deck="0"] .code .r {color:#FF7AA2}
+#stage > section[data-deck="0"] .imgbox {background:#fff;border-radius:16px;padding:14px;display:flex;align-items:center;justify-content:center;min-height:0}
+#stage > section[data-deck="0"] .cap {font-size:var(--type-note);color:var(--neutral-medium)}
+#stage > section[data-deck="0"] .tb {width:100%;border-collapse:collapse;font-size:var(--type-small)}
+#stage > section[data-deck="0"] .tb th {text-align:left;font-weight:700;color:var(--neutral-medium);padding:10px 14px;border-bottom:2px solid #E4E2EE;font-size:22px}
+#stage > section[data-deck="0"] .tb td {padding:11px 14px;border-bottom:1px solid #EEEDF4;color:var(--fg-1)}
+#stage > section[data-deck="0"] .tb td.m {color:var(--fg-3)}
+#stage > section[data-deck="0"] .ok {color:#00B37A;font-weight:800}
+#stage > section[data-deck="0"] .no {color:#D93636;font-weight:800}
+#stage > section[data-deck="0"] .wait {color:#E8873A;font-weight:800}
+#stage > section[data-deck="0"] .g {color:#00B37A}
+#stage > section[data-deck="0"] .r {color:#D93636}
+#stage > section[data-deck="0"] .v {color:var(--primary-main)}
+#stage > section[data-deck="0"] .k b.g {color:#00E49B}
+#stage > section[data-deck="0"] .dark b.g {color:#00E49B}
+#stage > section[data-deck="0"] .dark b.r {color:#FF7AA2}
+#stage > section[data-deck="0"] .dark b.y {color:#FFB86B}
+#stage > section[data-deck="0"] .flow {display:flex;align-items:stretch;gap:10px}
+#stage > section[data-deck="0"] .flow .st {flex:1;background:var(--surface-app);border-radius:14px;padding:18px 18px;display:flex;flex-direction:column;gap:6px}
+#stage > section[data-deck="0"] .flow .st .n {font-family:var(--font-display);font-size:20px;font-weight:800;color:var(--primary-main)}
+#stage > section[data-deck="0"] .flow .st .t {font-size:24px;font-weight:800;line-height:1.25}
+#stage > section[data-deck="0"] .flow .st .d {font-size:20px;color:var(--fg-3);line-height:1.35}
+#stage > section[data-deck="0"] .flow .ar {align-self:center;font-size:30px;color:#C9C7D6}
+#stage > section[data-deck="0"] .btn {display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:#00B37A;color:#fff;border-radius:999px;padding:16px 30px;font-family:var(--font-display);font-size:25px;font-weight:800}
+#stage > section[data-deck="0"] .btn.off {background:#E4E2EE;color:var(--neutral-medium)}
+
+
+  /* ---- deck runtime: mounted chart slots and <sc-if> blocks ---- */
+  [data-dc-slot] { display: contents; }
+  /* <sc-if> became a real <div>; without display:contents it counts as an extra
+     flex item and its parent's `gap` pushes the slide past 1080px. Four
+     기계학습의 역사 slides clipped their footer exactly one gap short. */
+  [data-dc-if] { display: contents; }
+  [data-dc-if][data-dc-off] { display: none !important; }
+
+  /* ---- presenter shell ---- */
+  :root { --guide-h: 52px; }
+  html, body { height: 100%; overflow: hidden; }
+  body {
+    font-family: 'Pretendard Variable', Pretendard, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  #stagewrap {
+    position: fixed; inset: 0;
+    overflow: hidden;
+    background: #0C0B17;
+    cursor: none;
+  }
+  body.ui-visible #stagewrap { cursor: default; }
+  #stage {
+    width: 1920px; height: 1080px;
+    /* centred explicitly rather than with grid/flex centring: when the item is
+       larger than its container (always, pre-scale) Chrome degrades
+       `place-items:center` to `start`, which shifted the stage off-screen. */
+    position: absolute; left: 50%; top: 50%;
+    transform-origin: center center;
+    background: #0C0B17;
+  }
+  #stage > section {
+    position: absolute; left: 0; top: 0;
+    width: 1920px; height: 1080px;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+  /* the sections carry inline `display:flex`, so hiding needs !important */
+  #stage > section:not(.is-current) { display: none !important; }
+
+  body.blanked #stage { visibility: hidden; }
+
+  /* ---- image slots (the <image-slot> custom element, statically rendered) ---- */
+  .imgslot {
+    position: relative; width: 100%; height: 100%;
+    overflow: hidden; background: #15131F;
+  }
+  .imgslot img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .imgslot.fit-contain img { object-fit: contain; }
+  /* contain letterboxes: don't paint the bars with the dark empty-state
+     colour, let the slide background show through instead */
+  .imgslot.fit-contain { background: transparent; }
+  .imgslot.no-img img { display: none; }
+  .imgslot-ph { display: none; }
+  .imgslot.no-img .imgslot-ph {
+    position: absolute; inset: 0;
+    display: flex; align-items: center; justify-content: center;
+    padding: 40px; box-sizing: border-box;
+    background:
+      repeating-linear-gradient(45deg, rgba(158,93,249,.07) 0 18px, transparent 18px 36px),
+      #15131F;
+    border: 2px dashed rgba(158,93,249,.42);
+    border-radius: inherit;
+  }
+  .imgslot.no-img .imgslot-ph span {
+    font-size: 30px; line-height: 1.55; color: #9E93BF;
+    text-align: center; word-break: keep-all; max-width: 80%;
+  }
+
+  /* ---- page guide ---- */
+  #guide {
+    position: fixed; left: 0; right: 0; bottom: 0;
+    height: var(--guide-h);
+    display: flex; align-items: center; gap: 22px;
+    padding: 0 26px;
+    box-sizing: border-box;
+    background: linear-gradient(to top, rgba(8,7,15,.95), rgba(8,7,15,.72));
+    backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(255,255,255,.09);
+    color: #CFCBE0;
+    font-size: 14px;
+    opacity: 0; transform: translateY(100%);
+    transition: opacity .22s ease, transform .22s ease;
+    z-index: 40;
+  }
+  body.ui-visible #guide { opacity: 1; transform: none; }
+  #guide .deckname {
+    font-weight: 600; color: #8B86A6;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    max-width: 22vw;
+  }
+  #guide .counter {
+    font-family: 'Mona Sans', sans-serif;
+    font-variant-numeric: tabular-nums;
+    font-size: 17px; font-weight: 600; letter-spacing: .04em;
+    white-space: nowrap;
+  }
+  #guide .counter b { color: #00E49B; font-weight: 700; }
+  #guide .counter i { color: #5C5873; font-style: normal; margin: 0 6px; }
+  #guide .slidelabel {
+    flex: 1; min-width: 0;
+    color: #EDEBF5; font-weight: 600; font-size: 15px;
+    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  }
+  #guide .keys { display: flex; gap: 7px; white-space: nowrap; }
+  #guide kbd {
+    font-family: 'Mona Sans', sans-serif; font-size: 11px;
+    padding: 3px 7px; border-radius: 5px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.14);
+    border-bottom-width: 2px;
+    color: #B9B4CE;
+  }
+  #guide .keys span { color: #6E6987; font-size: 11px; align-self: center; }
+  #progress {
+    position: fixed; left: 0; bottom: var(--guide-h); height: 3px;
+    background: linear-gradient(90deg, #4434E2, #9E5DF9, #00E49B);
+    z-index: 41; transition: width .28s cubic-bezier(.4,0,.2,1);
+    opacity: 0;
+  }
+  body.ui-visible #progress { opacity: 1; }
+
+  /* jump-to-slide digit buffer */
+  #jump {
+    position: fixed; left: 50%; top: 50%; transform: translate(-50%,-50%);
+    font-family: 'Mona Sans', sans-serif; font-size: 128px; font-weight: 800;
+    color: #fff; background: rgba(12,11,23,.86);
+    padding: 24px 52px; border-radius: 20px;
+    border: 2px solid rgba(0,228,155,.5);
+    z-index: 60; display: none;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---- speaker notes ---- */
+  #notes {
+    position: fixed; left: 0; right: 0; bottom: var(--guide-h);
+    max-height: 34vh; overflow-y: auto;
+    padding: 22px 30px 24px;
+    box-sizing: border-box;
+    background: rgba(8,7,15,.96);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid rgba(158,93,249,.34);
+    color: #D8D4E8; font-size: 19px; line-height: 1.65;
+    word-break: keep-all; text-wrap: pretty;
+    z-index: 39; display: none;
+  }
+  body.notes-on #notes { display: block; }
+  #notes .nlabel {
+    font-family: 'Mona Sans', sans-serif; font-size: 12px; font-weight: 600;
+    letter-spacing: .1em; text-transform: uppercase;
+    color: #00E49B; margin-bottom: 10px;
+  }
+  #notes .nempty { color: #6E6987; font-style: italic; }
+
+  /* ---- overview / page index ---- */
+  #overview {
+    position: fixed; inset: 0; z-index: 70;
+    background: rgba(8,7,15,.97);
+    backdrop-filter: blur(20px);
+    display: none; flex-direction: column;
+  }
+  body.overview-on #overview { display: flex; }
+  #overview header {
+    padding: 26px 34px 18px;
+    display: flex; align-items: baseline; gap: 16px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+  }
+  #overview header h2 {
+    margin: 0; font-size: 22px; color: #EDEBF5; font-weight: 700;
+  }
+  #overview header p { margin: 0; color: #7B7694; font-size: 14px; }
+  #ovgrid {
+    flex: 1; overflow-y: auto;
+    padding: 26px 34px 40px;
+    display: grid; gap: 16px;
+    grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+  }
+  .ov-card {
+    all: unset; cursor: pointer; display: block;
+    border-radius: 10px; padding: 0;
+  }
+  .ov-thumb {
+    aspect-ratio: 16 / 9; border-radius: 10px;
+    background: #17152A;
+    border: 1px solid rgba(255,255,255,.1);
+    display: grid; place-items: center;
+    transition: border-color .15s ease, background .15s ease;
+  }
+  .ov-num {
+    font-family: 'Mona Sans', sans-serif; font-size: 34px; font-weight: 700;
+    color: #4E4870; font-variant-numeric: tabular-nums;
+  }
+  .ov-label {
+    margin-top: 9px; font-size: 13px; line-height: 1.4; color: #A9A4C0;
+    word-break: keep-all;
+    display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .ov-card:hover .ov-thumb { border-color: rgba(158,93,249,.7); background: #1E1B36; }
+  .ov-card:hover .ov-num { color: #9E5DF9; }
+  .ov-card.is-current .ov-thumb {
+    border-color: #00E49B; background: #16241F;
+    box-shadow: 0 0 0 1px #00E49B inset;
+  }
+  .ov-card.is-current .ov-num { color: #00E49B; }
+  .ov-card.is-current .ov-label { color: #EDEBF5; }
+
+  /* ---- help ---- */
+  #help {
+    position: fixed; inset: 0; z-index: 80;
+    background: rgba(8,7,15,.93); backdrop-filter: blur(18px);
+    display: none; place-items: center;
+  }
+  body.help-on #help { display: grid; }
+  #help .panel {
+    background: #15132A; border: 1px solid rgba(255,255,255,.12);
+    border-radius: 18px; padding: 34px 40px;
+    min-width: 440px; color: #D8D4E8;
+  }
+  #help h2 { margin: 0 0 22px; font-size: 20px; color: #fff; }
+  #help table { border-collapse: collapse; font-size: 15px; }
+  #help td { padding: 7px 0; }
+  #help td:first-child { padding-right: 26px; white-space: nowrap; }
+  #help kbd,
+  #overview header kbd {
+    font-family: 'Mona Sans', sans-serif; font-size: 12px;
+    padding: 3px 8px; border-radius: 5px; margin-right: 4px;
+    background: rgba(255,255,255,.08);
+    border: 1px solid rgba(255,255,255,.16); border-bottom-width: 2px;
+    color: #EDEBF5;
+  }
+  #help .hint { margin: 24px 0 0; font-size: 13px; color: #6E6987; line-height: 1.6; }
+  #help .hint code {
+    background: rgba(255,255,255,.07); padding: 1px 6px; border-radius: 4px;
+  }
+</style>
+</head>
+<body>
+
+<div id="stagewrap">
+  <div id="stage">
+<section data-deck="0" data-label="표지" data-screen-label="01" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) — 4주 특강의 마지막 날이다. 오늘은 새 기술을 배우지 않는다. 지난 3주 동안 배운 것들이 실제 프로젝트 하나 안에서 어떻게 엮이는지 처음부터 끝까지 따라간다. 주소 한 줄을 넣으면 그 건물이 3D 로 지어져 나오는 시스템이다. 표지의 건물은 삼성역 앞 아이파크타워다. 오늘 내내 이 건물을 따라간다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:0;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div style="display:grid;grid-template-columns:1.1fr 1fr;gap:48px;align-items:center;flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:30px">
+    <div class="eb lime">4주차 · 마지막</div>
+    <h1 style="margin:0;font-size:var(--type-hero);font-weight:800;line-height:1.12;letter-spacing:-.03em">주소 한 줄에서<br>3D 건물까지</h1>
+    <p class="body" style="color:var(--neutral-lighter)">공공데이터를 모으고, 사진을 읽고, 마지막엔 모델에게 짓게 했다.<br>지난 3주가 한 프로젝트 안에서 만난다.</p>
+    <div class="sub" style="color:var(--neutral-lighter)">addr2blend · BigValue Labs R&amp;D · 2026</div>
+  </div>
+  <div class="imgbox" style="height:760px;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v04_hero.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>아이파크타워 — astra 가 지은 3D</span></div></div></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="오늘의 흐름" data-screen-label="02" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) — 오늘은 일곱 부다. 문제를 정하고, 데이터를 모으고, 형상을 세우고, 세 번 다시 설계한다. v0.2 는 사진을 벽에 붙였다. v0.3 은 사진을 읽어 숫자로 옮겼다. v0.4 는 모델에게 직접 짓게 했다. 부마다 실제로 나온 파일 — 산출물 — 을 보여 주고, 같은 일을 하는 Colab 노트북을 하나씩 붙였다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">오늘의 흐름</div><h2 class="h">일곱 걸음</h2></div>
+<div class="g4" style="grid-template-columns:repeat(7,1fr);gap:14px">
+<div class="card " style="padding:22px 20px"><div class="num" style="font-size:40px;color:var(--primary-main)">1</div><div class="cb" style="font-size:25px">문제</div><p class="sm" style="font-size:21px">주소 → 3D, 목표는?</p></div><div class="card " style="padding:22px 20px"><div class="num" style="font-size:40px;color:var(--primary-main)">2</div><div class="cb" style="font-size:25px">데이터</div><p class="sm" style="font-size:21px">공공데이터를 절차적으로</p></div><div class="card " style="padding:22px 20px"><div class="num" style="font-size:40px;color:var(--primary-main)">3</div><div class="cb" style="font-size:25px">기하</div><p class="sm" style="font-size:21px">외곽선 → 입면 → 매스</p></div><div class="card " style="padding:22px 20px"><div class="num" style="font-size:40px;color:#9E9AB8">4</div><div class="cb" style="font-size:25px">v0.2</div><p class="sm" style="font-size:21px">사진을 붙인다</p></div><div class="card p" style="padding:22px 20px"><div class="num" style="font-size:40px;color:var(--primary-main)">5</div><div class="cb" style="font-size:25px">v0.3</div><p class="sm" style="font-size:21px">사진을 읽는다</p></div><div class="card k" style="padding:22px 20px"><div class="num" style="font-size:40px;color:#00E49B">6</div><div class="cb" style="font-size:25px">v0.4</div><p class="sm" style="font-size:21px">모델이 짓는다</p></div><div class="card " style="padding:22px 20px"><div class="num" style="font-size:40px;color:var(--primary-main)">7</div><div class="cb" style="font-size:25px">정리</div><p class="sm" style="font-size:21px">산출물 지도</p></div>
+</div>
+<div class="pale">부마다 <b style="color:var(--primary-dark)">실제 산출물 파일</b>을 열어 보고, 같은 일을 하는 <b style="color:var(--primary-dark)">Colab 노트북</b>을 하나씩 붙였다.</div>
+</section>
+
+<section data-deck="0" data-label="오늘의 질문" data-screen-label="03" data-speaker-notes="출처: 신규 — 오늘의 질문이다. 주소 한 줄이면 그 건물을 3D 로 지을 수 있는가. 답은 &#x27;그렇다&#x27;인데, 오늘 정말 보여 주고 싶은 것은 그다음 질문이다. 사진을 붙일 것인가, 사진을 읽을 것인가, 사진을 보고 짓게 할 것인가. 세 번의 설계가 이 세 답에 각각 해당한다. 마지막 장에서 이 질문에 돌아온다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="eb">오늘의 질문</div>
+<h2 class="hx">주소 한 줄이면<br>그 건물을 <span class="v">3D 로</span> 지을 수 있는가?</h2>
+<div class="g3" style="margin-top:20px">
+  <div class="card"><div class="cb" style="color:#9E9AB8">사진을 붙일 것인가</div><p class="sm">v0.2 — 이미지 생성으로 벽면을 칠한다</p></div>
+  <div class="card p"><div class="cb v">사진을 읽을 것인가</div><p class="sm">v0.3 — LLM 이 치수를 읽고 코드가 짓는다</p></div>
+  <div class="card k"><div class="cb" style="color:#00E49B">사진을 보고 짓게 할 것인가</div><p class="sm">v0.4 — 모델이 건축 스크립트를 쓴다</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="지난 3주가 여기 다 있다" data-screen-label="04" data-speaker-notes="출처: 신규 — 오늘이 왜 마지막 주인지를 말해 줄 것. 이 프로젝트에는 지난 3주의 내용이 전부 들어 있다. 1주차 데이터 분석은 공공데이터의 결측과 교차검증, 폴백 설계로 나온다. 2주차의 LLM, 프롬프트, 구조화 출력, 하네스는 판독과 촬영 전략과 안전장치로 나온다. 3주차의 분할과 생성과 VLM 은 v0.2 의 가림 제거와 텍스처 생성과 판독으로 그대로 나온다. 지난주에 배운 SegFormer Cityscapes 가 실제로 여기 들어가 있다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">연결</div><h2 class="h">지난 3주가 여기 다 들어 있다</h2></div>
+<div class="g3">
+  <div class="card w top"><div class="eb">1주차 · 데이터와 기계학습</div><div class="cb">공공데이터를 믿되 검산한다</div><p class="sm">결측 · 교차검증 · 폴백<br>대장 높이 vs 층수 × 표준층고</p></div>
+  <div class="card w top"><div class="eb">2주차 · 언어모델과 하네스</div><div class="cb">LLM 에게 숫자만 받는다</div><p class="sm">구조화 출력(JSON Schema) · 촬영 전략<br>갭 재요청 루프 · 생성 코드 안전장치</p></div>
+  <div class="card w top"><div class="eb">3주차 · 이미지</div><div class="cb">분할 · 깊이 · 생성 · VLM</div><p class="sm">SegFormer(Cityscapes)로 가림 제거<br>gpt-image-2 텍스처 · VLM 판독과 심사</p></div>
+</div>
+<div class="dark">지난주 배운 <b class="g">SegFormer · Cityscapes</b> 가 이 시스템의 7단계에 그대로 들어 있다.<br><span class="s">오늘은 새 기술을 배우지 않는다 — 배운 기술이 한 프로젝트 안에서 어떻게 엮이는지 본다.</span></div>
+</section>
+
+<section data-deck="0" data-label="1부 · 문제" data-screen-label="05" data-speaker-notes="출처: 신규 — 1부, 문제 정의. 무엇을 만들어야 하는지부터 정확히 재 본다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">1부</div><h2 class="hx">무엇을 만들어야 하나</h2>
+<p class="body" style="color:var(--neutral-lighter)">목표를 말로 정하지 않고, 열어서 재 본다.</p>
+</section>
+
+<section data-deck="0" data-label="출발점" data-screen-label="06" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Starting point — 출발점은 회사에 이미 있던 2D 시스템이다. 로드뷰에서 건물 외관 정보를 뽑아 이미지 생성 모델에 넘기고, 그럴듯한 건물 그림 한 장을 만들었다. 화면 구성과 흐름 — 검색, 지도에서 건물 선택, 대기열, 갤러리 — 은 그대로 가져왔다. 바뀐 것은 산출물이다. 그림 한 장이 아니라 치수와 좌표가 맞는 3D 가 필요해졌다. 그럴듯한 그림과 맞는 형상은 완전히 다른 문제다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">출발점</div><h2 class="h">그림 한 장을 만들던 시스템</h2></div>
+<div class="g2" style="flex:1;min-height:0;grid-template-columns:1.25fr 1fr">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_old_explore.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>기존 2D 시스템 — 생성 결과 갤러리</span></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:22px;justify-content:center">
+    <div class="card"><div class="cb">계승한 것</div><p class="sm">검색 → 지도에서 건물 선택 → 대기열 → 갤러리<br>로그인 · 권한 · 결과 목록</p></div>
+    <div class="card p"><div class="cb v">바뀐 것</div><p class="sm">이미지 1장 → <b style="color:var(--fg-1)">3D 형상 + 재질 (.blend · .glb)</b><br>“그럴듯한 그림”이 아니라 <b style="color:var(--fg-1)">치수와 좌표가 맞는 형상</b></p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="목표 수준" data-screen-label="07" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Target quality bar — 목표로 받은 레퍼런스가 이 Blender 파일이다. 거리 전경, 점포 전면, 로우 앵글, 사선 뷰. 보면 창틀, 난간, 캐노피, 간판이 전부 실제 두께를 가진 메시다. 그래서 어느 각도로 돌려도 무너지지 않고 그림자가 스스로 생긴다. 건물 형상에 사진을 붙인 것과는 차원이 다르다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">목표</div><h2 class="h">부재 단위로 모델링된 거리</h2><span class="sub">Gyodae_Phase17_MultiView.blend</span></div>
+<div class="g3" style="flex:1;min-height:0">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_gy_hero.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>레퍼런스 — 사선 뷰</span></div></div></div>
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_gy_store.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>레퍼런스 — 점포 전면</span></div></div></div>
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_gy_street.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>레퍼런스 — 거리 전경</span></div></div></div>
+</div>
+<div class="g4">
+  <div class="card"><div class="cb">형상</div><p class="sm">창틀·난간·간판이 실제 두께</p></div>
+  <div class="card"><div class="cb">재질</div><p class="sm">절차적 PBR — 해상도 한계 없음</p></div>
+  <div class="card"><div class="cb">조명</div><p class="sm">그림자가 형상에서 생긴다</p></div>
+  <div class="card"><div class="cb">시점</div><p class="sm">어떤 각도로 돌려도 성립</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="재 보니 거리였다" data-screen-label="08" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Measured — 여기가 1주차 데이터 분석 감각이 처음 쓰이는 자리다. 목표를 눈으로 보고 감탄하지 않고, 파일을 열어서 오브젝트 접두어별로 면 수를 셌다. 63만 면의 절반 이상이 사람, 나무, 차였다. 건물 덩어리 자체는 263면뿐이다. 매스를 정밀하게 깎아서 좋아 보이는 게 아니라, 창 3,071개, 1층 점포 전면에만 부재 4,224개를 따로 심어서 좋아 보이는 것이다. 이 숫자 하나가 설계 방향을 정했다 — 건물은 부재 단위로, 거리는 별도 씬으로." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">실측</div><h2 class="h">열어서 재 보니 — 건물이 아니라 거리였다</h2><span class="sub">오브젝트 접두어별 면 수</span></div>
+<div style="flex:1;min-height:0"><svg viewBox="0 0 1720 570" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block"><text x="282" y="48" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">보행자 PED</text><rect x="300" y="26" width="1180" height="32" rx="6" fill="#C9C7D6"/><text x="1494" y="50" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">136,727</text><text x="282" y="100" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">식재 PLANT</text><rect x="300" y="78" width="977" height="32" rx="6" fill="#C9C7D6"/><text x="1291" y="102" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">113,216</text><text x="282" y="152" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">가로수 TREE</text><rect x="300" y="130" width="941" height="32" rx="6" fill="#C9C7D6"/><text x="1255" y="154" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">109,008</text><text x="282" y="204" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">점포 전면 P09</text><rect x="300" y="182" width="902" height="32" rx="6" fill="#4434E2"/><text x="1216" y="206" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">104,550</text><text x="282" y="256" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">차량 P12</text><rect x="300" y="234" width="363" height="32" rx="6" fill="#C9C7D6"/><text x="677" y="258" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">42,012</text><text x="282" y="308" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">지면·도로</text><rect x="300" y="286" width="537" height="32" rx="6" fill="#C9C7D6"/><text x="851" y="310" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">62,277</text><text x="282" y="360" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">창 WIN</text><rect x="300" y="338" width="159" height="32" rx="6" fill="#4434E2"/><text x="473" y="362" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">18,426</text><text x="282" y="412" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">고층 창·핀 P06</text><rect x="300" y="390" width="130" height="32" rx="6" fill="#4434E2"/><text x="444" y="414" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">15,012</text><text x="282" y="464" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">층간 띠 BAND</text><rect x="300" y="442" width="47" height="32" rx="6" fill="#4434E2"/><text x="361" y="466" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">5,412</text><text x="282" y="516" text-anchor="end" font-size="23" fill="var(--fg-1)" font-family="var(--font-sans)">건물 매스 BLDG</text><rect x="300" y="494" width="4" height="32" rx="6" fill="#4434E2"/><text x="318" y="518" font-size="22" font-weight="700" fill="var(--fg-1)" font-family="var(--font-display)">263</text><rect x="300" y="540" width="22" height="16" rx="3" fill="#4434E2"/><text x="332" y="554" font-size="20" fill="var(--neutral-medium)" font-family="var(--font-sans)">건물</text><rect x="410" y="540" width="22" height="16" rx="3" fill="#C9C7D6"/><text x="442" y="554" font-size="20" fill="var(--neutral-medium)" font-family="var(--font-sans)">거리 요소</text></svg></div>
+<div class="dark">건물 덩어리는 <b class="g">263면</b>뿐이다. 좋아 보이는 이유는 창 <b class="g">3,071개</b>, 점포 전면 부재 <b class="g">4,224개</b>.<br><span class="s">목표는 건물만 — 1동 10~15만 면, 부재 단위. 사람·나무·차는 거리 씬에서 따로 구성한다.</span></div>
+</section>
+
+<section data-deck="0" data-label="제약" data-screen-label="09" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Constraints — 제약 조건이 하나 있었다. 회사 내부 DB 를 쓰지 않는다. 누구나 발급받을 수 있는 공개 키만 쓴다. 그래야 이 수업을 듣는 여러분도 같은 일을 할 수 있다. 그리고 설계 원칙 세 가지를 처음부터 박았다. 모든 소스는 실패할 수 있다고 가정하고 폴백을 둔다. 호출 결과는 전부 캐시해 다시 돌릴 때 비용이 0 이다. 단계마다 산출물을 파일로 남겨 실패한 단계부터 다시 시작한다. 이 세 번째 원칙 덕분에 오늘 단계별 산출물을 보여 줄 수 있다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">제약</div><h2 class="h">회사 DB 없이, 공개 API 만으로</h2></div>
+<div class="g3">
+  <div class="card w topr"><div class="cb">실패를 가정한다</div><p class="sm">모든 소스는 막힐 수 있다 → <b style="color:var(--fg-1)">단계별 폴백</b></p></div>
+  <div class="card w top"><div class="cb">전부 캐시한다</div><p class="sm">같은 호출은 두 번 하지 않는다 → <b style="color:var(--fg-1)">재실행 비용 0</b></p></div>
+  <div class="card w topg"><div class="cb">단계마다 파일로 남긴다</div><p class="sm"><code style="font-size:22px">runs/&lt;run_id&gt;/&lt;stage&gt;/</code> → <b style="color:var(--fg-1)">실패한 곳부터 재개</b></p></div>
+</div>
+<div class="dark">세 번째 원칙 덕분에 오늘 <b class="g">단계별 산출물</b>을 하나씩 열어 볼 수 있다.<br><span class="s">누구나 발급받는 키만 썼다 — 여러분도 같은 일을 할 수 있다.</span></div>
+</section>
+
+<section data-deck="0" data-label="2부 · 데이터" data-screen-label="10" data-speaker-notes="출처: 신규 — 2부, 데이터. 공공데이터를 절차적으로 모은다. 그리고 무엇이 열려 있고 무엇이 막혀 있는지를 추측이 아니라 실측으로 확인한다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">2부</div><h2 class="hx">공공데이터를 절차적으로 모은다</h2>
+<p class="body" style="color:var(--neutral-lighter)">무엇이 열려 있고 무엇이 막혀 있나 — 추측 대신 실측.</p>
+</section>
+
+<section data-deck="0" data-label="데이터 지도" data-screen-label="11" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Constraints &amp; data · 출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) 3절 — 쓰는 공공 소스 전체다. 주소를 좌표로 바꾸는 VWorld 지오코더, 지붕을 보는 VWorld 위성 타일, 건물 외곽선과 높이를 주는 국가 GIS 건물통합정보, 건물명과 건물관리번호를 주는 도로명주소, 층수를 교차검증하는 건축물대장, 그리고 폴백으로 쓰는 OpenStreetMap. 상태 열을 보라. 핵심 데이터인 GIS 건물통합정보가 막혀 있었다. 이게 뒤에서 큰 문제를 일으킨다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">데이터</div><h2 class="h">쓰는 공공 소스</h2><span class="sub">2026-09 실측</span></div>
+<table class="tb">
+<tr><th>소스</th><th>쓰임</th><th>상태</th></tr>
+<tr><td>VWorld 지오코더 · 검색</td><td class="m">주소·장소 → 좌표</td><td class="ok">동작</td></tr>
+<tr><td>VWorld 위성 타일 (WMTS)</td><td class="m">지붕 정사영상</td><td class="ok">동작</td></tr>
+<tr><td>국가 GIS 건물통합정보 (NED WFS)</td><td class="m">건물 외곽선 · 층수 · 용도 · 높이</td><td class="no">차단 — 키에 미승인</td></tr>
+<tr><td>VWorld 데이터 API 2.0</td><td class="m">지적도 · 용도지역 · 실폭도로</td><td class="no">차단</td></tr>
+<tr><td>도로명주소 검색</td><td class="m">건물명 · 도로명 · 건물관리번호</td><td class="ok">동작</td></tr>
+<tr><td>도로명주소 좌표제공</td><td class="m">건물 출입구 좌표</td><td class="wait">승인 대기</td></tr>
+<tr><td>건축HUB 건축물대장</td><td class="m">층수 · 연면적 교차검증</td><td class="ok">선택</td></tr>
+<tr><td>OpenStreetMap Overpass</td><td class="m">외곽선 폴백</td><td class="ok">동작 (결측 많음)</td></tr>
+<tr><td>카카오 로드뷰 (JS SDK)</td><td class="m">입면 실사</td><td class="ok">동작 · 내부 연구용</td></tr>
+</table>
+</section>
+
+<section data-deck="0" data-label="추측 대신 실측" data-screen-label="12" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Diagnosed 2026-09-21 — 처음에는 GIS 데이터가 안 오는 이유를 호출 제한이라고 짐작했다. 짐작으로 결론을 내리지 않고, 같은 키로 서비스별, 도메인 파라미터별로 전부 호출해 봤다. 지오코딩, 검색, 위성 타일은 되는데 데이터 API 24개 레이어와 건물통합정보는 전부 INCORRECT_KEY. 도메인을 일곱 가지로 바꿔도 같았다. 결론이 바뀌었다 — 호출 제한이 아니라 키에 그 서비스가 승인되지 않은 것이다. 해결은 코드가 아니라 신청서였다. 1주차에 말한 데이터 분석의 태도다. 결론 전에 측정한다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">진단</div><h2 class="h">추측 대신 실측 — 결론이 바뀌었다</h2></div>
+<div class="g2" style="grid-template-columns:1.15fr 1fr;align-items:start">
+<pre class="code"><span class="c"># 같은 VWorld 키 — 서비스별로 전부 호출</span>
+지오코딩          <span class="g">OK</span>
+검색              <span class="g">OK</span>
+WMTS 위성타일     <span class="g">OK</span>   <span class="c">(256×256×3 수신)</span>
+데이터 API 2.0    <span class="r">INCORRECT_KEY</span>  <span class="c">← 24개 레이어 전부</span>
+NED WFS           <span class="r">INCORRECT_KEY</span>
+
+<span class="c"># domain 파라미터 7가지로 교차 확인</span>
+http://localhost         <span class="r">INCORRECT_KEY</span>
+https://labs.ai…         <span class="r">INCORRECT_KEY</span>
+(파라미터 생략)           <span class="r">INCORRECT_KEY</span></pre>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div class="card"><div class="cb" style="color:var(--neutral-medium)">처음 짐작</div><p class="sm">“호출 제한에 걸렸다”</p></div>
+    <div class="card p"><div class="cb v">실측 결론</div><p class="sm">키에 그 서비스가 <b style="color:var(--fg-1)">승인되지 않았다</b>. 도메인 문제도 아니다.</p></div>
+    <div class="card k"><div class="cb" style="color:#00E49B">해결</div><p class="sm">코드가 아니라 <b style="color:#fff">신청서</b> — 승인되면 코드 수정 없이 켜지게 배선</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="막힌 데이터의 연쇄" data-screen-label="13" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Diagnosed — 막힌 데이터 하나가 어떻게 연쇄 오류를 만드는지 보여 주는 장이다. 국가 GIS 가 막혀서 이웃 건물을 OSM 으로 채운다. OSM 에는 등록되지 않은 구조물이 많다. 그러면 시야가 막힌 시점을 보인다고 판정한다. 로드뷰가 남의 건물을 찍는다. 판독기가 옆 건물 치수를 읽는다. 정합 일치도가 0.2 대로 무너진다. 증상은 맨 끝 3D 에서 나타나지만 원인은 맨 앞 데이터에 있다. 그래서 이 프로젝트의 결론 중 하나가 &#x27;병목은 모델러가 아니라 데이터&#x27;다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb red">연쇄</div><h2 class="h">막힌 데이터 하나가 맨 끝까지 간다</h2></div>
+<div class="flow">
+  <div class="st"><div class="n">1</div><div class="t">국가 GIS 차단</div><div class="d">이웃 건물 외곽선을 못 받는다</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">2</div><div class="t">OSM 폴백</div><div class="d">미등록 구조물이 많다</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">3</div><div class="t">가림 오판</div><div class="d">막힌 시야를 “보인다”고 판정</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">4</div><div class="t">남의 건물 촬영</div><div class="d">판독이 옆 건물 치수를 읽는다</div></div><div class="ar">→</div>
+  <div class="st" style="background:#FDF0F0"><div class="n" style="color:#D93636">5</div><div class="t r">정합 0.2 대</div><div class="d">3D 가 실물과 어긋난다</div></div>
+</div>
+<div class="dark">증상은 맨 끝 3D 에서, 원인은 맨 앞 데이터에서.<br><span class="s">그래서 이 프로젝트의 결론 — <b style="color:#fff">병목은 모델러가 아니라 데이터다.</b></span></div>
+</section>
+
+<section data-deck="0" data-label="갱신이 빠른 데이터" data-screen-label="14" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Fresh data — 3D 건물 데이터나 GIS 속성은 갱신 주기가 길다. 도로명주소 DB 는 월 단위로 갱신되고, 결정적으로 건물 출입구 좌표를 갖고 있다. 호출이 2단계인 이유도 짚어 줄 것 — 좌표제공 API 가 주소 문자열이 아니라 검색 API 가 돌려준 코드 조합을 받는다. 출입구 좌표가 있으면 정면 입면이 확정되고, 촬영 예산을 정면부터 쓰고, 1층 문 위치를 실제 좌표로 놓을 수 있다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">데이터</div><h2 class="h">갱신이 빠른 데이터를 쓴다 — 도로명주소</h2></div>
+<div class="g2" style="grid-template-columns:1.1fr 1fr;align-items:start">
+<pre class="code"><span class="c">① 주소검색</span>  addrLinkApi.do     <span class="g">승인됨</span>
+   → admCd · rnMgtSn · udrtYn
+     buldMnnm · buldSlno
+     <span class="y">bdMgtSn</span>   <span class="c"># 건물관리번호</span>
+
+<span class="c">② 좌표제공</span>  addrCoordApi.do    <span class="y">승인 대기</span>
+   → <span class="y">entX · entY</span>   <span class="c"># EPSG:5179</span>
+     = 건물 <b>출입구</b> 좌표</pre>
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="card"><div class="cb">왜 2단계인가</div><p class="sm">좌표제공은 주소 문자열이 아니라 ①이 준 <b style="color:var(--fg-1)">코드 조합</b>을 받는다</p></div>
+    <div class="card p"><div class="cb v">출입구 좌표가 풀어 주는 것</div><p class="sm">정면 입면 확정 · 정면부터 촬영 · 1층 문 실좌표</p></div>
+    <div class="card"><div class="cb">갱신 주기</div><p class="sm">도로명주소 <b style="color:var(--fg-1)">월 단위</b> — GIS 속성보다 최신</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="버린 아이디어" data-screen-label="15" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Rejected — 승인을 기다리지 않으려고 두 가지 꾀를 시험했고 둘 다 버렸다. 첫째, 도로명주소는 출입구 기준으로 부여하니 지오코딩 좌표가 곧 출입구가 아닐까. 재 보니 세 건 중 두 건이 건물 중심에서 2미터 이내였다. 그냥 건물 중심점이다. 둘째, 도로명주소는 진행 방향 왼쪽이 홀수, 오른쪽이 짝수니 반대 홀짝 번지를 찾으면 길 건너 방향을 알 수 있지 않을까. 세 건 중 한 건만 맞았다. 이웃 번지가 70에서 150미터 떨어져 방향이 흔들렸다. 학생들에게 강조할 것 — 실패한 시도도 측정값이 있어야 결론이 된다. 기록해 두면 다음에 같은 아이디어가 나왔을 때 시간을 아낀다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb red">기록</div><h2 class="h">그럴듯한 아이디어 둘 — 재 보니 틀렸다</h2></div>
+<div class="g2">
+  <div class="card w topr"><div class="cb">① 지오코딩 좌표 = 출입구?</div>
+    <table class="tb"><tr><th>건물</th><th>중심에서</th><th>위치</th></tr>
+    <tr><td>건물 A</td><td>17.9 m</td><td class="m">외곽선 밖</td></tr>
+    <tr><td>테헤란로 534</td><td>0.5 m</td><td class="m">건물 내부</td></tr>
+    <tr><td>테헤란로8길 21</td><td>1.8 m</td><td class="m">건물 내부</td></tr></table>
+    <p class="sm">→ 3건 중 2건이 중심점. <b class="r">출입구가 아니다</b></p></div>
+  <div class="card w topr"><div class="cb">② 홀짝 번지로 ‘길 건너’ 찾기</div>
+    <table class="tb"><tr><th>건물</th><th>결과</th></tr>
+    <tr><td>건물 A</td><td class="ok">맞음</td></tr>
+    <tr><td>테헤란로 534</td><td class="no">반대편 번지 지오코딩 불가</td></tr>
+    <tr><td>테헤란로8길 21</td><td class="no">틀림</td></tr></table>
+    <p class="sm">→ 이웃 번지가 70~151m 떨어져 방향이 흔들린다. <b class="r">3건 중 1건</b></p></div>
+</div>
+<div class="dark">실패한 시도도 <b class="g">측정값</b>이 있어야 결론이 된다.<br><span class="s">구현까지 해 보고 버렸다 — 기록해 두면 같은 아이디어를 다시 시험하는 비용을 아낀다.</span></div>
+</section>
+
+<section data-deck="0" data-label="산출물 ① 대상 건물" data-screen-label="16" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s01_candidates, s02_target/output.json — 첫 산출물이다. 주소를 넣으면 좌표가 나오고, 그 좌표를 품은 건물 후보가 나온다. 사용자가 지도에서 하나를 확정하면 이 파일이 된다. 건물 고유번호, 필지번호 PNU, 층수, 높이, 용도코드, 사용승인일. 이 숫자들이 뒤 모든 단계의 출발점이다. 하나 짚을 것 — 지상 15층에 높이 94.13미터. 층고가 6.3미터다. 기억해 둘 것. 이 숫자가 뒤에서 문제를 일으킨다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ①</div><h2 class="h">주소 → 좌표 → 건물 하나</h2><span class="sub">s01_candidates · s02_target</span></div>
+<div class="g2" style="grid-template-columns:1.2fr 1fr;flex:1;min-height:0;align-items:start">
+<pre class="code"><span class="c">// s02_target/output.json (발췌)</span>
+{ <span class="p">"name"</span>: <span class="y">"아이파크타워"</span>,
+  <span class="p">"building_id"</span>: "2004205337044457153800000000",
+  <span class="p">"pnu"</span>: "1168010500101600000",
+  <span class="p">"floors_above"</span>: <span class="g">15</span>, <span class="p">"floors_below"</span>: 4,
+  <span class="p">"height_m"</span>: <span class="g">94.13</span>,
+  <span class="p">"use_code"</span>: "14000",   <span class="c">// 업무시설</span>
+  <span class="p">"approval_date"</span>: "2004-11-25",
+  <span class="p">"footprint_area_m2"</span>: 1284.0,
+  <span class="p">"contains_point"</span>: true }</pre>
+  <div style="display:flex;flex-direction:column;gap:20px">
+    <div class="card"><div class="cb">입력</div><p class="sm">서울 강남구 영동대로 520<br>→ 지오코딩 127.0612, 37.5136</p></div>
+    <div class="card p"><div class="cb v">확정</div><p class="sm">좌표를 품은 건물 후보 → 지도에서 클릭</p></div>
+    <div class="card k"><div class="cb" style="color:#FFB86B">기억해 둘 숫자</div><p class="sm">15층에 94.13m — 층고 <b style="color:#fff">6.3m</b></p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="산출물 ② 속성과 검산" data-screen-label="17" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s03_prior/output.json — 두 번째 산출물, 건물 속성이다. 높이는 우선순위 규칙으로 정한다. 건축물대장이 있으면 대장, 없으면 GIS, 그것도 없으면 층수 곱하기 표준 층고. 아이파크타워는 대장과 GIS 가 둘 다 94.13 미터로 일치한다. 그런데 표준 층고로 계산하면 57.7 미터다. 두 소스가 일치하니 맞는 걸까. 15층 건물의 층고가 6.3 미터라는 것은 이상하다. 1주차에 배운 검산의 감각 — 두 값이 같다고 맞는 게 아니다. 같은 원본에서 왔을 수 있다. 이 의심은 v0.3 에서 실제 오류로 드러난다. 그 외에 반경 150미터 이웃 건물 26동, 정사영상 한 장, 도로명주소 정보가 같이 모인다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ②</div><h2 class="h">속성을 모으고, 검산한다</h2><span class="sub">s03_prior</span></div>
+<div class="g2" style="grid-template-columns:1fr 1fr">
+  <div class="card w"><div class="cb">높이 후보 — 우선순위 규칙</div>
+    <table class="tb"><tr><th>순위</th><th>소스</th><th>값</th></tr>
+    <tr><td>1</td><td>건축물대장</td><td><b>94.13 m</b></td></tr>
+    <tr><td>2</td><td>GIS 건물정보</td><td><b>94.13 m</b></td></tr>
+    <tr><td>3</td><td>층수 × 표준층고</td><td><b class="r">57.7 m</b></td></tr></table>
+    <p class="sm">1·2가 같다 — 그런데 <b class="r">15층에 94m</b> 는 층고 6.3m 다.</p></div>
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="card"><div class="cb">같이 모이는 것</div><p class="sm">반경 150m 이웃 건물 <b style="color:var(--fg-1)">26동</b> · 정사영상 0.25m/px<br>도로명주소 · 건물관리번호 · 대장 층별개요</p></div>
+    <div class="card k"><div class="cb" style="color:#FFB86B">1주차의 감각</div><p class="sm">두 값이 같다고 맞는 게 아니다 — <b style="color:#fff">같은 원본에서 왔을 수 있다.</b> 이 의심은 5부에서 실제 오류로 드러난다.</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="실습 ① ②" data-screen-label="18" data-speaker-notes="출처: w04_colab · W04_1, W04_2 — 실습 노트북 두 개다. 첫 번째는 주소를 좌표로 바꾸고 건물 외곽선과 이웃 건물까지 받는다. 키가 없으면 OpenStreetMap 으로 한다. 실제 파이프라인이 쓰는 폴백 그대로다. 두 번째는 건축물대장과 도로명주소에서 속성을 모으고 높이 우선순위 규칙을 직접 짠다. 아이파크타워의 15층 94미터 문제를 직접 확인하게 한다. 둘 다 API 키가 없어도 끝까지 돈다 — 키가 없으면 실제 run 의 결과 파일을 읽어 이어 간다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb grn">실습</div><h2 class="h">공공데이터를 직접 모아 본다</h2></div>
+<div class="g2">
+  <div class="card w topg"><div class="eb mut">W04_1</div><div class="ct">주소에서 건물 외곽선까지</div><p class="sm">주소 → 좌표 → 외곽선 · 이웃 건물 → 국소 좌표계<br>키 없으면 <b style="color:var(--fg-1)">OpenStreetMap</b> — 파이프라인의 폴백 그대로</p><p class="sm">산출물 <b style="color:var(--fg-1)">footprint.json</b></p></div>
+  <div class="card w topg"><div class="eb mut">W04_2</div><div class="ct">건물 속성 모으기</div><p class="sm">건축물대장 · 도로명주소 → 높이 우선순위 규칙<br><b style="color:var(--fg-1)">15층 94m</b> 를 직접 검산한다</p><p class="sm">산출물 <b style="color:var(--fg-1)">prior.json</b></p></div>
+</div>
+<div class="pale">API 키가 없어도 끝까지 돈다 — 키가 없으면 <b style="color:var(--primary-dark)">실제 run 의 결과 파일</b>을 읽어 이어 간다.</div>
+<span class="btn off">Colab · W04_1 · W04_2 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+</section>
+
+<section data-deck="0" data-label="3부 · 기하" data-screen-label="19" data-speaker-notes="출처: 신규 — 3부, 기하. 외곽선과 높이로 형상의 뼈대를 세운다. 여기까지는 사진이 없다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">3부</div><h2 class="hx">외곽선 위에 뼈대를 세운다</h2>
+<p class="body" style="color:var(--neutral-lighter)">여기까지는 사진이 한 장도 없다.</p>
+</section>
+
+<section data-deck="0" data-label="산출물 ③ 외곽선과 입면" data-screen-label="20" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s04_geometry/output.json — 세 번째 산출물이다. 좌표계부터. 경위도는 각도라 거리 계산이 불편하다. 건물 중심을 원점으로 하는 국소 좌표계로 바꾼다. 동쪽이 플러스 X, 북쪽이 플러스 Y, 단위는 미터. 이 그림은 아이파크타워의 실제 외곽선 좌표를 그대로 그린 것이다. 외곽선의 변 하나하나가 입면이 된다. 11개다. 초록이 길에 면한 입면, 빨강이 옆 건물과 붙은 맞벽이다. 가장 긴 f_0 이 69.9 미터. 맞벽에는 사진을 찍을 수 없으니 촬영 계획에서 빠진다. 이 표가 다음 단계의 입력이다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ③</div><h2 class="h">외곽선 → 입면 11개</h2><span class="sub">s04_geometry · LOCAL_ENU</span></div>
+<div class="g2" style="grid-template-columns:1fr 1fr;flex:1;min-height:0">
+  <div class="imgbox" style="padding:10px"><svg viewBox="0 0 900 620" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block"><polygon points="306.0,107.3 520.6,580.0 592.8,547.8 590.2,509.9 594.0,509.0 575.8,465.1 590.0,458.6 590.6,382.2 454.6,61.9 424.0,73.5 417.9,60.0" fill="#EEF0FE" stroke="#4434E2" stroke-width="3"/><line x1="306.0" y1="107.3" x2="520.6" y2="580.0" stroke="#00B37A" stroke-width="9" stroke-linecap="round"/><text x="450" y="327" text-anchor="middle" font-size="22" font-weight="800" fill="var(--fg-1)" font-family="var(--font-display)">f_0</text><text x="450" y="351" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-display)">69.9 m</text><line x1="520.6" y1="580.0" x2="592.8" y2="547.8" stroke="#00B37A" stroke-width="9" stroke-linecap="round"/><text x="540" y="527" text-anchor="middle" font-size="22" font-weight="800" fill="var(--fg-1)" font-family="var(--font-display)">f_1</text><text x="540" y="551" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-display)">10.6 m</text><line x1="592.8" y1="547.8" x2="590.2" y2="509.9" stroke="#D93636" stroke-width="9" stroke-linecap="round"/><line x1="590.2" y1="509.9" x2="594.0" y2="509.0" stroke="#D93636" stroke-width="9" stroke-linecap="round"/><line x1="594.0" y1="509.0" x2="575.8" y2="465.1" stroke="#D93636" stroke-width="9" stroke-linecap="round"/><line x1="575.8" y1="465.1" x2="590.0" y2="458.6" stroke="#D93636" stroke-width="9" stroke-linecap="round"/><line x1="590.0" y1="458.6" x2="590.6" y2="382.2" stroke="#00B37A" stroke-width="9" stroke-linecap="round"/><text x="550" y="420" text-anchor="middle" font-size="22" font-weight="800" fill="var(--fg-1)" font-family="var(--font-display)">f_6</text><text x="550" y="444" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-display)">10.3 m</text><line x1="590.6" y1="382.2" x2="454.6" y2="61.9" stroke="#00B37A" stroke-width="9" stroke-linecap="round"/><text x="486" y="238" text-anchor="middle" font-size="22" font-weight="800" fill="var(--fg-1)" font-family="var(--font-display)">f_7</text><text x="486" y="262" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-display)">46.8 m</text><line x1="454.6" y1="61.9" x2="424.0" y2="73.5" stroke="#9E9AB8" stroke-width="9" stroke-linecap="round"/><line x1="424.0" y1="73.5" x2="417.9" y2="60.0" stroke="#9E9AB8" stroke-width="9" stroke-linecap="round"/><line x1="417.9" y1="60.0" x2="306.0" y2="107.3" stroke="#00B37A" stroke-width="9" stroke-linecap="round"/><text x="378" y="120" text-anchor="middle" font-size="22" font-weight="800" fill="var(--fg-1)" font-family="var(--font-display)">f_10</text><text x="378" y="144" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-display)">16.3 m</text><circle cx="450" cy="320" r="7" fill="#4434E2"/><text x="462" y="314" font-size="18" fill="#4434E2" font-family="var(--font-display)">원점 (0, 0)</text><g font-family="var(--font-display)" font-size="20" fill="var(--neutral-medium)"><line x1="820" y1="110" x2="820" y2="40" stroke="#9E9AB8" stroke-width="3"/><path d="M812 52 L820 36 L828 52 Z" fill="#9E9AB8"/><text x="820" y="128" text-anchor="middle">+Y 북</text><line x1="780" y1="160" x2="850" y2="160" stroke="#9E9AB8" stroke-width="3"/><path d="M838 152 L854 160 L838 168 Z" fill="#9E9AB8"/><text x="860" y="190" text-anchor="end">+X 동</text></g></svg></div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <table class="tb"><tr><th>입면</th><th>폭</th><th>성격</th></tr>
+<tr><td><b>f_0</b></td><td>69.9 m</td><td class="m"><span class=g>길에 면함</span></td></tr><tr><td><b>f_1</b></td><td>10.6 m</td><td class="m"><span class=g>길에 면함</span></td></tr><tr><td><b>f_2</b></td><td>5.1 m</td><td class="m"><span class=r>맞벽</span></td></tr><tr><td><b>f_3</b></td><td>0.5 m</td><td class="m"><span class=r>맞벽</span> · 좁음</td></tr><tr><td><b>f_4</b></td><td>6.4 m</td><td class="m"><span class=r>맞벽</span></td></tr><tr><td><b>f_5</b></td><td>2.1 m</td><td class="m"><span class=r>맞벽</span> · 좁음</td></tr><tr><td><b>f_6</b></td><td>10.3 m</td><td class="m"><span class=g>길에 면함</span></td></tr><tr><td><b>f_7</b></td><td>46.8 m</td><td class="m"><span class=g>길에 면함</span></td></tr><tr><td><b>f_8</b></td><td>4.4 m</td><td class="m">기타</td></tr><tr><td><b>f_9</b></td><td>2.0 m</td><td class="m">기타 · 좁음</td></tr><tr><td><b>f_10</b></td><td>16.3 m</td><td class="m"><span class=g>길에 면함</span></td></tr>
+    </table>
+    <p class="sm">길에 면한 입면 <b class="g">5개</b> — 맞벽은 찍을 수 없으니 촬영에서 뺀다.</p>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="맞벽이 아니었다" data-screen-label="21" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s03_prior/output.json neighbors · src/addr2blend/stages/s03_prior.py:101 — 실습 노트북을 만들다가 실제로 찾은 오류다. 앞 장에서 f_2 부터 f_5 까지를 맞벽이라고 했다. 그런데 아이파크타워 옆에 붙은 건물이 없다. 이웃 건물 목록을 열어 보니 OSM 에서 온 폴리곤 하나가 대상 건물과 겹쳐 있었다. 그 폴리곤 면적의 93.9 퍼센트가 대상 건물 안이다. 즉 OSM 에 그려진 아이파크타워 자신이다. 코드는 같은 건물을 걸러내는 필터를 갖고 있었다 — 겹친 면적이 대상 건물 면적의 절반을 넘으면 버린다. 그런데 OSM 이 건물을 절반만 그려 놓았기 때문에 대상 기준으로는 44.8 퍼센트, 절반에 못 미쳐서 남았다. 남은 자기 자신이 이웃이 되고, 그 이웃에 닿은 면이 맞벽이 되고, 맞벽은 촬영에서 빠졌다. 2부에서 본 연쇄 오류의 실제 사례다. 고치는 법은 간단하다 — 이웃 쪽 면적 기준으로도 한 번 더 본다. 실습 W04_3 에서 두 규칙을 나란히 비교한다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb red">발견</div><h2 class="h">f_2~f_5 는 맞벽이 아니었다</h2><span class="sub">실습 노트북을 만들다 찾은 오류</span></div>
+<div class="g2" style="grid-template-columns:.85fr 1.4fr;flex:1;min-height:0">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_nb_gis_vs_osm.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>국가 GIS 외곽선(빨강)과 OSM 외곽선(하늘색) — 위성영상 위</span></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:16px;justify-content:center">
+    <div class="card w"><div class="cb">이웃 목록에 있던 것</div><p class="sm">OSM 폴리곤 <b style="color:var(--fg-1)">612.6㎡</b> · 높이 94m — 그림의 하늘색 점선<br>= OSM 에 <b style="color:var(--fg-1)">절반만 그려진 아이파크타워 자신</b></p></div>
+    <div class="g2" style="gap:16px">
+      <div class="card w topr"><div class="cb">필터가 본 숫자</div><p class="sm">겹침 ÷ <b style="color:var(--fg-1)">대상</b> 면적<br>= <b class="r">44.8%</b> &lt; 50% → 남김</p></div>
+      <div class="card w topg"><div class="cb">봤어야 할 숫자</div><p class="sm">겹침 ÷ <b style="color:var(--fg-1)">이웃</b> 면적<br>= <b class="g">93.9%</b> → 같은 건물</p></div>
+    </div>
+    <div class="card"><div class="cb">그 결과</div><p class="sm">자기 자신이 이웃이 됐다 → 닿은 4개 면이 맞벽 → <b class="r">촬영에서 빠졌다</b></p></div>
+    <p class="cap">위성영상: VWorld · 그림: 실습 W04_1 실행 결과</p>
+  </div>
+</div>
+<div class="dark">폴백 데이터가 <b class="r">자기 자신을 이웃으로</b> 만들었다 — 2부 연쇄 오류의 실제 사례.<br><span class="s">고치는 법 — 이웃 쪽 면적 기준으로도 한 번 더 본다. 실습 W04_3 에서 두 규칙을 나란히 비교한다.</span></div>
+</section>
+
+<section data-deck="0" data-label="왜 국소 좌표계인가" data-screen-label="22" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) 5절 · 출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) Architecture — 좌표계를 왜 바꾸는지 한 장 더. 경위도는 각도다. 위도에 따라 1도의 길이가 달라진다. 건물 중심을 원점으로 하는 횡메르카토르 투영을 쓰면 반경 수백 미터 안에서는 그냥 평면 미터 좌표로 계산하면 된다. 입면 폭, 카메라 거리, 광선 교차가 전부 단순한 벡터 계산이 된다. 그리고 결과 파일에 원점 경위도와 정북 방향을 기록해 두면 나중에 거리 씬이나 3D 지도에 그대로 올라간다. 마지막 v0.4 까지 이 좌표계는 바뀌지 않는다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">좌표계</div><h2 class="h">LOCAL_ENU — 건물 중심이 원점, 단위는 미터</h2></div>
+<div class="g3">
+  <div class="card w"><div class="cb">경위도의 문제</div><p class="sm">각도라 위도마다 1° 의 길이가 다르다<br>→ 거리·면적 계산이 번거롭다</p></div>
+  <div class="card w top"><div class="cb v">국소 미터 좌표</div><p class="sm">건물 중심 횡메르카토르<br><b style="color:var(--fg-1)">+X 동 · +Y 북 · m</b> — 벡터 계산이 단순해진다</p></div>
+  <div class="card w topg"><div class="cb g">되돌아가는 길</div><p class="sm">원점 경위도 · 정북 · 지반고를 파일에 기록<br>→ 3D 지도·거리 씬에 그대로 얹힌다</p></div>
+</div>
+<div class="dark">마지막 v0.4 까지 <b class="g">이 좌표계 하나</b>는 바뀌지 않는다.<br><span class="s">모델에게 자유를 줄 때도 좌표계와 대지 형상만은 고정으로 준다 — 나중에 지도에 얹어야 하니까.</span></div>
+</section>
+
+<section data-deck="0" data-label="위성사진의 함정" data-screen-label="23" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Fix · S11 지붕 — 지붕은 위성 정사영상에서 본다. 그런데 정사영상은 완전한 수직 촬영이 아니다. 높은 건물일수록 옥상이 옆으로 밀려 찍힌다. 이걸 기복변위라고 한다. 왼쪽이 보정 전 — 빨간 건물 외곽선이 실제 옥상과 어긋나 있다. 해결은 단순하다. 외곽선 다각형을 옥상 에지에 가장 잘 맞도록 평행이동해 보는 탐색이다. 오른쪽이 보정 후, 맨 오른쪽이 잘라낸 옥상. 물탱크와 실외기까지 위치가 맞는다. 이 보정이 없으면 옥상 설비가 엉뚱한 곳에 선다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">지붕</div><h2 class="h">높은 건물일수록 옥상이 옆으로 밀려 찍힌다</h2><span class="sub">기복변위 · relief displacement</span></div>
+<div class="g3" style="flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb r">① 보정 전</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_roof_before.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>보정 전 — 외곽선(빨강)이 옥상에서 밀려 있다</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb g">② 보정 후</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_roof_after.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>보정 후 — 추정 이동(초록)만큼 옮겨 일치</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb">③ 잘라낸 옥상</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_roof_tex.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>보정된 옥상 — 물탱크·실외기 위치까지</span></div></div></div></div>
+</div>
+<p class="sm">외곽선 다각형을 옥상 에지에 가장 잘 맞게 <b style="color:var(--fg-1)">평행이동 탐색</b> → 그만큼 되돌려 잘라낸다. &nbsp;<span class="cap">위성영상: VWorld</span></p>
+</section>
+
+<section data-deck="0" data-label="산출물 ④ 정사영상" data-screen-label="24" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s03_prior/ortho_local.png — 아이파크타워 주변 정사영상이다. 0.25미터 해상도, 국소 좌표계에 맞춰 정렬해 잘랐다. 이 한 장이 옥상 판독과, 뒤에서 볼 v0.4 의 실물 대조에 쓰인다. 지붕 설비는 여기서 LLM 이 읽는다 — 계단실, 물탱크, 실외기 묶음, 태양광. 높이는 위에서 보면 알 수 없으니 그림자로 추정할 수 있을 때만 받는다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ④</div><h2 class="h">정사영상 한 장</h2><span class="sub">s03_prior · ortho_local.png · 0.25 m/px</span></div>
+<div class="g2" style="grid-template-columns:.9fr 1.1fr;flex:1;min-height:0">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_ortho.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>아이파크타워 주변 위성 정사영상</span></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:18px;justify-content:center">
+    <div class="card"><div class="cb">쓰이는 곳</div><p class="sm">옥상 판독 (5부) · 실물 대조 (6부)</p></div>
+    <div class="card p"><div class="cb v">옥상에서 읽는 것</div><p class="sm">계단실 · 물탱크 · 실외기 묶음 · 덕트 · 태양광 · 녹지<br>위치는 외접 사각형 기준 <b style="color:var(--fg-1)">0~1 비율</b></p></div>
+    <div class="card"><div class="cb">높이는?</div><p class="sm">위에서는 모른다 — <b style="color:var(--fg-1)">그림자로 추정될 때만</b> 받고, 아니면 종류별 표준값</p></div>
+    <p class="cap">위성영상: VWorld</p>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="실습 ③ ④" data-screen-label="25" data-speaker-notes="출처: w04_colab · W04_3, W04_4 — 세 번째 노트북은 외곽선을 단순화하고 입면으로 나누고 높이만큼 올려 LOD1 매스를 만든다. 노트북 안에서 3D 로 돌려 볼 수 있다. 네 번째는 위성 타일을 이어 붙여 지붕을 자르고 기복변위 보정을 직접 해 본다. VWorld 키가 없으면 실제 run 의 정사영상으로 한다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb grn">실습</div><h2 class="h">뼈대를 세우고 지붕을 자른다</h2></div>
+<div class="g2">
+  <div class="card w topg"><div class="eb mut">W04_3</div><div class="ct">입면 분할과 LOD1 매스</div><p class="sm">외곽선 단순화 → 입면 표(폭·향·맞벽) → 높이만큼 올리기<br>노트북 안에서 3D 로 돌려 본다</p><p class="sm">산출물 <b style="color:var(--fg-1)">facades.json · lod1.glb</b></p></div>
+  <div class="card w topg"><div class="eb mut">W04_4</div><div class="ct">위성영상으로 지붕 읽기</div><p class="sm">타일 이어 붙이기 → 외곽선으로 자르기 → 기복변위 보정</p><p class="sm">산출물 <b style="color:var(--fg-1)">roof_crop.png · roof_items.json</b></p></div>
+</div>
+<span class="btn off">Colab · W04_3 · W04_4 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+</section>
+
+<section data-deck="0" data-label="4부 · v0.2" data-screen-label="26" data-speaker-notes="출처: 신규 — 4부. 첫 번째 설계, v0.2. 사진을 벽에 붙인다. 지난주 배운 이미지 기술이 전부 들어간다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">4부 · v0.2</div><h2 class="hx">사진을 벽에 붙인다</h2>
+<p class="body" style="color:var(--neutral-lighter)">3주차 이미지 기술 총동원 — 그리고 그 한계.</p>
+</section>
+
+<section data-deck="0" data-label="v0.2 의 13단계" data-screen-label="27" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Architecture — v0.2 의 전체 흐름이다. 13단계. 앞의 다섯은 지금까지 본 것이다. 그다음이 이미지 구간이다. 로드뷰를 모으고, 입면마다 가장 좋은 촬영 각을 계산하고, 가로수와 차를 걷어내고, 비스듬한 여러 컷을 정면에서 본 한 장으로 합친다. 그걸 LLM 이 읽고, 이미지 생성 모델이 빈 곳을 채우고, 다른 모델이 심사한다. 마지막에 Blender 가 조립한다. 단계마다 산출물이 파일로 남아 실패해도 그 단계부터 다시 돈다. 가장 비싼 구간이 촬영, 생성, 검증 — 전체 시간의 80~90 퍼센트다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">v0.2</div><h2 class="h">13단계 — 단계마다 독립 재실행</h2></div>
+<div class="flow">
+  <div class="st"><div class="n">S00–S03</div><div class="t">대상 · 속성</div><div class="d">주소 → 건물 → 대장</div></div><div class="ar">›</div>
+  <div class="st"><div class="n">S04</div><div class="t">지오메트리</div><div class="d">외곽선 → 프리즘</div></div><div class="ar">›</div>
+  <div class="st"><div class="n">S05–S06</div><div class="t">로드뷰 수집</div><div class="d">파노라마 탐색 · 시점 계획</div></div><div class="ar">›</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">S07</div><div class="t v">가림 제거</div><div class="d">분할 + 깊이</div></div>
+</div>
+<div class="flow">
+  <div class="st" style="background:var(--primary-pale)"><div class="n">S08</div><div class="t v">정면화 합성</div><div class="d">여러 컷 → 입면 1장</div></div><div class="ar">›</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">S09</div><div class="t v">판독</div><div class="d">LLM: 층·창·재질</div></div><div class="ar">›</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">S10–S11</div><div class="t v">생성 · 검증</div><div class="d">이미지 생성 · VLM 심사</div></div><div class="ar">›</div>
+  <div class="st"><div class="n">S12</div><div class="t">Blender 조립</div><div class="d">.blend · .glb</div></div>
+</div>
+<div class="dark">보라색 칸이 <b class="g">3주차에 배운 것</b>들이다.<br><span class="s">가장 비싼 구간 — 촬영 · 생성 · 검증이 전체 시간의 80~90%.</span></div>
+</section>
+
+<section data-deck="0" data-label="브라우저를 계측 장비로" data-screen-label="28" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) 4절 · 출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) S05·S06 — 로드뷰에는 이미지를 내려받는 API 가 없다. 웹 지도 위에 큐브맵으로 그려질 뿐이다. 그래서 브라우저를 계측 장비로 쓴다. Playwright 로 지도 SDK 를 띄우고, 화각과 줌의 관계를 직접 재서 식으로 고정했다. vfov 는 60 빼기 10 곱하기 zoom. 그러면 입면의 어느 구간을 화면에 꽉 차게 찍으려면 pan, tilt, zoom 을 얼마로 해야 하는지 삼각함수로 역산할 수 있다. 주의할 것 — 이 수집 결과는 내부 연구용이다. 그래서 오늘 실사 사진은 보여 주지 않는다. 지도 서비스의 이용 약관도 반드시 확인해야 한다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">S05 · S06</div><h2 class="h">API 가 없으면 — 브라우저를 계측 장비로</h2></div>
+<div class="g2" style="grid-template-columns:1.1fr 1fr;align-items:start">
+<pre class="code"><span class="c"># 직접 측정해서 고정한 관계</span>
+vfov = 60 − 10 × zoom      <span class="c"># zoom −3 … 3</span>
+pan  = 진북 기준 시계방향 (°)
+tilt = + 가 아래쪽
+
+<span class="c"># 입면 구간 → 카메라 역산 (LLM 아님)</span>
+shot = frame_shot(pano_xyz, facade, <span class="y">"ground"</span>)
+     → <span class="g">pan, tilt, zoom</span></pre>
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <div class="card"><div class="cb">왜 브라우저인가</div><p class="sm">로드뷰는 이미지 API 가 없다 — 웹 지도에 큐브맵으로 그려질 뿐</p></div>
+    <div class="card p"><div class="cb v">계측 장비로 바꾸기</div><p class="sm">화각 ↔ 줌 관계를 재서 식으로 고정 → 원하는 구간을 정확히 겨눈다</p></div>
+    <div class="card k"><div class="cb" style="color:#FF7AA2">주의</div><p class="sm">수집 결과는 <b style="color:#fff">내부 연구용</b> — 오늘 실사는 보여 주지 않는다. 지도 서비스 약관을 반드시 확인할 것.</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="지난주가 여기 있다" data-screen-label="29" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · S07·S08 · configs/default.yaml (segmentation: nvidia/segformer-b2-finetuned-cityscapes-1024-1024, depth: Depth-Anything-V2-Metric-Outdoor) — 지난주 수업이 여기 그대로 있다. 가림 제거의 첫 단계가 SegFormer, Cityscapes 로 학습된 분할 모델이다. 지난주 노트북에서 돌린 DeepLab 과 같은 Cityscapes 19 클래스다. 건물 픽셀만 남기고 나무와 차를 지운다. 그런데 분할만으로는 대상 건물 앞의 다른 건물을 못 지운다. 그래서 깊이 추정 모델로 대상보다 앞에 있는 픽셀을 걷어낸다. 그다음 비스듬히 찍힌 여러 컷을 입면 평면으로 역투영해 정면에서 본 한 장으로 합친다. 좋은 컷부터 덮고, 정합 후 차이가 큰 영역은 기각해 다른 건물이 섞이는 것을 막는다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb grn">S07 · S08</div><h2 class="h">지난주 배운 분할이 여기 그대로 있다</h2></div>
+<div class="flow">
+  <div class="st"><div class="n">①</div><div class="t">원본 컷</div><div class="d">가로수 · 차량 · 앞 건물이 섞여 있다</div></div><div class="ar">→</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">②</div><div class="t v">의미 분할</div><div class="d"><b>SegFormer · Cityscapes</b><br>건물만 남긴다 — 3주차 분할</div></div><div class="ar">→</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">③</div><div class="t v">깊이 가림</div><div class="d"><b>Depth Anything V2</b><br>대상보다 앞 픽셀 제거</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">④</div><div class="t">정면화 합성</div><div class="d">여러 컷을 입면 평면으로 역투영해 1장</div></div>
+</div>
+<div class="g2">
+  <div class="card"><div class="cb">분할만으로는 부족하다</div><p class="sm">앞에 선 <b style="color:var(--fg-1)">다른 건물</b>도 ‘building’ 이다 → 깊이로 한 번 더 거른다</p></div>
+  <div class="card"><div class="cb">합성 규칙</div><p class="sm">정면도·해상도 순으로 덮고, 정합 후 차이 큰 영역은 기각 — 남의 건물 혼입 방지</p></div>
+</div>
+<div class="dark">그래도 한 입면의 관측 커버리지는 <b class="y">41%</b> 정도.<br><span class="s">좁은 골목·가로수 탓에 절반 이상이 미관측으로 남는다 — 그 빈 곳을 어떻게 메울 것인가.</span></div>
+</section>
+
+<section data-deck="0" data-label="판독 → 생성 → 심사" data-screen-label="30" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · S09·S10·S11 — 빈 곳을 메우는 방법이다. LLM 이 합성 입면을 구조로 읽는다. 층수, 베이, 벽 재질, 창 크기, 1층 용도, 간판. JSON 스키마로 강제하고, 사진에 없는 값은 추측하지 않고 비운다. 2주차에 배운 구조화 출력이다. 그 구조를 가이드로 이미지 생성 모델이 빈 곳까지 채운 후보를 입면당 2~4안 만든다. 그리고 다른 모델이 심사한다. 레이아웃, 재질, 같은 건물인가, 그리고 색차와 창 배치 일치도. 실제 결과 하나 — 레이아웃 5점, 재질 8점, 색차 18.2 로 불합격. 심사평이 &#x27;사진에 없는 창과 점포 유리를 만들어냈다&#x27;였다. 생성 모델은 빈 곳을 그럴듯하게 지어낸다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">S09 · S10 · S11</div><h2 class="h">읽고, 그리고, 심사한다</h2></div>
+<div class="g3" style="align-items:start">
+  <div style="display:flex;flex-direction:column;gap:12px"><div class="cb v">① 판독 · LLM</div><pre class="code">{ <span class="p">"floors"</span>: <span class="g">5</span>, <span class="p">"bays"</span>: <span class="g">3</span>,
+  <span class="p">"wall_material"</span>:
+     <span class="y">"brick_red"</span>,
+  <span class="p">"window"</span>: {<span class="p">"w"</span>:1.6,<span class="p">"h"</span>:1.8},
+  <span class="p">"ground_floor"</span>:
+     <span class="y">"storefront"</span> }</pre><p class="sm">JSON 스키마 강제 · 없는 값은 비운다</p></div>
+  <div class="card p" style="height:100%"><div class="cb v">② 생성 · gpt-image-2</div><p class="sm">판독 구조를 가이드로<br><b style="color:var(--fg-1)">빈 곳까지 채운</b> 입면 후보<br>입면당 2~4안</p></div>
+  <div class="card w topr" style="height:100%"><div class="cb">③ 심사 — 3중 게이트</div><p class="sm">VLM 심사(레이아웃·재질·동일 건물)<br>+ 색차 ΔE + 창 배치 일치도</p><p class="sm">실제 결과: 레이아웃 5/10 · 재질 8/10 · ΔE 18.2 → <b class="r">불합격</b></p></div>
+</div>
+<div class="dark">심사평 — <b class="r">“사진에 없는 창과 점포 유리를 만들어냈다.”</b><br><span class="s">생성 모델은 빈 곳을 그럴듯하게 지어낸다. 그럴듯함과 맞음은 다르다.</span></div>
+</section>
+
+<section data-deck="0" data-label="v0.2 결과" data-screen-label="31" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Results — v0.2 로 실제 주소를 끝까지 통과시킨 결과다. 테헤란로 534 글라스타워, 그리고 대치동의 곡면 복합 건물. 파이프라인 자체는 검증됐다. 그런데 시간을 보라. 저층 근생이 14분, 고층이 32분, 곡면 45면짜리가 94분. 면 수가 늘면 시간이 선형이 아니라 급격히 는다. 51면에 후보 4안이면 이미지 생성 호출만 200회다. 그리고 고층은 상부가 대부분 미관측이라 생성으로 메워져 밋밋하다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">결과</div><h2 class="h">실제 주소로 끝까지 통과했다 — 그런데</h2><span class="sub">v0.2 · 최종 산출물</span></div>
+<div class="g2" style="flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb">테헤란로 534 · 글라스타워 · 32분</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_r2_hero.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>v0.2 결과 — 테헤란로 534 글라스타워</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb">대치동 944-31 · 곡면 45면 · 94분</div><div class="imgbox" style="flex:1;background:#000000"><div class="imgslot fit-contain" style=""><img src="uploads/w4_r3_hero.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>v0.2 결과 — 대치동 곡면 복합 건물</span></div></div></div></div>
+</div>
+<div class="dark">면이 늘면 시간이 <b class="r">급격히</b> 는다 — 51면 × 4안 = 이미지 생성 <b class="r">200회</b>.<br><span class="s">고층 상부는 대부분 미관측 — 생성으로 메워져 밋밋하다.</span></div>
+</section>
+
+<section data-deck="0" data-label="왜 수렴하지 않나" data-screen-label="32" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Why it plateaus — 여기가 이 프로젝트의 첫 번째 큰 결정이다. 텍스처 품질을 아무리 올려도 목표에 닿지 않는다. 방식의 문제이기 때문이다. 사진을 벽에 붙이는 한 건물은 여전히 상자 여섯 면이다. 각도를 바꾸면 창이 평면인 게 바로 드러난다. 촬영 당시 그림자가 구워져 있어 조명을 바꿔도 따라오지 않는다. 가려진 면을 생성으로 메우니 같은 건물도 돌릴 때마다 다르다. 품질을 올리려면 면, 해상도, 후보 수를 늘려야 하니 비용이 폭증한다. 결론 — 사진을 붙이는 방식에서 사진을 읽어 치수로 옮기는 방식으로 바꾼다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb red">한계</div><h2 class="h">품질을 올려도 수렴하지 않는다 — 방식의 문제</h2></div>
+<div class="g4">
+  <div class="card w topr"><div class="cb">시차 없음</div><p class="sm">각도를 바꾸면 창이 평면인 게 드러난다</p></div>
+  <div class="card w topr"><div class="cb">조명 고정</div><p class="sm">촬영 당시 그림자가 텍스처에 구워져 있다</p></div>
+  <div class="card w topr"><div class="cb">비결정적</div><p class="sm">가려진 면을 생성으로 메운다 — 매번 다르다</p></div>
+  <div class="card w topr"><div class="cb">비용 폭증</div><p class="sm">면·해상도·후보 수를 늘릴수록 호출이 는다</p></div>
+</div>
+<div class="g2" style="align-items:center">
+  <div class="card"><div class="cb" style="color:var(--neutral-medium)">image-as-surface</div><p class="body">사진을 <b style="color:var(--fg-1)">붙인다</b></p></div>
+  <div class="card k"><div class="cb" style="color:#00E49B">image-as-measurement</div><p class="body" style="color:#fff">사진을 <b style="color:#00E49B">읽어 치수로 옮긴다</b></p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="5부 · v0.3" data-screen-label="33" data-speaker-notes="출처: 신규 — 5부. 두 번째 설계, v0.3. 사진을 읽어 숫자로 옮기고, 숫자로 짓는다. 2주차의 LLM 과 하네스가 여기서 쓰인다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">5부 · v0.3</div><h2 class="hx">사진을 읽어 숫자로 옮긴다</h2>
+<p class="body" style="color:var(--neutral-lighter)">LLM 은 계측기다 — 2주차의 구조화 출력과 하네스.</p>
+</section>
+
+<section data-deck="0" data-label="로드뷰를 3D 로 바꾸는 API 는 없다" data-screen-label="34" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) 0절 — v0.3 을 한 문장으로 요약한 장이다. 로드뷰를 3D 로 바꾸는 API 는 없다. 포토그래메트리도 뉴럴 3D 복원도 쓰지 않는다. 형상은 국가 GIS 외곽선과 대장 높이에서 온다. 사진에서 오는 것은 층고, 창 크기, 베이, 간판 같은 입면 구성뿐이다. 그것도 LLM 이 비율로 읽고 이미 아는 치수를 곱한다. 실제 폴리곤을 찍는 것은 Blender 의 결정론적 코드다. LLM 은 계측기이지 생성기가 아니다. 같은 숫자를 넣으면 항상 같은 메시가 나온다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">v0.3</div><h2 class="h">로드뷰를 3D 로 바꾸는 API 는 없다</h2></div>
+<table class="tb">
+<tr><th>무엇</th><th>어디서 오는가</th></tr>
+<tr><td>건물 평면 윤곽</td><td class="m">국가 GIS 건물 외곽선 (폴백: OSM)</td></tr>
+<tr><td>건물 높이 · 층수</td><td class="m">GIS 속성 · 건축물대장</td></tr>
+<tr><td>층고 · 창 크기 · 베이 · 간판 · 설비</td><td><b class="v">로드뷰 사진 → LLM 이 “비율”로 판독 → 알려진 치수를 곱함</b></td></tr>
+<tr><td>옥상 설비 위치</td><td class="m">위성 정사영상 → LLM 판독</td></tr>
+<tr><td>실제 폴리곤 생성</td><td><b>Blender bmesh 결정론적 코드</b> <span class="m">(LLM 아님)</span></td></tr>
+</table>
+<div class="dark">LLM 은 <b class="g">계측기</b>이지 생성기가 아니다.<br><span class="s">LLM 은 숫자(JSON)만 내놓는다. 같은 숫자를 넣으면 항상 같은 메시가 나온다.</span></div>
+</section>
+
+<section data-deck="0" data-label="LLM 호출 네 곳" data-screen-label="35" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) 2절·6절 — LLM 을 부르는 곳은 정확히 네 곳이다. 무엇을 찍을지 정하는 촬영 전략, 사진에서 입면을 읽는 판독, 위성사진에서 옥상을 읽는 판독, 그리고 렌더와 실사를 비교하는 정합 검증. 네 곳 모두 JSON 스키마를 strict 로 강제한다. 스키마에 없는 필드는 아예 생성될 수 없다. 그리고 네 곳 모두 실패하면 None 을 돌려주고 규칙 기반 기본값으로 계속 간다. LLM 이 죽어도 파이프라인은 죽지 않는다. 이게 2주차에 말한 하네스다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">v0.3</div><h2 class="h">LLM 을 부르는 곳은 정확히 네 곳</h2></div>
+<div class="g4">
+  <div class="card w top"><div class="eb mut">①</div><div class="cb">촬영 전략</div><p class="sm">무엇을 몇 컷 찍을까<br>입력 <b style="color:var(--fg-1)">텍스트만</b> · 1회 · 8~9초</p></div>
+  <div class="card w top"><div class="eb mut">②</div><div class="cb">입면 판독 → BDS</div><p class="sm">사진에 뭐가 보이나<br>사진 ≤5장 · 입면당 1회 · 11~14초</p></div>
+  <div class="card w top"><div class="eb mut">③</div><div class="cb">옥상 판독</div><p class="sm">정사영상 1장<br>1회 · 9~12초</p></div>
+  <div class="card w top"><div class="eb mut">④</div><div class="cb">정합 검증</div><p class="sm">렌더가 사진과 맞나<br>입면당 ≤2라운드 · 4~8초</p></div>
+</div>
+<div class="g2" style="align-items:start">
+<pre class="code">OpenAI().responses.create(
+  model=<span class="y">"gpt-5.5"</span>,
+  input=[...사진 + 알려진 치수...],
+  text={<span class="p">"format"</span>: {<span class="p">"type"</span>: <span class="y">"json_schema"</span>,
+        <span class="p">"schema"</span>: SCHEMA, <span class="p">"strict"</span>: <span class="g">True</span>}})</pre>
+  <div class="card k"><div class="cb" style="color:#00E49B">2주차의 하네스</div><p class="sm">스키마에 없는 필드는 <b style="color:#fff">생성될 수 없다</b>.<br>실패하면 None → <b style="color:#fff">규칙 기반 기본값으로 계속</b>. LLM 이 죽어도 파이프라인은 죽지 않는다.</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="무엇을 찍을지 먼저 정한다" data-screen-label="36" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · P1·P2·M2 · 출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) ① 촬영 전략 — v0.2 는 기하학적으로 가능한 시점을 전부 찍었다. 건물 하나에 258컷까지 갔다. v0.3 은 LLM 이 먼저 전략을 세운다. 입면 목록과 폭, 향, 볼 수 있는 파노라마 수, 예산을 주면 어느 면을 어떤 프레이밍으로 몇 컷 찍을지 배분한다. 프레이밍은 네 가지다. 전체, 1층, 상부, 사선. 여기서 중요한 분업 — LLM 은 무엇을 찍을지만 정한다. 실제 카메라 각도는 기하가 삼각함수로 역산한다. 판단은 모델에게, 계산은 코드에게." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">① 촬영 전략</div><h2 class="h">무작정 찍지 않는다 — 258컷에서 19컷으로</h2></div>
+<div class="g2" style="grid-template-columns:1fr 1fr">
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div class="g2" style="gap:16px">
+      <div class="card"><div class="num" style="color:#9E9AB8">258</div><p class="sm">v0.2 — 가능한 시점 전부</p></div>
+      <div class="card p"><div class="num v">19</div><p class="sm">v0.3 — 예산 24컷 안에서</p></div>
+    </div>
+    <div class="card w"><div class="cb">프레이밍 4종</div><p class="sm"><b style="color:var(--fg-1)">full</b> 입면 전체 · 층 경계와 비례<br><b style="color:var(--fg-1)">ground</b> 1층 · 점포·출입구·간판<br><b style="color:var(--fg-1)">upper</b> 상부 · 창 그리드·처마선<br><b style="color:var(--fg-1)">corner</b> 사선 · 두 입면을 묶는다</p></div>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div class="card k"><div class="cb" style="color:#00E49B">분업</div><p class="body" style="color:#fff">LLM 은 <b style="color:#00E49B">무엇을</b> 찍을지만 정한다.<br>카메라 각도는 <b style="color:#FFB86B">기하가</b> 역산한다.</p></div>
+    <div class="card"><div class="cb">규칙 (프롬프트 발췌)</div><p class="sm">길에서 안 보이는 면은 0컷 · 가장 중요한 면에 full 최소 1컷 · 고층은 upper, 저층 상가는 ground · 예산을 넘지 말 것</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="산출물 ⑤ 촬영 계획" data-screen-label="37" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s21_survey/plan.json, output.json — 아이파크타워의 실제 촬영 계획이다. 모델이 쓴 이유까지 그대로 남는다. 가장 넓은 69.9미터 f_0 이 주 입면이니 7컷, 두 번째로 넓은 f_7 에 6컷. 맞벽으로 판정된 면은 0컷이다 — 3부에서 본 대로 그 판정 자체가 오류였지만. 계획이 나오면 해석기가 방위가 겹치는 것을 걸러 실제로 22컷을 찍었다. 전체 7, 1층 7, 상부 5, 사선 3. 사진 자체는 내부 연구용이라 보여 주지 않지만 카메라 위치와 각도는 숫자로 남는다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ⑤</div><h2 class="h">아이파크타워의 실제 촬영 계획</h2><span class="sub">s21_survey · plan.json</span></div>
+<table class="tb">
+<tr><th>입면</th><th>중요도</th><th>컷</th><th>프레이밍</th><th>모델이 쓴 이유 (발췌)</th></tr>
+<tr><td><b>f_0</b></td><td>10</td><td>7</td><td class="m">full · full · ground · ground · upper · upper · corner</td><td class="m" style="font-size:20px">Widest visible facade at 69.9 m and likely the primary street elevation. N…</td></tr><tr><td><b>f_7</b></td><td>9</td><td>6</td><td class="m">full · full · ground · ground · upper · corner</td><td class="m" style="font-size:20px">Second-largest visible facade at 46.8 m with the most street-view position…</td></tr><tr><td><b>f_10</b></td><td>7</td><td>4</td><td class="m">full · ground · upper · corner</td><td class="m" style="font-size:20px">Substantial visible NW facade, 16.3 m wide, with many available panoramas.…</td></tr><tr><td><b>f_1</b></td><td>5</td><td>3</td><td class="m">full · ground · corner</td><td class="m" style="font-size:20px">Narrow but visible SE facade at 10.6 m. A full shot captures proportions a…</td></tr><tr><td><b>f_6</b></td><td>5</td><td>3</td><td class="m">full · ground · upper</td><td class="m" style="font-size:20px">Visible E-facing return facade, 10.3 m wide. Needs a full elevation view, …</td></tr>
+</table>
+<div class="g4">
+  <div class="card"><div class="num v">22</div><p class="sm">실제 촬영 컷</p></div>
+  <div class="card"><div class="cb">full 7 · ground 7</div><p class="sm">전체 · 1층</p></div>
+  <div class="card"><div class="cb">upper 5 · corner 3</div><p class="sm">상부 · 사선</p></div>
+  <div class="card p"><div class="cb v">맞벽 판정 0컷</div><p class="sm">f_2~f_5 — 실은 오류(앞 3부)</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="비율로 묻는다" data-screen-label="38" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) ② 입면 판독 — v0.3 의 가장 중요한 아이디어다. 사람도 사진만 보고 창이 1.5미터인지 1.8미터인지 못 맞춘다. 사진에는 스케일이 없기 때문이다. 그래서 절대값을 묻지 않는다. 창 폭이 베이 폭의 몇 배인지, 창 높이가 층고의 몇 배인지, 층 경계가 높이의 몇 퍼센트 지점인지 — 비율만 묻는다. 사람이 잘하는 일이다. 그리고 스케일은 이미 우리에게 있다. 입면 폭은 GIS 외곽선에서, 건물 높이와 층수는 대장에서. 곱하는 것은 코드가 한다. 모델에게는 모델이 잘하는 일만 맡긴다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">② 입면 판독</div><h2 class="h">절대값이 아니라 비율로 묻는다</h2></div>
+<div class="g2" style="align-items:start">
+<pre class="code"><span class="c"># 묻지 않는다</span>
+<span class="r">"창 폭이 몇 미터인가?"</span>
+
+<span class="c"># 묻는다</span>
+w_frac_of_bay      <span class="c"># 창폭 ÷ 베이폭</span>
+h_frac_of_floor    <span class="c"># 창높이 ÷ 층고</span>
+floor_line_fracs   <span class="c"># 층 경계 높이 비율</span>
+x0_norm, x1_norm   <span class="c"># 입면 좌(0) → 우(1)</span></pre><pre class="code"><span class="c"># 곱한다 — 공개데이터로 이미 안다</span>
+bay_w = facade.width_m / bay_count   <span class="c"># GIS 외곽선</span>
+win.w_m = <span class="y">w_frac_of_bay</span> * bay_w
+win.h_m = <span class="y">h_frac_of_floor</span> * floor_h  <span class="c"># 대장</span>
+sign.z_m = <span class="y">z_frac</span> * height_m</pre>
+</div>
+<div class="dark">사진에는 <b class="r">스케일이 없다</b>. 스케일은 공공데이터에 <b class="g">이미 있다</b>.<br><span class="s">모델에게는 비율 — 사람도 잘하는 일 — 만 맡기고, 곱하기는 코드가 한다.</span></div>
+</section>
+
+<section data-deck="0" data-label="BDS — 건물 기술서" data-screen-label="39" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · P3 Core idea — 판독 결과가 들어가는 그릇이 BDS, 건물 기술서다. 사진 판독과 3D 생성 사이의 유일한 계약이다. 스키마가 네 가지 일을 한다. 타입과 범위를 검증한다. 모르는 값은 null 로 두고 추측하지 않는다. 각 값이 어느 컷에서 왔는지 근거를 기록한다. 부족한 것은 need_shots 로 스스로 추가 촬영을 요청한다. 그리고 결측이 있어도 건물 유형별 기본값으로 항상 완결된 모델이 나온다. 같은 BDS 면 항상 같은 모델이라 사람이 JSON 한 줄을 고쳐 다시 지을 수 있다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">P3</div><h2 class="h">BDS — 건물을 문장이 아니라 치수로 적는다</h2></div>
+<div class="g2" style="grid-template-columns:1.15fr 1fr;align-items:start">
+<pre class="code">{ <span class="p">"height_m"</span>: 18.4, <span class="p">"floors"</span>: 5,
+  <span class="p">"floor_heights_m"</span>: [4.2, 3.6, 3.6, 3.6, 3.4],
+  <span class="p">"facades"</span>: [{ <span class="p">"side"</span>: <span class="y">"front"</span>, <span class="p">"bays"</span>: 3,
+    <span class="p">"window"</span>: {<span class="p">"w"</span>:1.6, <span class="p">"h"</span>:1.9, <span class="p">"reveal_m"</span>:0.12},
+    <span class="p">"floor_patterns"</span>: [{<span class="p">"floor"</span>:1, <span class="p">"kind"</span>:<span class="y">"storefront"</span>}],
+    <span class="p">"signs"</span>: [{<span class="p">"text"</span>:<span class="y">"…"</span>, <span class="p">"proj_m"</span>:0.25}],
+    <span class="p">"evidence"</span>: [{<span class="p">"shot"</span>:<span class="y">"v_004"</span>, <span class="p">"conf"</span>:0.86}] }],
+  <span class="p">"roof"</span>: {<span class="p">"parapet_m"</span>:1.1, <span class="p">"items"</span>:[<span class="y">"hvac"</span>]},
+  <span class="p">"need_shots"</span>: [{<span class="p">"side"</span>:<span class="y">"rear"</span>, <span class="p">"why"</span>:<span class="y">"미관측"</span>}] }</pre>
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <div class="card"><div class="cb">구조 강제</div><p class="sm">pydantic 으로 타입·범위 검증</p></div>
+    <div class="card"><div class="cb">결측 표시</div><p class="sm">모르는 값은 null — 추측 금지</p></div>
+    <div class="card"><div class="cb">근거 추적</div><p class="sm">각 값이 어느 컷에서 왔는지</p></div>
+    <div class="card p"><div class="cb v">갭 신고</div><p class="sm">need_shots — 부족분을 스스로 요청</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="산출물 ⑥ 아이파크타워 BDS" data-screen-label="40" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s22_reading/output.json — 아이파크타워의 실제 판독 기록이다. 먼저 외관 총평. 한쪽 면은 짙은 청록 반사 커튼월에 큰 원형 그래픽이 있고, 다른 면들은 은백색 금속 패널 프레임에 파란 유리창이라고 읽었다. 정확하다. 측색 팔레트도 나온다. 입면마다 신뢰도와 베이 수, 창 크기, 1층 용도. 그리고 f_10 에서는 가로수에 가려 판독할 수 없으니 1층을 다시 찍어 달라고 스스로 요청했다. 그런데 한 줄을 보라 — 층 경계 판독, 층고 6.3. 대장의 15층 94미터를 그대로 따라 읽었다. 이게 다음 장의 문제다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ⑥</div><h2 class="h">아이파크타워 판독 기록</h2><span class="sub">s22_reading · BDS 107 KB</span></div>
+<div class="card w" style="gap:8px"><div class="cb">외관 총평 (신뢰도 0.77)</div><p class="sm" style="font-size:22px">“Modern 15-storey office tower with contrasting faces: one highly reflective dark blue-green curtain-wall side carrying a <b style="color:var(--fg-1)">large circular clock/graphic feature</b>, and other sides made of a pale silver-white metal-panel frame with regular blue glass office windows.”</p>
+<div style="display:flex;gap:10px;align-items:center"><span class="sm">측색</span><span style="display:inline-block;width:64px;height:34px;border-radius:6px;background:#C8DBE5"></span><span class="sm" style="font-size:19px">#C8DBE5 23%</span><span style="display:inline-block;width:64px;height:34px;border-radius:6px;background:#8DA7B3"></span><span class="sm" style="font-size:19px">#8DA7B3 23%</span><span style="display:inline-block;width:64px;height:34px;border-radius:6px;background:#657F8D"></span><span class="sm" style="font-size:19px">#657F8D 21%</span><span style="display:inline-block;width:64px;height:34px;border-radius:6px;background:#3D515D"></span><span class="sm" style="font-size:19px">#3D515D 18%</span></div></div>
+<table class="tb">
+<tr><th>입면</th><th>신뢰도</th><th>베이</th><th>창 (판독 → 미터)</th><th>1층</th><th>메모</th></tr>
+<tr><td><b>f_0</b></td><td>0.68</td><td>12</td><td>5.4 × 5.5 m</td><td class="m">lobby</td><td class="m">간판 3 · 설비 3</td></tr>
+<tr><td><b>f_7</b></td><td>0.72</td><td>8</td><td>5.0 × 4.5 m</td><td class="m">parking</td><td class="m">간판 2 · 설비 4</td></tr>
+<tr><td><b>f_10</b></td><td>0.62</td><td>6</td><td>2.5 × 5.7 m</td><td class="m">lobby</td><td><b class="v">추가 촬영 요청 — ground</b> <span class="m">(가로수에 가림)</span></td></tr>
+<tr><td><b>f_1</b></td><td>0.78</td><td>3</td><td>3.2 × 5.2 m</td><td class="m">office</td><td class="m">간판 3</td></tr>
+</table>
+<div class="dark">층 경계 판독 → 층고 <b class="r">6.3, 6.2, 6.3, 6.3 …</b><br><span class="s">대장의 15층 94m 를 그대로 따라 읽었다 — 창 높이 5.5m 가 거기서 나왔다.</span></div>
+</section>
+
+<section data-deck="0" data-label="안전장치와 정합 검증" data-screen-label="41" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) ④ 정합 검증 · stages/s23_verify.py — 판독 뒤에 두 겹의 안전장치가 있다. 하나는 코드 검증이다. 층고 합이 높이와 안 맞으면 비례 재분배, 창이 베이를 넘으면 클램프. 다른 하나가 정합 검증이다. 촬영 시점의 위치, 방향, 화각을 그대로 복원한 카메라로 모델을 렌더해 실사와 나란히 놓고 묻는다. 층 경계가 같은 높이인가, 베이 수가 같은가. 보정은 비율로만 받는다. 판정은 세 단계. 0.85 이상이면 끝, 0.35 에서 0.85 면 수치 보정 후 재생성, 0.35 미만이면 판독을 폐기하고 기본값으로 돌린다. 마지막이 중요하다 — 일치도가 바닥이면 우리 BDS 가 틀린 게 아니라 사진에 우리 건물이 안 찍힌 것이다. 남의 건물에서 읽은 치수를 쓰느니 기본값이 낫다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">P5</div><h2 class="h">같은 자리에서 찍어 비교한다 — 정합 검증</h2></div>
+<div class="g3">
+  <div class="card w topg"><div class="num g" style="font-size:44px">≥ 0.85</div><div class="cb">종료</div><p class="sm">형상이 맞다</p></div>
+  <div class="card w top"><div class="num v" style="font-size:44px">0.35~0.85</div><div class="cb">수치 보정 → 재생성</div><p class="sm">층고 ×0.75~1.35 · 창 ×0.5~2.0 범위 안에서만</p></div>
+  <div class="card w topr"><div class="num r" style="font-size:44px">&lt; 0.35</div><div class="cb">판독 폐기 → 기본값</div><p class="sm">사진에 우리 건물이 안 찍힌 것</p></div>
+</div>
+<div class="g2" style="align-items:start">
+<pre class="code"><span class="c">// 렌더 vs 실사 — 같은 카메라</span>
+{ <span class="p">"match_score"</span>: <span class="g">0.63</span>, <span class="p">"verdict"</span>: <span class="y">"minor"</span>,
+  <span class="p">"corrections"</span>: [{
+     <span class="p">"field"</span>: <span class="y">"window_h"</span>,
+     <span class="p">"current_is"</span>: <span class="y">"too_small"</span>,
+     <span class="p">"should_be_ratio"</span>: <span class="g">1.2</span> }] }</pre>
+  <div class="card k"><div class="cb" style="color:#00E49B">v0.2 검증과의 차이</div><p class="sm">v0.2 는 “그럴듯한가” — 주관.<br>v0.3 은 <b style="color:#fff">“맞는가”</b> — 답이 숫자로 나오고 고칠 대상이 명확하다.</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="산출물 ⑦ 수치가 이겼다" data-screen-label="42" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s20_procedural/output.json notes — 아이파크타워의 정합 검증 기록이다. 1회차 평균 일치도 0.30. f_7, f_10, f_6 은 0.35 미만이라 판독을 폐기했다. 남은 면에서 검증 모델이 계속 같은 말을 한다 — 층고를 0.75배로 줄여라, 렌더의 층이 사진보다 너무 높다. 사진은 층이 더 촘촘하다고 말하고 있다. 그런데 보정 범위가 정해져 있고 대장의 15층 94미터가 골격으로 고정돼 있다. 2회차도 0.37. 경고도 하나 남았다 — 층고 합 53.2미터가 건물 높이 94.1미터와 크게 달라 균등 분할로 대체. 사진이 맞다고 말해도 수치가 이긴다. 이게 v0.3 의 구조적 한계다. 2부에서 의심했던 15층 94미터가 여기서 터졌다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb red">산출물 ⑦</div><h2 class="h">사진은 ‘층고를 줄여라’ — 그래도 수치가 이겼다</h2></div>
+<div class="g2" style="grid-template-columns:1.25fr 1fr;align-items:start">
+  <div class="card w" style="gap:6px">
+<p class="sm" style="font-size:21px;line-height:1.45">정합 검증 1회차: 평균 일치도 0.30 (f_0 0.45, f_7 0.18, f_10 0.25, f_1 0.35, f_6 0.28)</p><p class="sm" style="font-size:21px;line-height:1.45"><b class=r>f_7: 일치도 0.18 &lt; 0.35 → 대상 건물이 아닌 장면으로 판단, 판독 폐기하고 기본값 사용</b></p><p class="sm" style="font-size:21px;line-height:1.45"><b class=r>f_10: 일치도 0.25 &lt; 0.35 → 대상 건물이 아닌 장면으로 판단, 판독 폐기하고 기본값 사용</b></p><p class="sm" style="font-size:21px;line-height:1.45"><b class=r>f_6: 일치도 0.28 &lt; 0.35 → 대상 건물이 아닌 장면으로 판단, 판독 폐기하고 기본값 사용</b></p><p class="sm" style="font-size:21px;line-height:1.45"><b class=r>f_0: 층고 ×0.75 — The render&#x27;s horizontal floor bands are spaced farther apart than the </b></p><p class="sm" style="font-size:21px;line-height:1.45"><b class=r>f_1: 층고 ×0.75 — The render has very tall floor modules, especially the lower levels, w</b></p><p class="sm" style="font-size:21px;line-height:1.45">정합 검증 2회차: 평균 일치도 0.37 (f_0 0.45, f_7 0.25, f_10 0.35, f_1 0.55, f_6 0.25)</p><p class="sm" style="font-size:21px;line-height:1.45">f_0: 층고 ×1.25 — The render has too many closely spaced horizontal floor lines in the s</p><p class="sm" style="font-size:21px;line-height:1.45"><b class=r>f_10: 층고 ×0.75 — The render uses very tall repeated floors, producing a much taller/sli</b></p>
+  </div>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div class="card"><div class="num r">0.37</div><p class="sm">최종 평균 일치도 (2회차)</p></div>
+    <div class="card k"><div class="cb" style="color:#FFB86B">경고</div><p class="sm">층고 합(53.2m)이 건물 높이(94.1m)와 크게 달라 균등 분할로 대체</p></div>
+    <div class="card p"><div class="cb v">2부의 의심</div><p class="sm">‘15층에 94m’ — 같은 원본에서 온 두 값이 골격을 고정했다</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="절차적 모델러" data-screen-label="43" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · M1·M1.5·M6 · 출처: addr2blend 저장소(3d-building-rederer) · docs/pipeline_api_reference.md (2026-09-23) 5절 — BDS 를 받아 실제로 짓는 쪽이다. 여기에는 LLM 이 없다. Blender 의 bmesh 코드가 창 하나, 멀리언 하나, 문 한 짝, 설비 하나를 각각 독립된 부재로 만든다. 처음 12개였던 부재가 최대 2,013개까지 늘었다. 1층 점포 전면이 레퍼런스와의 격차의 74 퍼센트를 차지하고 있어서 굽, 멀리언, 진열창, 출입문, 사인밴드, 차양을 전부 부재로 분해했다. 재질도 이미지가 아니라 절차적 노드다. 텍스처 이미지 생성은 0회다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">P4</div><h2 class="h">숫자로 짓는다 — 여기에는 LLM 이 없다</h2></div>
+<div class="g3" style="flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb">오피스 — 커튼월 · 코어</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_m1_off_hero.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>절차적 모델 — 오피스</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb">1층 점포 전면 — 부재 분해</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_sf_detail.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>점포 전면 — 멀리언·유리·출입문·사인밴드·차양</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb">8방향 턴테이블</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_m15_yeoksam.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>8방향 턴테이블 — 어느 각도에서도 성립</span></div></div></div></div>
+</div>
+<div class="g4">
+  <div class="card"><div class="num v" style="font-size:44px">12 → 2,013</div><p class="sm">건물 1동 부재 수</p></div>
+  <div class="card"><div class="num v" style="font-size:44px">79,317</div><p class="sm">면 (레퍼런스 건물만 141,700)</p></div>
+  <div class="card"><div class="num g" style="font-size:44px">0회</div><p class="sm">텍스처 이미지 생성</p></div>
+  <div class="card"><div class="num" style="font-size:44px">26초~6분</div><p class="sm">건물 1동 (v0.2 15~94분)</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="산출물 ⑧ 아이파크타워 v0.3" data-screen-label="44" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · s20_procedural — 아이파크타워를 v0.3 으로 지은 결과다. 부재 433개, 면 23,483개. 커튼월, 은백색 패널, 층 띠까지 판독대로 들어갔다. 그런데 원형 그래픽은 없다. BDS 스키마에 원을 담을 칸이 없기 때문이다. 스키마가 담지 못하는 형태는 표현 자체가 불가능하다. 그리고 층은 대장대로 15개, 6.3미터씩이다. 정합 일치도 0.37. 이게 v0.3 의 두 번째 구조적 한계다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ⑧</div><h2 class="h">아이파크타워 · v0.3</h2><span class="sub">부재 433개 · 면 23,483 · 일치도 0.37</span></div>
+<div class="g2" style="grid-template-columns:1fr 1.5fr;flex:1;min-height:0">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v03_hero.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>아이파크타워 v0.3 — 절차적 + 실측</span></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:16px;min-height:0">
+    <div class="imgbox" style="height:220px;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v03_turn.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>v0.3 턴테이블 4방향</span></div></div></div>
+    <div class="card"><div class="cb">들어간 것</div><p class="sm">커튼월 · 은백색 금속 패널 · 층 띠 · 옥상 설비 — 판독대로</p></div>
+    <div class="card w topr"><div class="cb r">없는 것</div><p class="sm"><b style="color:var(--fg-1)">원형 그래픽</b> — BDS 스키마에 원을 담을 칸이 없다<br>층은 대장대로 <b style="color:var(--fg-1)">15개 × 6.3m</b></p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="웹 서비스" data-screen-label="45" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · Web service · Shipped — 이 전체가 웹 서비스로 돌아간다. 기존 2D 시스템과 같은 화면, 같은 로그인. 주소를 넣고 지도에서 건물을 고르면 대기열에 들어가고, 진행률을 보면서 기다리면 3D 뷰어와 다운로드가 나온다. 생성 방식을 고를 수 있다. 공개 범위도 짚을 것 — 로드뷰 원본과 중간 결과는 내부에서만 열리고, 외부에는 최종 3D 산출물만 나간다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">서비스</div><h2 class="h">신청에서 3D 확인까지 한 화면</h2></div>
+<div class="g2" style="flex:1;min-height:0">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ui_explore.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>Explore — 공개된 결과 갤러리</span></div></div></div>
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v04_aerial.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>결과 — .glb 3D (아이파크타워)</span></div></div></div>
+</div>
+<div class="g3">
+  <div class="card"><div class="cb">구성</div><p class="sm">FastAPI · SQLite · 워커 큐 1개 · 단계별 진행률</p></div>
+  <div class="card"><div class="cb">생성 방식</div><p class="sm">절차적(빠름) 38초 · 절차적+실측 6분 · astra 6~7분</p></div>
+  <div class="card p"><div class="cb v">공개 범위</div><p class="sm">외부엔 <b style="color:var(--fg-1)">최종 3D 만</b> — 로드뷰·중간 결과는 내부에서만</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="실습 ⑤" data-screen-label="46" data-speaker-notes="출처: w04_colab · W04_5 — 다섯 번째 노트북이 v0.3 의 핵심을 따라 한다. 여러분이 직접 찍은 건물 사진 한 장을 넣으면 VLM 에게 비율만 묻는 구조화 출력을 받는다. 그 비율에 건물 폭과 높이를 곱해 미터로 바꾸고, 창이 실제로 들어가 있는 3D 를 짓는다. 같은 JSON 을 넣으면 항상 같은 메시가 나오는 것을 직접 확인한다. OpenAI 키가 없으면 아이파크타워의 실제 판독 결과로 이어 간다. 사진은 반드시 자기가 찍은 것이나 공개 라이선스 사진을 쓸 것." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb grn">실습</div><h2 class="h">사진을 치수로 읽어 3D 로</h2></div>
+<div class="flow">
+  <div class="st"><div class="n">1</div><div class="t">건물 사진 1장</div><div class="d">직접 찍은 사진 · 공개 라이선스 사진</div></div><div class="ar">→</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">2</div><div class="t v">비율 판독</div><div class="d">VLM + JSON 스키마 strict</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">3</div><div class="t">미터 환산</div><div class="d">폭·높이는 공공데이터에서</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">4</div><div class="t">절차적 3D</div><div class="d">창이 실제로 들어간 매스</div></div>
+</div>
+<div class="g2">
+  <div class="card w topg"><div class="eb mut">W04_5</div><div class="ct">사진을 치수로 읽기 — BDS</div><p class="sm">산출물 <b style="color:var(--fg-1)">bds.json · building.glb</b></p></div>
+  <div class="card"><div class="cb">키가 없으면</div><p class="sm">아이파크타워의 <b style="color:var(--fg-1)">실제 판독 결과</b>로 이어 간다 — 같은 JSON 이면 같은 메시</p></div>
+</div>
+<span class="btn off">Colab · W04_5 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+</section>
+
+<section data-deck="0" data-label="6부 · v0.4 astra" data-screen-label="47" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · v0.4 — 6부, 마지막 설계. astra 자유 생성. 원본 발표 자료의 제목을 그대로 가져왔다. 덜 알려 줬더니 더 닮아졌다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">6부 · v0.4</div><h2 class="hx">덜 알려 줬더니<br>더 닮아졌다</h2>
+<p class="body" style="color:var(--neutral-lighter)">astra 자유 생성 — 모델이 건축 스크립트를 쓴다.</p>
+</section>
+
+<section data-deck="0" data-label="수치가 이긴다" data-screen-label="48" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · v0.4 — v0.3 의 문제를 정리한다. 판독 결과를 BDS 스키마에 밀어 넣고 우리 코드가 형상을 만든다. 그러면 두 가지가 생긴다. 스키마가 담지 못하는 형태는 표현할 수 없다 — 아이파크타워의 원. 그리고 대장 수치가 사진과 다를 때 수치가 이긴다 — 아이파크타워의 층고. 원본 발표에 나온 가장 극적인 예가 롯데백화점이다. 1986년 준공, 판매시설인데 용도코드 기본값에서 근린생활시설과 같은 칸에 있어서 벽돌 근생 건물로 지어졌다. 주는 것이 많을수록 실물에서 멀어졌다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb red">v0.3 의 벽</div><h2 class="h">주는 것이 많을수록 실물에서 멀어진다</h2></div>
+<div class="g2">
+  <div class="card w topr"><div class="cb">스키마가 형태를 가둔다</div><p class="sm">BDS 에 없는 형태는 <b style="color:var(--fg-1)">표현 자체가 불가능</b><br>→ 아이파크타워의 <b class="r">원형 그래픽</b></p></div>
+  <div class="card w topr"><div class="cb">수치가 사진을 이긴다</div><p class="sm">대장 수치와 사진이 다르면 <b style="color:var(--fg-1)">수치 쪽</b>이 골격이 된다<br>→ 아이파크타워의 <b class="r">층고 6.3m</b></p></div>
+</div>
+<div class="g2" style="grid-template-columns:1fr 1.4fr;align-items:center">
+  <div class="card k"><div class="cb" style="color:#FFB86B">가장 극적인 예</div><p class="sm">롯데백화점 강남점 — 1986년 준공 + 판매시설이 용도코드 기본값에서 근생과 같은 칸 → <b style="color:#fff">벽돌 근생</b>으로 지어졌다</p></div>
+  <div class="pale">건축물대장 층별개요 · 용도코드 기본값 · BDS 스키마 — <b style="color:var(--primary-dark)">사진 판독은 이 골격 안에서만</b> 값을 바꿀 수 있었다.</div>
+</div>
+</section>
+
+<section data-deck="0" data-label="주는 것, 주지 않는 것" data-screen-label="49" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · v0.4 · src/addr2blend/stages/s30_freeform.py — 그래서 관계를 뒤집었다. 나중에 지도와 거리 씬에 얹으려면 반드시 맞아야 하는 것만 고정으로 준다. 대지 형상, 좌표계, 높이와 층수. 높이와 층수도 참고용이다 — 사진이 다르면 사진을 믿으라고 적었다. 그리고 항공 정사영상 한 장과 로드뷰 여덟 장을 면이 고루 섞이게 준다. 주지 않는 것이 더 중요하다. 층별개요, 용도코드 기본값, BDS 스키마. 색, 질감, 형상, 창의 유무는 전부 모델이 사진에서 정한다. 쓰는 모델 이름이 gpt-6-astra 라서 이 모드를 astra 라고 부른다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">v0.4</div><h2 class="h">맞아야 하는 것만 고정한다</h2></div>
+<div class="g2">
+  <div class="card w topg"><div class="cb g">주는 것</div><p class="body" style="font-size:28px">대지 형상 — 외곽선 좌표<br>좌표계 — LOCAL_ENU · +X 동 · +Y 북 · m<br>높이 · 층수 — <b class="v">참고용.</b> “사진이 다르면 사진을 믿어라”<br>정사영상 1장 + 로드뷰 8장 (면을 고루)</p></div>
+  <div class="card w topr"><div class="cb r">주지 않는 것</div><p class="body" style="font-size:28px">층별개요<br>용도코드 기본값<br>BDS 스키마</p><p class="sm">색 · 질감 · 형상 · 창의 유무는 <b style="color:var(--fg-1)">전부 모델이 사진에서</b> 정한다</p></div>
+</div>
+<div class="dark">모델 이름 <b class="g">gpt-6-astra</b> — 그래서 이 모드를 astra 라 부른다.<br><span class="s">웹 서비스의 기본값이다. 켜면 아래 옵션은 전부 무시된다.</span></div>
+</section>
+
+<section data-deck="0" data-label="출력은 3D 가 아니라 스크립트" data-screen-label="50" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · v0.4 · bds/freeform.py API_DOC — 핵심 설계다. 모델이 3D 를 직접 내놓지 않는다. 파이썬 스크립트를 쓰고 Blender 가 실행한다. 같은 스크립트면 같은 결과가 나오고, 사람이 열어서 숫자를 고칠 수 있다. 쓸 수 있는 함수는 일곱 개뿐이다. mat 으로 재질을 선언하고, box, prism, cyl, quad 로 형태를 만들고, text 로 글자를 세우고, group 으로 묶는다. 원시 bpy 는 보이지 않는다. 형태의 자유는 prism 과 for 문에서 나온다. 2주차에 말한 에이전트가 도구를 쓰는 구조와 같다 — 도구 목록을 정해 주고 그 안에서만 움직이게 한다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">v0.4</div><h2 class="h">모델은 3D 가 아니라 스크립트를 쓴다</h2></div>
+<div class="g2" style="grid-template-columns:1.2fr 1fr;align-items:start">
+<pre class="code"><span class="c"># 쓸 수 있는 것은 이 7개 함수뿐 — import 없음</span>
+<span class="g">mat</span>(name, color, kind, unit, accent)  <span class="c"># 재질</span>
+<span class="g">box</span>(x, y, z, w, d, h, m, rot)          <span class="c"># 상자</span>
+<span class="g">prism</span>(points, z0, z1, m)               <span class="c"># 다각형 기둥</span>
+<span class="g">cyl</span>(x, y, z, r, h, m)                  <span class="c"># 원통</span>
+<span class="g">quad</span>(p0, p1, p2, p3, m)                <span class="c"># 면 하나</span>
+<span class="g">text</span>(s, x, y, z, size, m)              <span class="c"># 간판 글자</span>
+<span class="g">group</span>(name)                            <span class="c"># 부재 묶음</span></pre>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div class="card p"><div class="cb v">왜 스크립트인가</div><p class="sm">같은 스크립트 → 같은 결과<br>사람이 열어 <b style="color:var(--fg-1)">숫자를 고칠 수 있다</b> — 블랙박스가 아니다</p></div>
+    <div class="card"><div class="cb">형태의 자유</div><p class="sm">prism 과 for 문에서 나온다 — 원시 bpy 는 보이지 않는다</p></div>
+    <div class="card k"><div class="cb" style="color:#00E49B">2주차의 에이전트</div><p class="sm">도구 목록을 정해 주고 <b style="color:#fff">그 안에서만</b> 움직이게 한다</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="산출물 ⑨ astra 가 쓴 스크립트" data-screen-label="51" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260926_213030_6b1e06 (아이파크타워 · v0.4 astra) · s30_freeform/build.py — 아이파크타워에 대해 astra 가 실제로 쓴 스크립트의 첫 부분이다. 488행. 재질부터 선언한다. 색은 전부 사진에서 읽은 값이다. 아래로 내려가면 외곽선 좌표를 받아 prism 으로 층별 매스를 세우고 for 문으로 커튼월 격자와 원형 프레임을 그린다. 주석을 보면 모델이 왜 그 형태를 골랐는지가 남아 있다. 결과가 이상하면 이 파일을 열어 보면 된다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">산출물 ⑨</div><h2 class="h">astra 가 실제로 쓴 스크립트</h2><span class="sub">s30_freeform/build.py · 488행</span></div>
+<div class="g2" style="grid-template-columns:1.6fr 1fr;flex:1;min-height:0;align-items:start">
+<pre class="code">mat(&quot;midnight_glass&quot;, &quot;#253e4a&quot;, kind=&quot;glass&quot;, roughness=0.19, metallic=0.42)
+mat(&quot;blue_glass&quot;, &quot;#416779&quot;, kind=&quot;glass&quot;, roughness=0.17, metallic=0.38)
+mat(&quot;blue_glass_light&quot;, &quot;#537c89&quot;, kind=&quot;glass&quot;, roughness=0.18, metallic=0.35
+mat(&quot;circle_glass&quot;, &quot;#729699&quot;, kind=&quot;glass&quot;, roughness=0.18, metallic=0.4)
+mat(&quot;circle_glass_light&quot;, &quot;#84a7a8&quot;, kind=&quot;glass&quot;, roughness=0.2, metallic=0.3
+mat(&quot;circle_glass_dark&quot;, &quot;#628489&quot;, kind=&quot;glass&quot;, roughness=0.17, metallic=0.4
+mat(&quot;rear_glass&quot;, &quot;#44798e&quot;, kind=&quot;glass&quot;, roughness=0.16, metallic=0.3)
+mat(&quot;rear_spandrel&quot;, &quot;#67868e&quot;, kind=&quot;glass&quot;, roughness=0.25, metallic=0.32)
+mat(&quot;entrance_glass&quot;, &quot;#679397&quot;, kind=&quot;storefront_glass&quot;, roughness=0.16)
+mat(&quot;dark_frame&quot;, &quot;#293b41&quot;, kind=&quot;frame&quot;, roughness=0.32, metallic=0.65)
+mat(&quot;aluminium&quot;, &quot;#b8c4c6&quot;, kind=&quot;metal&quot;, roughness=0.3, metallic=0.72)
+mat(&quot;silver_cladding&quot;, &quot;#d3dadb&quot;, kind=&quot;metal_panel&quot;, unit=[1.25, 1.05], accen
+mat(&quot;silver_band&quot;, &quot;#c5d0d1&quot;, kind=&quot;metal_panel&quot;, unit=[1.4, 0.65], accent=&quot;#a
+mat(&quot;ring_face&quot;, &quot;#bbc5c5&quot;, kind=&quot;metal_panel&quot;, unit=[1.1, 1.0], accent=&quot;#9ca7</pre>
+  <div style="display:flex;flex-direction:column;gap:16px">
+    <div class="card"><div class="num v">488</div><p class="sm">모델이 쓴 행 수</p></div>
+    <div class="card"><div class="num">27,373</div><p class="sm">면 · group 25개</p></div>
+    <div class="card p"><div class="cb v">높이</div><p class="sm">높이: 지은 94.2m / 대장 94.1m (차이 +0.1m)</p></div>
+    <div class="card"><div class="cb">생성</div><p class="sm">360초 · 로드뷰 8장 + 정사영상 1장</p></div>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="생성된 코드를 그대로 믿지 않는다" data-screen-label="52" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · 안전장치 · bds/freeform.py check_script, blender/build_freeform.py — 모델이 쓴 코드를 그대로 실행하면 안 된다. 2주차 하네스 이야기의 가장 직접적인 예다. 실행 전에 AST, 즉 문법 트리를 검사한다. import, while, lambda, 던더 속성, 허용 목록 밖의 호출을 막는다. 걸리면 무엇이 문제인지 그대로 돌려주고 다시 받는다. 롯데백화점 때 실제로 1회차가 lambda 로 반려되고 2회차에 통과했다. 실행할 때는 빈 이름공간에 일곱 함수와 수학 함수만 노출한다. 부재 4,000개, 20분 상한도 둔다. 실습 6번 노트북에서 악성 코드가 이 검사에 걸리는 것을 직접 본다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb red">안전장치</div><h2 class="h">생성된 코드를 그대로 실행하지 않는다</h2></div>
+<div class="g4">
+  <div class="card w topr"><div class="cb">AST 사전 검사</div><p class="sm">import · while · lambda · 던더 속성 · 허용 밖 호출 → 실행 전 차단</p></div>
+  <div class="card w top"><div class="cb">반려 시 재시도</div><p class="sm">문제를 그대로 돌려주고 다시 받는다 — 실제 1회차 lambda 반려 → 2회차 통과</p></div>
+  <div class="card w top"><div class="cb">빈 이름공간</div><p class="sm"><code>__builtins__ = {}</code> — 노출은 7개 함수 + 수학 함수뿐</p></div>
+  <div class="card w top"><div class="cb">상한</div><p class="sm">부재 4,000개 · 타임아웃 20분</p></div>
+</div>
+<pre class="code"><span class="c"># check_script() 가 반려하는 것 — 실습 W04_6 에서 직접 확인</span>
+<span class="r">__import__</span>(<span class="y">'os'</span>).system(<span class="y">'…'</span>)        <span class="c"># 허용 밖 호출</span>
+().<span class="r">__class__</span>.__bases__[0]           <span class="c"># 던더 속성으로 샌드박스 탈출</span>
+<span class="r">while</span> True: box(…)                 <span class="c"># 무한 루프</span></pre>
+<div class="dark">모델이 쓴 코드는 <b class="y">입력</b>이지 <b class="y">명령</b>이 아니다.<br><span class="s">2주차 하네스 — 모델의 출력을 검사하고, 반려하고, 좁은 문으로만 실행한다.</span></div>
+</section>
+
+<section data-deck="0" data-label="실물 대조" data-screen-label="53" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20261002_171215_d0bf83 (파르나스타워 · v0.4) s25_reconcile — astra 에는 촬영 전에 한 단계가 더 있다. 실물 대조. 정사영상 위에 GIS 건축선을 겹쳐 놓고 모델에게 이 선이 정말 대상 건물의 옥상인지 묻는다. 파르나스타워의 실제 기록이다. GIS 건축선 면적이 10,504 제곱미터, 대장의 건축면적은 2,808 제곱미터. 3.74배다. 모델이 빨간 선이 대상 건물이 아니라 남서쪽의 낮은 이웃 옥상과 헬리패드 쪽을 덮고 있다고 판단하고 초록 선을 새로 그렸다. 그런데 새 건축선이 주소 지점에서 40미터 떨어져 있어서 코드가 기각하고 원래 선을 유지했다. 모델이 의심하고, 코드가 검산한다. 촬영 방향도 건축선을 보고 정하기 때문에 이 단계가 촬영보다 먼저다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">S25</div><h2 class="h">모델이 의심하고, 코드가 검산한다</h2><span class="sub">파르나스타워 · s25_reconcile</span></div>
+<div class="g2" style="grid-template-columns:1fr 1.1fr;flex:1;min-height:0">
+  <div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_parnas_refine_1.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>정사영상 위 GIS 건축선(빨강)과 모델이 다시 그린 선(초록)</span></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:16px;justify-content:center">
+    <div class="card w topr"><div class="cb">데이터가 이상하다</div><p class="sm">GIS 건축선 <b style="color:var(--fg-1)">10,504㎡</b> ↔ 대장 건축면적 <b style="color:var(--fg-1)">2,808㎡</b> — <b class="r">3.74배</b></p></div>
+    <div class="card p"><div class="cb v">모델의 판단 (신뢰도 0.68)</div><p class="sm" style="font-size:22px">“빨간 선은 대상 옥상이 아니라 남서쪽 낮은 이웃 옥상·헬리패드를 덮고 있다” → 초록 선을 새로 그림</p></div>
+    <div class="card k"><div class="cb" style="color:#FFB86B">코드의 검산</div><p class="sm">새 건축선이 주소 지점에서 <b style="color:#fff">40m</b> → 기각, 원래 선 유지</p></div>
+    <p class="cap">위성영상: VWorld</p>
+  </div>
+</div>
+</section>
+
+<section data-deck="0" data-label="아이파크타워 — v0.3 과 v0.4" data-screen-label="54" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · 출처: addr2blend 저장소(3d-building-rederer) · runs/20260926_213030_6b1e06 (아이파크타워 · v0.4 astra) — 같은 건물, 같은 로드뷰다. 왼쪽이 v0.3, 오른쪽이 astra. astra 쪽에만 원형 프레임이 있다. 원본 건물에서 가장 눈에 띄는 요소다. 스키마에 원이 없던 v0.3 은 만들 수 없었다. 그리고 높이를 보라. astra 는 94.2미터로 지었다. 대장과 0.1미터 차이. 층고를 강요하지 않으니 사진에서 본 비례대로 커튼월 격자를 짰다. 뒷면의 은백색 패널 프레임과 서비스 코어 띠도 사진대로다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">비교</div><h2 class="h">같은 건물, 같은 로드뷰 — 원이 생겼다</h2></div>
+<div class="g2" style="flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb" style="color:var(--neutral-medium)">v0.3 · BDS + 절차적</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v03_hero.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>아이파크타워 v0.3</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb g">v0.4 · astra 자유 생성</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v04_hero.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>아이파크타워 v0.4 astra</span></div></div></div></div>
+</div>
+<div class="dark">astra 쪽에만 <b class="g">원형 프레임</b> — 스키마에 원이 없던 v0.3 은 만들 수 없었다.<br><span class="s">높이 — 높이: 지은 94.2m / 대장 94.1m (차이 +0.1m).</span></div>
+</section>
+
+<section data-deck="0" data-label="뒷면까지" data-screen-label="55" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · 출처: addr2blend 저장소(3d-building-rederer) · runs/20260926_213030_6b1e06 (아이파크타워 · v0.4 astra) · turn_*.png — 턴테이블로 돌려 본다. 위가 v0.3, 아래가 astra. 앞면만 그럴듯하게 만들고 뒤는 민무늬로 남기는 게 흔한 실패인데, 둘 다 360도로 성립한다. astra 쪽은 면마다 성격이 다르다 — 커튼월 면, 패널 프레임 면, 좁은 서비스 코어. 사진 여덟 장에서 면마다 다른 재질을 읽어 낸 것이다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">턴테이블</div><h2 class="h">앞만 그럴듯하지 않다 — 360°</h2></div>
+<div style="display:flex;flex-direction:column;gap:10px;flex:1;min-height:0">
+  <div class="cb" style="color:var(--neutral-medium)">v0.3</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v03_turn.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>v0.3 턴테이블</span></div></div></div>
+  <div class="cb g">v0.4 · astra</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_ipark_v04_turn.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>v0.4 astra 턴테이블</span></div></div></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="삼성역 · 파르나스타워" data-screen-label="56" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_154746_66fe82 (v0.3 빠른 모드 · 로드뷰 없음) · runs/20261002_171215_d0bf83 (v0.4) — 왼쪽은 로드뷰를 아예 보지 않은 빠른 모드다. 부재가 3,159개, 면이 35만 개로 오늘 본 것 중 가장 많은데 실물과는 가장 멀다. 많이 만든다고 닮지 않는다. 오른쪽 astra 는 사진을 보고 두 매스가 맞물린 실제 실루엣과 저층부를 세웠다. 같은 외곽선, 같은 좌표계다. 다른 것은 무엇을 고정으로 주었느냐 하나다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">비교 · 삼성역</div><h2 class="h">파르나스타워</h2><span class="sub">테헤란로 521 · 왼쪽 v0.3 / 오른쪽 v0.4 astra</span></div>
+<div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_pair_parnas.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>파르나스타워 — v0.3 과 v0.4 비교</span></div></div></div>
+<div class="g2"><div class="card"><div class="cb" style="color:var(--neutral-medium)">v0.3</div><p class="sm">로드뷰 없이 공공데이터만 쓴 빠른 모드 — 부재 3,159개 · 면 35만 개. 층 띠가 들뜬 슬래브처럼 흩어졌다</p></div><div class="card k"><div class="cb" style="color:#00E49B">v0.4 · astra</div><p class="sm">두 매스가 맞물린 실루엣과 저층부를 세웠다 — 부재 수가 많다고 닮는 게 아니다</p></div></div>
+</section>
+
+<section data-deck="0" data-label="삼성역 · 현대백화점 무역센터점" data-screen-label="57" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_084730_300776 (v0.3 실측) · runs/20260926_193517_74bb79 (v0.4) — 흥미로운 경우다. v0.3 의 판독 자체는 정확했다 — 창이 거의 없는 대형 백화점 블록이라고 신뢰도 0.83 으로 읽었다. 그런데 그 문장을 BDS 의 창 격자 칸에 넣는 순간 패널 격자 상자가 됐다. 일치도 0.37. astra 는 같은 판단을 그대로 형태로 옮겼다 — 창 없는 밝은 패널 벽과 측면의 좁은 유리 띠. 같은 외곽선, 같은 좌표계다. 다른 것은 무엇을 고정으로 주었느냐 하나다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">비교 · 삼성역</div><h2 class="h">현대백화점 무역센터점</h2><span class="sub">테헤란로 517 · 왼쪽 v0.3 / 오른쪽 v0.4 astra</span></div>
+<div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_pair_hyundai.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>현대백화점 무역센터점 — v0.3 과 v0.4 비교</span></div></div></div>
+<div class="g2"><div class="card"><div class="cb" style="color:var(--neutral-medium)">v0.3</div><p class="sm">판독은 정확했다 — “창이 거의 없는 대형 백화점 블록”(신뢰도 0.83). 그래도 결과는 패널 격자 상자, 일치도 0.37</p></div><div class="card k"><div class="cb" style="color:#00E49B">v0.4 · astra</div><p class="sm">창 없는 밝은 패널 벽과 측면의 좁은 유리 띠 — 판독한 그대로가 형태가 됐다</p></div></div>
+</section>
+
+<section data-deck="0" data-label="삼성역 · 무역회관" data-screen-label="58" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_084936_5e1440 (v0.3 실측) · runs/20260926_213621_161dea (v0.4) — 무역회관이다. v0.3 판독은 연속된 청회색 커튼월이라고 읽었고, 결과는 상하로 색 띠를 나눈 상자가 됐다. 일치도 0.35. astra 는 상부가 계단처럼 꺾이는 실루엣을 잡았다. 스키마에는 이런 정상부 형태를 담을 칸이 없다. 같은 외곽선, 같은 좌표계다. 다른 것은 무엇을 고정으로 주었느냐 하나다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">비교 · 삼성역</div><h2 class="h">무역회관</h2><span class="sub">영동대로 511 · 왼쪽 v0.3 / 오른쪽 v0.4 astra</span></div>
+<div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_pair_trade.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>무역회관 — v0.3 과 v0.4 비교</span></div></div></div>
+<div class="g2"><div class="card"><div class="cb" style="color:var(--neutral-medium)">v0.3</div><p class="sm">판독 — “연속된 청회색 커튼월의 1980년대 후반 고층”. 결과는 상하로 색 띠를 나눈 상자, 일치도 0.35</p></div><div class="card k"><div class="cb" style="color:#00E49B">v0.4 · astra</div><p class="sm">상부가 계단처럼 꺾이는 실루엣과 저층부 유리 패턴</p></div></div>
+</section>
+
+<section data-deck="0" data-label="삼성역 · 삼성동 159-9" data-screen-label="59" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_084751_247793 (v0.3 실측) · runs/20260926_193550_138700 (v0.4) — 가장 극적인 차이다. 이 건물은 전면이 대형 미디어 파사드다. v0.3 판독은 낮은 공연장 포디움이라고 읽었지만, BDS 에는 건물 전체를 덮는 화면을 담을 칸이 없어 어두운 커튼월 상자가 됐다. astra 는 전면을 발광 재질의 큰 화면으로 지었다. 같은 외곽선, 같은 좌표계다. 다른 것은 무엇을 고정으로 주었느냐 하나다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">비교 · 삼성역</div><h2 class="h">삼성동 159-9</h2><span class="sub">코엑스 앞 · 저층 공연장 건물 · 왼쪽 v0.3 / 오른쪽 v0.4 astra</span></div>
+<div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_pair_kbeauty.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>삼성동 159-9 — v0.3 과 v0.4 비교</span></div></div></div>
+<div class="g2"><div class="card"><div class="cb" style="color:var(--neutral-medium)">v0.3</div><p class="sm">판독 — “코엑스 아티움 공연장 포디움, 낮은 상자”. 결과는 어두운 커튼월 상자, 일치도 0.32</p></div><div class="card k"><div class="cb" style="color:#00E49B">v0.4 · astra</div><p class="sm">전면 전체를 발광 재질의 큰 화면으로 — 미디어 파사드</p></div></div>
+</section>
+
+<section data-deck="0" data-label="테헤란로 한 블록" data-screen-label="60" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · runs/20260926_1932~1934 (테헤란로 514~534 · v0.4 astra) — 테헤란로 514번에서 534번까지 한 블록을 전부 astra 로 지었다. 아홉 동. 한 동에 6~7분, 스크립트를 재사용하면 2회차부터 30초다. 건물마다 지상 층수도, 재질도, 저층부도 다르다. 이 결과물에는 원점 경위도와 정북이 기록돼 있어서 3D 지도에 그대로 늘어놓을 수 있다. 3부에서 좌표계를 바꾸지 않았던 이유가 여기서 돌아온다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">확장</div><h2 class="h">한 블록을 통째로</h2><span class="sub">테헤란로 514 → 534 · 9동 · 전부 astra</span></div>
+<div class="imgbox" style="height:360px;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_teheran_block.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>테헤란로 514~534 — astra 로 지은 9동</span></div></div></div>
+<div class="g3">
+  <div class="card"><div class="num v" style="font-size:46px">9동</div><p class="sm">테헤란로 514 ~ 534</p></div>
+  <div class="card"><div class="num" style="font-size:46px">6~7분</div><p class="sm">1동 · 2회차부터 스크립트 재사용 30초</p></div>
+  <div class="card k"><div class="cb" style="color:#00E49B">좌표가 남아 있다</div><p class="sm">원점 경위도 · 정북 · 지반고 → <b style="color:#fff">3D 지도에 그대로</b></p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="세 버전을 숫자로" data-screen-label="61" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) Roadmap · Create 옵션 · 출처: addr2blend 저장소(3d-building-rederer) · runs/20260924_085239_fa69ab (아이파크타워 · v0.3 실측) · 출처: addr2blend 저장소(3d-building-rederer) · runs/20260926_213030_6b1e06 (아이파크타워 · v0.4 astra) events.jsonl — 세 버전을 숫자로 정리한다. 가로축은 로그 눈금이다. v0.2 는 실측 3건이 14분에서 94분. v0.3 빠른 모드는 30초 안팎. 로드뷰 실측을 넣으면 아이파크타워 기준 약 8분. astra 도 약 8분이다. 시간은 비슷한데 결과가 다르다. 텍스처 이미지 생성 호출은 v0.3 부터 0회. v0.2 는 촬영만 258컷까지 갔고 v0.3 이후는 24컷 예산 안이다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">정리</div><h2 class="h">세 버전을 숫자로</h2><span class="sub">건물 1동 처리 시간 · 로그 눈금</span></div>
+<div style="flex:1;min-height:0;max-height:360px"><svg viewBox="0 0 1720 330" preserveAspectRatio="xMidYMid meet" style="width:100%;height:100%;display:block"><text x="312" y="48" text-anchor="end" font-size="24" font-weight="700" fill="var(--fg-1)" font-family="var(--font-sans)">v0.2 사진 텍스처</text><rect x="330" y="24" width="799" height="36" rx="7" fill="#C9C7D6" opacity=".45"/><rect x="1129" y="24" width="339" height="36" rx="7" fill="#C9C7D6"/><text x="1482" y="50" font-size="22" fill="var(--fg-1)" font-family="var(--font-sans)">실측 3건 14~94분</text><text x="312" y="122" text-anchor="end" font-size="24" font-weight="700" fill="var(--fg-1)" font-family="var(--font-sans)">v0.3 절차적 (빠름)</text><rect x="330" y="98" width="170" height="36" rx="7" fill="#9E5DF9" opacity=".45"/><rect x="500" y="98" width="74" height="36" rx="7" fill="#9E5DF9"/><text x="589" y="124" font-size="22" fill="var(--fg-1)" font-family="var(--font-sans)">26초~38초</text><text x="312" y="196" text-anchor="end" font-size="24" font-weight="700" fill="var(--fg-1)" font-family="var(--font-sans)">v0.3 절차적 + 실측</text><rect x="330" y="172" width="692" height="36" rx="7" fill="#4434E2"/><text x="1036" y="198" font-size="22" fill="var(--fg-1)" font-family="var(--font-sans)">아이파크타워 7.8분</text><text x="312" y="270" text-anchor="end" font-size="24" font-weight="700" fill="var(--fg-1)" font-family="var(--font-sans)">v0.4 astra</text><rect x="330" y="246" width="695" height="36" rx="7" fill="#00B37A"/><text x="1039" y="272" font-size="22" fill="var(--fg-1)" font-family="var(--font-sans)">아이파크타워 8.0분</text><line x1="652" y1="8" x2="652" y2="304" stroke="#E4E2EE" stroke-width="2" stroke-dasharray="6 6"/><text x="652" y="326" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-sans)">1분</text><line x1="1066" y1="8" x2="1066" y2="304" stroke="#E4E2EE" stroke-width="2" stroke-dasharray="6 6"/><text x="1066" y="326" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-sans)">10분</text><line x1="1388" y1="8" x2="1388" y2="304" stroke="#E4E2EE" stroke-width="2" stroke-dasharray="6 6"/><text x="1388" y="326" text-anchor="middle" font-size="19" fill="var(--neutral-medium)" font-family="var(--font-sans)">1시간</text></svg></div>
+<table class="tb">
+<tr><th></th><th>v0.2 사진 텍스처</th><th>v0.3 절차적 + 실측</th><th>v0.4 astra</th></tr>
+<tr><td>로드뷰 촬영</td><td class="m">최대 258컷</td><td>≤ 24컷 (아이파크 22)</td><td>≤ 24컷 → 8장 사용</td></tr>
+<tr><td>이미지 생성 호출</td><td class="r">면 × 2~4안</td><td class="g">0회</td><td class="g">0회</td></tr>
+<tr><td>형상을 정하는 것</td><td class="m">외곽선 프리즘 + 사진</td><td>BDS 스키마 + 우리 코드</td><td><b class="g">모델이 쓴 스크립트</b></td></tr>
+<tr><td>재현성</td><td class="r">실행마다 다름</td><td class="g">같은 BDS → 같은 모델</td><td class="g">같은 스크립트 → 같은 모델</td></tr>
+</table>
+</section>
+
+<section data-deck="0" data-label="남은 것" data-screen-label="62" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · 아직 남은 것 · Roadmap — 끝난 것만 말하면 안 된다. 남은 것. 렌더가 전반적으로 푸르고 창백하다. 모델이 고른 색은 따뜻한데 월드 조명이 덮어쓴다. 조명 쪽 문제다. 롯데백화점은 지은 높이가 43.3미터로 대장 40.8미터보다 2.5미터 높다. 사진의 파라펫을 더 본 결과다. 로드뷰 차가 안 지나간 골목은 아무리 예산을 올려도 찍을 수 없다. 데이터의 한계다. 그리고 승인 대기 두 건 — 출입구 좌표와 국가 GIS 건물정보. 이 프로젝트의 마지막 병목은 코드가 아니라 기관 승인이다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb red">남은 것</div><h2 class="h">끝난 것만 말하지 않는다</h2></div>
+<div class="g2">
+  <div class="card w"><div class="cb">조명</div><p class="sm">렌더가 푸르고 창백하다 — 모델이 고른 따뜻한 색을 월드 조명이 덮어쓴다</p></div>
+  <div class="card w"><div class="cb">높이</div><p class="sm">롯데백화점 지은 43.3m / 대장 40.8m — 사진의 파라펫을 더 봤다</p></div>
+  <div class="card w"><div class="cb">찍을 수 없는 곳</div><p class="sm">로드뷰 차가 안 지나간 골목 — 옵션이 아니라 데이터의 한계</p></div>
+  <div class="card w topo"><div class="cb">승인 대기 2건</div><p class="sm">도로명주소 출입구 좌표 · 국가 GIS 건물통합정보 — 승인되면 코드 수정 없이 켜진다</p></div>
+</div>
+<div class="dark">마지막 병목은 <b class="y">코드가 아니라 데이터 승인</b>이다.<br><span class="s">2부에서 본 결론이 끝까지 간다.</span></div>
+</section>
+
+<section data-deck="0" data-label="Colab 에서 재현했다" data-screen-label="63" data-speaker-notes="출처: w04_colab · W04_5, W04_6 실행 결과 (2026-10-06) · 사진: Wikimedia Commons File:Yeongdong-daero 3.jpg, kallerna, CC BY-SA 4.0 — 실습 노트북으로 같은 일을 다시 해 본 결과다. 맨 왼쪽은 공개 라이선스로 올라온 실제 사진이다 — 로드뷰가 아니다. 두 번째가 W04_5, BDS 방식으로 다시 지은 것. 커튼월 판은 맞지만 원이 없다. 세 번째가 astra 가 아이파크타워에 실제로 쓴 488행 스크립트를 Colab 의 샌드박스에서 그대로 돌린 것. 네 번째는 같은 입력으로 astra 를 오늘 다시 불러서 받은 542행짜리 새 스크립트다. 7분 넘게 걸렸고 검사를 한 번에 통과했다. 두 스크립트는 서로 다르다. 그런데 둘 다 원을 그렸고 높이를 94미터로 지었다. 생성은 매번 다르지만, 같은 스크립트를 실행하면 항상 같은 모델이 나온다. 그래서 스크립트를 파일로 남긴다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">재현</div><h2 class="h">Colab 에서 같은 일을 다시 해 봤다</h2><span class="sub">W04_5 · W04_6 실행 결과</span></div>
+<div class="g4" style="flex:1;min-height:0">
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb" style="color:var(--neutral-medium)">실제 사진</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_commons_yeongdong.jpg" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>영동대로 — 아이파크타워 (Wikimedia Commons)</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb" style="color:var(--neutral-medium)">BDS 방식 (W04_5)</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_nb_bds.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>BDS 로 다시 지은 아이파크타워</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb g">astra 488행 (저장본)</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_nb_astra_staged.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>astra 가 쓴 스크립트를 Colab 샌드박스에서 실행</span></div></div></div></div>
+  <div style="display:flex;flex-direction:column;gap:10px;min-height:0"><div class="cb g">astra 다시 부름 · 542행</div><div class="imgbox" style="flex:1;background:#FFFFFF"><div class="imgslot fit-contain" style=""><img src="uploads/w4_nb_astra_live.png" alt="" onerror="this.closest('.imgslot').classList.add('no-img')"><div class="imgslot-ph"><span>같은 입력으로 다시 받은 스크립트</span></div></div></div></div>
+</div>
+<div class="g3">
+  <div class="card w"><div class="cb">BDS</div><p class="sm">커튼월 판은 맞다 — <b style="color:var(--fg-1)">원이 없다</b></p></div>
+  <div class="card p"><div class="cb v">두 스크립트는 다르다</div><p class="sm">488행 · 4,395 부재 ↔ 542행 · 4,369 부재<br>그래도 <b style="color:var(--fg-1)">둘 다 원</b>, 높이 94.2m · 94.3m</p></div>
+  <div class="card k"><div class="cb" style="color:#00E49B">그래서 파일로 남긴다</div><p class="sm">생성은 매번 다르다 — <b style="color:#fff">실행은 항상 같다</b></p></div>
+</div>
+<p class="cap">사진: Wikimedia Commons “Yeongdong-daero 3.jpg” · kallerna · CC BY-SA 4.0 &nbsp;·&nbsp; 3D: trimesh 로 재구현한 7개 함수</p>
+</section>
+
+<section data-deck="0" data-label="실습 ⑥" data-screen-label="64" data-speaker-notes="출처: w04_colab · W04_6 — 마지막 노트북이다. astra 방식을 그대로 따라 한다. 외곽선과 높이와 정사영상, 그리고 여러분이 찍은 사진을 주고 모델에게 일곱 함수로 된 스크립트를 쓰게 한다. 그 스크립트를 AST 검사에 통과시키고, 빈 이름공간에서 실행해 3D 를 만든다. Colab 에는 Blender 가 없어서 일곱 함수를 trimesh 로 다시 구현했다. 키가 없으면 아이파크타워에 대해 astra 가 실제로 쓴 스크립트를 같은 검사와 샌드박스로 돌린다. 악성 코드 세 줄이 검사에 걸리는 것도 직접 본다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb grn">실습</div><h2 class="h">모델에게 건축 스크립트를 쓰게 한다</h2></div>
+<div class="flow">
+  <div class="st"><div class="n">1</div><div class="t">고정할 것만</div><div class="d">외곽선 · 높이 · 정사영상 · 사진</div></div><div class="ar">→</div>
+  <div class="st" style="background:var(--primary-pale)"><div class="n">2</div><div class="t v">모델이 스크립트</div><div class="d">7개 함수만 · import 없음</div></div><div class="ar">→</div>
+  <div class="st" style="background:#FDF0F0"><div class="n" style="color:#D93636">3</div><div class="t r">AST 검사</div><div class="d">반려 → 다시 받기</div></div><div class="ar">→</div>
+  <div class="st"><div class="n">4</div><div class="t">샌드박스 실행</div><div class="d">빈 이름공간 · trimesh → .glb</div></div>
+</div>
+<div class="g2">
+  <div class="card w topg"><div class="eb mut">W04_6</div><div class="ct">astra — 모델이 스크립트를 쓴다</div><p class="sm">산출물 <b style="color:var(--fg-1)">build.py · building.glb</b></p></div>
+  <div class="card"><div class="cb">키가 없으면</div><p class="sm">astra 가 아이파크타워에 쓴 <b style="color:var(--fg-1)">실제 스크립트</b>를 같은 검사·샌드박스로 — 악성 코드 3줄이 걸리는 것도 본다</p></div>
+</div>
+<span class="btn off">Colab · W04_6 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+</section>
+
+<section data-deck="0" data-label="7부 · 정리" data-screen-label="65" data-speaker-notes="출처: 신규 — 7부, 정리." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
+<div class="eb lime">7부</div><h2 class="hx">한 장으로 다시 본다</h2>
+</section>
+
+<section data-deck="0" data-label="산출물 지도" data-screen-label="66" data-speaker-notes="출처: 신규 — 오늘 본 산출물을 한 장에 모았다. 단계, 파일, 그 파일을 만드는 노트북. 왼쪽에서 오른쪽으로 갈수록 데이터가 쌓인다. 주목할 것 — 파일이 전부 JSON, 이미지, 스크립트다. 어느 단계에서 멈춰도 그 파일을 열어 사람이 확인하고 고칠 수 있다. 그래서 실패한 단계부터 다시 돌 수 있었다." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1)">
+<div class="row"><div class="eb ">지도</div><h2 class="h">단계 · 산출물 · 실습</h2></div>
+<table class="tb">
+<tr><th>단계</th><th>하는 일</th><th>산출물</th><th>실습</th></tr>
+<tr><td><b>s00–s02</b></td><td class="m">주소 → 좌표 → 건물 하나</td><td>s02_target/output.json</td><td>W04_1</td></tr>
+<tr><td><b>s03</b></td><td class="m">속성 · 이웃 · 정사영상 · 검산</td><td>s03_prior/output.json · ortho_local.png</td><td>W04_2 · W04_4</td></tr>
+<tr><td><b>s04</b></td><td class="m">LOCAL_ENU · 입면 분할 · LOD1</td><td>s04_geometry/output.json · mesh_lod1.obj</td><td>W04_3</td></tr>
+<tr><td><b>s21</b></td><td class="m">촬영 전략 → ≤24컷</td><td>s21_survey/plan.json</td><td class="m">— (내부 연구용)</td></tr>
+<tr><td><b>s22 → s20</b></td><td class="m">비율 판독 → BDS → 절차적 3D</td><td>bds.json · building.glb</td><td>W04_5</td></tr>
+<tr><td><b>s25 → s30</b></td><td class="m">실물 대조 → astra 스크립트 → 3D</td><td>build.py · building.glb</td><td>W04_6</td></tr>
+</table>
+<div class="dark">산출물이 전부 <b class="g">JSON · 이미지 · 스크립트</b>다.<br><span class="s">어느 단계에서 멈춰도 사람이 열어 확인하고 고칠 수 있다 — 그래서 실패한 곳부터 다시 돈다.</span></div>
+</section>
+
+<section data-deck="0" data-label="4주를 한 장에" data-screen-label="67" data-speaker-notes="출처: 신규 — 4주 특강 전체를 한 장에 놓는다. 1주차에 데이터와 기계학습, 2주차에 시퀀스와 언어모델과 하네스, 3주차에 이미지를 읽고 만드는 법. 오늘 본 시스템은 이 셋을 다 썼다. 그리고 각 기술이 맡은 역할이 정확히 정해져 있다. 공공데이터는 스케일과 좌표를 준다. 비전 모델은 사진을 정리한다. LLM 은 판단과 계측을 한다. 코드는 계산하고 검산한다. 어느 하나가 전부를 하지 않는다." style="background:var(--surface-app);padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">4주</div><h2 class="h">역할을 나눈다 — 어느 하나가 전부를 하지 않는다</h2></div>
+<div class="g4">
+  <div class="card w top"><div class="eb">1주차</div><div class="cb">공공데이터</div><p class="sm"><b style="color:var(--fg-1)">스케일과 좌표</b>를 준다 — 외곽선·높이·층수</p></div>
+  <div class="card w top"><div class="eb">3주차</div><div class="cb">비전 모델</div><p class="sm">사진을 <b style="color:var(--fg-1)">정리</b>한다 — 분할·깊이·정면화</p></div>
+  <div class="card w top"><div class="eb">2주차</div><div class="cb">LLM · VLM</div><p class="sm"><b style="color:var(--fg-1)">판단과 계측</b> — 무엇을 찍나·비율·실물 대조·스크립트</p></div>
+  <div class="card w topg"><div class="eb grn">공통</div><div class="cb">코드</div><p class="sm"><b style="color:var(--fg-1)">계산과 검산</b> — 역산·환산·검증·샌드박스</p></div>
+</div>
+<div class="dark">모델이 할 일과 코드가 할 일을 <b class="g">나누는 것</b> — 그것이 설계다.<br><span class="s">LLM 은 계측기에서 시작해 건축가가 됐다. 그래도 좌표계와 검산은 끝까지 코드가 쥐고 있다.</span></div>
+</section>
+
+<section data-deck="0" data-label="같이 생각해 볼 것" data-screen-label="68" data-speaker-notes="출처: 신규 — 학습참여도 평가용 토론. 3분. Q1 은 오늘의 핵심이다 — 덜 알려 줬더니 더 닮았다는 결과가 언제나 성립하는가. 대장 수치가 맞고 사진이 틀린 경우도 있다. 가로수에 가렸거나 촬영 후에 리모델링했을 때. 정답은 없고 어느 쪽을 믿을지 판단하는 장치가 필요하다는 데까지 가면 된다. Q2 는 데이터 권리 문제다. 로드뷰 수집 결과를 왜 공개하지 않는가. Q3 은 각자 연구로 이어지는 질문이니 답을 적어 둘 것." style="background:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:26px;font-family:var(--font-sans);color:var(--fg-1);justify-content:center">
+<div class="row"><div class="eb ">3분 · 옆 사람과</div><h2 class="h">하나만 골라 이야기해 보자</h2></div>
+<div style="display:flex;flex-direction:column;gap:24px">
+  <div class="card" style="padding:30px 36px"><p class="body"><b class="v">Q1</b> &nbsp; “덜 알려 줬더니 더 닮았다” — <b style="color:var(--fg-1)">대장이 맞고 사진이 틀린</b> 경우는 언제인가? 무엇이 이겨야 하나?</p></div>
+  <div class="card" style="padding:30px 36px"><p class="body"><b class="v">Q2</b> &nbsp; 로드뷰 수집 결과를 <b style="color:var(--fg-1)">왜 공개하지 않을까</b>? 공공데이터와 무엇이 다른가?</p></div>
+  <div class="card" style="padding:30px 36px"><p class="body"><b class="v">Q3</b> &nbsp; 동네 한 블록이 3D 로 있다면 <b style="color:var(--fg-1)">어떤 도시 분석</b>을 하겠는가? (일조·조망·보행·상권…)</p></div>
+</div>
+</section>
+
+<section data-deck="0" data-label="정리" data-screen-label="69" data-speaker-notes="출처: 신규 — 오늘의 질문에 답한다. 주소 한 줄이면 3D 로 지을 수 있는가. 그렇다. 공공데이터만으로 1동에 6~8분이다. 그런데 더 중요한 답은 이것이다. 사진을 붙였을 때는 그럴듯했지만 맞지 않았다. 사진을 읽었을 때는 맞았지만 수치에 갇혔다. 사진을 보고 짓게 했을 때 가장 닮았다 — 단, 좌표계와 검산은 끝까지 코드가 쥐고 있었다. 4주 동안 수고 많았다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 24% 78%,rgba(0,228,155,.22),transparent 62%);justify-content:center">
+<div class="eb lime">오늘의 질문에 답한다</div>
+<h2 class="hx">주소 한 줄이면 — <span style="color:var(--accent-green)">짓는다</span></h2>
+<div class="g3">
+  <div class="card k" style="background:rgba(255,255,255,.06)"><div class="cb" style="color:#9E9AB8">사진을 붙였다</div><p class="sm">그럴듯했지만 <b style="color:#fff">맞지 않았다</b></p></div>
+  <div class="card k" style="background:rgba(255,255,255,.06)"><div class="cb" style="color:#C9A7FF">사진을 읽었다</div><p class="sm">맞았지만 <b style="color:#fff">수치에 갇혔다</b></p></div>
+  <div class="card k" style="background:rgba(0,228,155,.12);border:2px solid rgba(0,228,155,.4)"><div class="cb" style="color:#00E49B">사진을 보고 짓게 했다</div><p class="sm"><b style="color:#fff">가장 닮았다</b> — 좌표계와 검산은 끝까지 코드가</p></div>
+</div>
+<p class="body" style="color:var(--neutral-lighter)">공공데이터는 스케일을, 모델은 판단을, 코드는 검산을. &nbsp;<b style="color:#fff">4주 동안 수고 많았다.</b></p>
+</section>
+  </div>
+</div>
+
+<div id="progress"></div>
+
+<div id="guide">
+  <div class="deckname">AI를 활용한 도시 빅데이터 분석 — 주소 한 줄에서 3D 건물까지</div>
+  <div class="counter"><b id="g-cur">01</b><i>/</i><span id="g-total">69</span></div>
+  <div class="slidelabel" id="g-label"></div>
+  <div class="keys">
+    <kbd>&larr;</kbd><kbd>&rarr;</kbd><span>이동</span>
+    <kbd>O</kbd><span>목차</span>
+    <kbd>N</kbd><span>노트</span>
+    <kbd>F</kbd><span>전체화면</span>
+    <kbd>?</kbd><span>도움말</span>
+  </div>
+</div>
+
+<div id="jump"></div>
+
+<div id="notes">
+  <div class="nlabel">Speaker notes &mdash; <span id="n-num"></span></div>
+  <div id="n-body"></div>
+</div>
+
+<div id="overview">
+  <header>
+    <h2>목차</h2>
+    <p>클릭하거나 번호를 입력해 이동 &middot; <kbd>O</kbd> / <kbd>Esc</kbd> 닫기</p>
+  </header>
+  <div id="ovgrid">
+<button class="ov-card" data-go="0"><div class="ov-thumb"><div class="ov-num">01</div></div><div class="ov-label">표지</div></button>
+<button class="ov-card" data-go="1"><div class="ov-thumb"><div class="ov-num">02</div></div><div class="ov-label">오늘의 흐름</div></button>
+<button class="ov-card" data-go="2"><div class="ov-thumb"><div class="ov-num">03</div></div><div class="ov-label">오늘의 질문</div></button>
+<button class="ov-card" data-go="3"><div class="ov-thumb"><div class="ov-num">04</div></div><div class="ov-label">지난 3주가 여기 다 있다</div></button>
+<button class="ov-card" data-go="4"><div class="ov-thumb"><div class="ov-num">05</div></div><div class="ov-label">1부 · 문제</div></button>
+<button class="ov-card" data-go="5"><div class="ov-thumb"><div class="ov-num">06</div></div><div class="ov-label">출발점</div></button>
+<button class="ov-card" data-go="6"><div class="ov-thumb"><div class="ov-num">07</div></div><div class="ov-label">목표 수준</div></button>
+<button class="ov-card" data-go="7"><div class="ov-thumb"><div class="ov-num">08</div></div><div class="ov-label">재 보니 거리였다</div></button>
+<button class="ov-card" data-go="8"><div class="ov-thumb"><div class="ov-num">09</div></div><div class="ov-label">제약</div></button>
+<button class="ov-card" data-go="9"><div class="ov-thumb"><div class="ov-num">10</div></div><div class="ov-label">2부 · 데이터</div></button>
+<button class="ov-card" data-go="10"><div class="ov-thumb"><div class="ov-num">11</div></div><div class="ov-label">데이터 지도</div></button>
+<button class="ov-card" data-go="11"><div class="ov-thumb"><div class="ov-num">12</div></div><div class="ov-label">추측 대신 실측</div></button>
+<button class="ov-card" data-go="12"><div class="ov-thumb"><div class="ov-num">13</div></div><div class="ov-label">막힌 데이터의 연쇄</div></button>
+<button class="ov-card" data-go="13"><div class="ov-thumb"><div class="ov-num">14</div></div><div class="ov-label">갱신이 빠른 데이터</div></button>
+<button class="ov-card" data-go="14"><div class="ov-thumb"><div class="ov-num">15</div></div><div class="ov-label">버린 아이디어</div></button>
+<button class="ov-card" data-go="15"><div class="ov-thumb"><div class="ov-num">16</div></div><div class="ov-label">산출물 ① 대상 건물</div></button>
+<button class="ov-card" data-go="16"><div class="ov-thumb"><div class="ov-num">17</div></div><div class="ov-label">산출물 ② 속성과 검산</div></button>
+<button class="ov-card" data-go="17"><div class="ov-thumb"><div class="ov-num">18</div></div><div class="ov-label">실습 ① ②</div></button>
+<button class="ov-card" data-go="18"><div class="ov-thumb"><div class="ov-num">19</div></div><div class="ov-label">3부 · 기하</div></button>
+<button class="ov-card" data-go="19"><div class="ov-thumb"><div class="ov-num">20</div></div><div class="ov-label">산출물 ③ 외곽선과 입면</div></button>
+<button class="ov-card" data-go="20"><div class="ov-thumb"><div class="ov-num">21</div></div><div class="ov-label">맞벽이 아니었다</div></button>
+<button class="ov-card" data-go="21"><div class="ov-thumb"><div class="ov-num">22</div></div><div class="ov-label">왜 국소 좌표계인가</div></button>
+<button class="ov-card" data-go="22"><div class="ov-thumb"><div class="ov-num">23</div></div><div class="ov-label">위성사진의 함정</div></button>
+<button class="ov-card" data-go="23"><div class="ov-thumb"><div class="ov-num">24</div></div><div class="ov-label">산출물 ④ 정사영상</div></button>
+<button class="ov-card" data-go="24"><div class="ov-thumb"><div class="ov-num">25</div></div><div class="ov-label">실습 ③ ④</div></button>
+<button class="ov-card" data-go="25"><div class="ov-thumb"><div class="ov-num">26</div></div><div class="ov-label">4부 · v0.2</div></button>
+<button class="ov-card" data-go="26"><div class="ov-thumb"><div class="ov-num">27</div></div><div class="ov-label">v0.2 의 13단계</div></button>
+<button class="ov-card" data-go="27"><div class="ov-thumb"><div class="ov-num">28</div></div><div class="ov-label">브라우저를 계측 장비로</div></button>
+<button class="ov-card" data-go="28"><div class="ov-thumb"><div class="ov-num">29</div></div><div class="ov-label">지난주가 여기 있다</div></button>
+<button class="ov-card" data-go="29"><div class="ov-thumb"><div class="ov-num">30</div></div><div class="ov-label">판독 → 생성 → 심사</div></button>
+<button class="ov-card" data-go="30"><div class="ov-thumb"><div class="ov-num">31</div></div><div class="ov-label">v0.2 결과</div></button>
+<button class="ov-card" data-go="31"><div class="ov-thumb"><div class="ov-num">32</div></div><div class="ov-label">왜 수렴하지 않나</div></button>
+<button class="ov-card" data-go="32"><div class="ov-thumb"><div class="ov-num">33</div></div><div class="ov-label">5부 · v0.3</div></button>
+<button class="ov-card" data-go="33"><div class="ov-thumb"><div class="ov-num">34</div></div><div class="ov-label">로드뷰를 3D 로 바꾸는 API 는 없다</div></button>
+<button class="ov-card" data-go="34"><div class="ov-thumb"><div class="ov-num">35</div></div><div class="ov-label">LLM 호출 네 곳</div></button>
+<button class="ov-card" data-go="35"><div class="ov-thumb"><div class="ov-num">36</div></div><div class="ov-label">무엇을 찍을지 먼저 정한다</div></button>
+<button class="ov-card" data-go="36"><div class="ov-thumb"><div class="ov-num">37</div></div><div class="ov-label">산출물 ⑤ 촬영 계획</div></button>
+<button class="ov-card" data-go="37"><div class="ov-thumb"><div class="ov-num">38</div></div><div class="ov-label">비율로 묻는다</div></button>
+<button class="ov-card" data-go="38"><div class="ov-thumb"><div class="ov-num">39</div></div><div class="ov-label">BDS — 건물 기술서</div></button>
+<button class="ov-card" data-go="39"><div class="ov-thumb"><div class="ov-num">40</div></div><div class="ov-label">산출물 ⑥ 아이파크타워 BDS</div></button>
+<button class="ov-card" data-go="40"><div class="ov-thumb"><div class="ov-num">41</div></div><div class="ov-label">안전장치와 정합 검증</div></button>
+<button class="ov-card" data-go="41"><div class="ov-thumb"><div class="ov-num">42</div></div><div class="ov-label">산출물 ⑦ 수치가 이겼다</div></button>
+<button class="ov-card" data-go="42"><div class="ov-thumb"><div class="ov-num">43</div></div><div class="ov-label">절차적 모델러</div></button>
+<button class="ov-card" data-go="43"><div class="ov-thumb"><div class="ov-num">44</div></div><div class="ov-label">산출물 ⑧ 아이파크타워 v0.3</div></button>
+<button class="ov-card" data-go="44"><div class="ov-thumb"><div class="ov-num">45</div></div><div class="ov-label">웹 서비스</div></button>
+<button class="ov-card" data-go="45"><div class="ov-thumb"><div class="ov-num">46</div></div><div class="ov-label">실습 ⑤</div></button>
+<button class="ov-card" data-go="46"><div class="ov-thumb"><div class="ov-num">47</div></div><div class="ov-label">6부 · v0.4 astra</div></button>
+<button class="ov-card" data-go="47"><div class="ov-thumb"><div class="ov-num">48</div></div><div class="ov-label">수치가 이긴다</div></button>
+<button class="ov-card" data-go="48"><div class="ov-thumb"><div class="ov-num">49</div></div><div class="ov-label">주는 것, 주지 않는 것</div></button>
+<button class="ov-card" data-go="49"><div class="ov-thumb"><div class="ov-num">50</div></div><div class="ov-label">출력은 3D 가 아니라 스크립트</div></button>
+<button class="ov-card" data-go="50"><div class="ov-thumb"><div class="ov-num">51</div></div><div class="ov-label">산출물 ⑨ astra 가 쓴 스크립트</div></button>
+<button class="ov-card" data-go="51"><div class="ov-thumb"><div class="ov-num">52</div></div><div class="ov-label">생성된 코드를 그대로 믿지 않는다</div></button>
+<button class="ov-card" data-go="52"><div class="ov-thumb"><div class="ov-num">53</div></div><div class="ov-label">실물 대조</div></button>
+<button class="ov-card" data-go="53"><div class="ov-thumb"><div class="ov-num">54</div></div><div class="ov-label">아이파크타워 — v0.3 과 v0.4</div></button>
+<button class="ov-card" data-go="54"><div class="ov-thumb"><div class="ov-num">55</div></div><div class="ov-label">뒷면까지</div></button>
+<button class="ov-card" data-go="55"><div class="ov-thumb"><div class="ov-num">56</div></div><div class="ov-label">삼성역 · 파르나스타워</div></button>
+<button class="ov-card" data-go="56"><div class="ov-thumb"><div class="ov-num">57</div></div><div class="ov-label">삼성역 · 현대백화점 무역센터점</div></button>
+<button class="ov-card" data-go="57"><div class="ov-thumb"><div class="ov-num">58</div></div><div class="ov-label">삼성역 · 무역회관</div></button>
+<button class="ov-card" data-go="58"><div class="ov-thumb"><div class="ov-num">59</div></div><div class="ov-label">삼성역 · 삼성동 159-9</div></button>
+<button class="ov-card" data-go="59"><div class="ov-thumb"><div class="ov-num">60</div></div><div class="ov-label">테헤란로 한 블록</div></button>
+<button class="ov-card" data-go="60"><div class="ov-thumb"><div class="ov-num">61</div></div><div class="ov-label">세 버전을 숫자로</div></button>
+<button class="ov-card" data-go="61"><div class="ov-thumb"><div class="ov-num">62</div></div><div class="ov-label">남은 것</div></button>
+<button class="ov-card" data-go="62"><div class="ov-thumb"><div class="ov-num">63</div></div><div class="ov-label">Colab 에서 재현했다</div></button>
+<button class="ov-card" data-go="63"><div class="ov-thumb"><div class="ov-num">64</div></div><div class="ov-label">실습 ⑥</div></button>
+<button class="ov-card" data-go="64"><div class="ov-thumb"><div class="ov-num">65</div></div><div class="ov-label">7부 · 정리</div></button>
+<button class="ov-card" data-go="65"><div class="ov-thumb"><div class="ov-num">66</div></div><div class="ov-label">산출물 지도</div></button>
+<button class="ov-card" data-go="66"><div class="ov-thumb"><div class="ov-num">67</div></div><div class="ov-label">4주를 한 장에</div></button>
+<button class="ov-card" data-go="67"><div class="ov-thumb"><div class="ov-num">68</div></div><div class="ov-label">같이 생각해 볼 것</div></button>
+<button class="ov-card" data-go="68"><div class="ov-thumb"><div class="ov-num">69</div></div><div class="ov-label">정리</div></button>
+  </div>
+</div>
+
+<div id="help">
+  <div class="panel">
+    <h2>키보드 조작</h2>
+    <table>
+      <tr><td><kbd>&rarr;</kbd><kbd>&darr;</kbd><kbd>PgDn</kbd><kbd>Space</kbd></td><td>다음 슬라이드</td></tr>
+      <tr><td><kbd>&larr;</kbd><kbd>&uarr;</kbd><kbd>PgUp</kbd><kbd>Backspace</kbd></td><td>이전 슬라이드</td></tr>
+      <tr><td><kbd>Home</kbd><kbd>End</kbd></td><td>처음 / 마지막</td></tr>
+      <tr><td><kbd>1</kbd> &hellip; <kbd>9</kbd><kbd>Enter</kbd></td><td>번호로 이동</td></tr>
+      <tr><td><kbd>O</kbd></td><td>목차 열기 / 닫기</td></tr>
+      <tr><td><kbd>N</kbd></td><td>발표자 노트</td></tr>
+      <tr><td><kbd>F</kbd></td><td>전체화면</td></tr>
+      <tr><td><kbd>B</kbd></td><td>화면 가리기</td></tr>
+      <tr><td><kbd>?</kbd><kbd>H</kbd></td><td>이 도움말</td></tr>
+      <tr><td><kbd>Esc</kbd></td><td>닫기</td></tr>
+    </table>
+    <p class="hint">스테이지 좌 / 우 클릭, 터치 스와이프로도 넘길 수 있습니다.<br>
+    현재 위치는 주소창 <code>#12</code> 로 유지되므로 새로 고쳐도 그 자리에서 이어집니다.</p>
+  </div>
+</div>
+
+<script src="vendor/react.production.min.js"></script>
+<script src="vendor/react-dom.production.min.js"></script>
+<script src="vendor/dc-runtime.js"></script>
+<script>
+(function () {
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+window.DC_DECKS.push({ deck: 0, props: {}, Component: Component });
+})();
+</script>
+<script src="vendor/dc-mount.js"></script>
+
+<script>
+(function () {
+  "use strict";
+
+  var STAGE_W = 1920, STAGE_H = 1080;
+  var stage    = document.getElementById('stage');
+  var slides   = Array.prototype.slice.call(stage.children).filter(function (n) {
+    return n.tagName === 'SECTION';
+  });
+  var total    = slides.length;
+  var cards    = Array.prototype.slice.call(document.querySelectorAll('.ov-card'));
+  var gCur     = document.getElementById('g-cur');
+  var gLabel   = document.getElementById('g-label');
+  var progress = document.getElementById('progress');
+  var jumpEl   = document.getElementById('jump');
+  var nNum     = document.getElementById('n-num');
+  var nBody    = document.getElementById('n-body');
+  var body     = document.body;
+
+  function pad(n) { return String(n).length < 2 ? '0' + n : String(n); }
+  document.getElementById('g-total').textContent = pad(total);
+
+  /* ---------- fit the fixed 1920x1080 stage into the viewport ---------- */
+  function fit() {
+    var s = Math.min(window.innerWidth / STAGE_W, window.innerHeight / STAGE_H);
+    stage.style.transform = 'translate(-50%, -50%) scale(' + s + ')';
+  }
+  window.addEventListener('resize', fit);
+
+  /* ---------- navigation ---------- */
+  var cur = -1;
+
+  function show(i, pushHash) {
+    i = Math.max(0, Math.min(total - 1, i));
+    if (i === cur) return;
+    if (cur >= 0) {
+      slides[cur].classList.remove('is-current');
+      if (cards[cur]) cards[cur].classList.remove('is-current');
+    }
+    if (cur >= 0) slides[cur].removeAttribute('data-deck-active');
+    cur = i;
+    slides[cur].classList.add('is-current');
+    if (cards[cur]) cards[cur].classList.add('is-current');
+    // 기계학습의 역사 keeps its GIFs on a still frame unless the slide is live,
+    // and it watches for deck-stage's data-deck-active attribute. The presenter
+    // tracks the current slide with a class, so mirror the attribute it expects.
+    slides[cur].setAttribute('data-deck-active', '');
+
+    var sec = slides[cur];
+    gCur.textContent = sec.getAttribute('data-screen-label') || pad(cur + 1);
+    gLabel.textContent = sec.getAttribute('data-label') || '';
+    progress.style.width = ((cur + 1) / total * 100) + '%';
+
+    var notes = sec.getAttribute('data-speaker-notes') || '';
+    nNum.textContent = pad(cur + 1) + ' / ' + pad(total);
+    nBody.className = notes ? '' : 'nempty';
+    nBody.textContent = notes || '(이 슬라이드에는 노트가 없습니다)';
+
+    if (pushHash !== false) history.replaceState(null, '', '#' + (cur + 1));
+    if (body.classList.contains('overview-on') && cards[cur]) {
+      cards[cur].scrollIntoView({ block: 'nearest' });
+    }
+  }
+
+  function next() { show(cur + 1); }
+  function prev() { show(cur - 1); }
+
+  /* ---------- auto-hiding chrome ---------- */
+  var uiTimer = null;
+  function poke() {
+    body.classList.add('ui-visible');
+    clearTimeout(uiTimer);
+    uiTimer = setTimeout(function () {
+      if (!body.classList.contains('overview-on') &&
+          !body.classList.contains('help-on')) {
+        body.classList.remove('ui-visible');
+      }
+    }, 2600);
+  }
+  ['mousemove', 'mousedown', 'touchstart', 'keydown'].forEach(function (ev) {
+    window.addEventListener(ev, poke, { passive: true });
+  });
+
+  /* ---------- digit buffer: type 12 -> slide 12 ---------- */
+  var buf = '', bufTimer = null;
+  function flushBuf(commit) {
+    if (commit && buf) show(parseInt(buf, 10) - 1);
+    buf = '';
+    jumpEl.style.display = 'none';
+    clearTimeout(bufTimer);
+  }
+  function pushDigit(d) {
+    buf += d;
+    if (parseInt(buf, 10) > total) buf = d;
+    jumpEl.textContent = buf;
+    jumpEl.style.display = 'block';
+    clearTimeout(bufTimer);
+    bufTimer = setTimeout(function () { flushBuf(true); }, 850);
+  }
+
+  /* ---------- overlays ---------- */
+  function toggle(cls) {
+    if (body.classList.toggle(cls)) {
+      body.classList.add('ui-visible');
+      clearTimeout(uiTimer);
+    } else {
+      poke();
+    }
+  }
+  function closeOverlays() {
+    body.classList.remove('overview-on', 'help-on');
+    poke();
+  }
+  function fullscreen() {
+    if (document.fullscreenElement) document.exitFullscreen();
+    else document.documentElement.requestFullscreen().catch(function () {});
+  }
+
+  /* ---------- keys ---------- */
+  window.addEventListener('keydown', function (e) {
+    if (e.ctrlKey || e.altKey || e.metaKey) return;
+    var k = e.key;
+
+    if (k >= '0' && k <= '9') { pushDigit(k); e.preventDefault(); return; }
+
+    switch (k) {
+      case 'ArrowRight': case 'ArrowDown': case 'PageDown':
+        flushBuf(false); next(); break;
+      case ' ':
+        flushBuf(false); if (e.shiftKey) { prev(); } else { next(); } break;
+      case 'Enter':
+        if (buf) { flushBuf(true); } else { next(); } break;
+      case 'ArrowLeft': case 'ArrowUp': case 'PageUp': case 'Backspace':
+        flushBuf(false); prev(); break;
+      case 'Home': flushBuf(false); show(0); break;
+      case 'End':  flushBuf(false); show(total - 1); break;
+      case 'o': case 'O': toggle('overview-on'); break;
+      case 'n': case 'N': toggle('notes-on'); break;
+      case 'b': case 'B': body.classList.toggle('blanked'); break;
+      case 'f': case 'F': fullscreen(); break;
+      case 'h': case 'H': case '?': case '/': toggle('help-on'); break;
+      case 'Escape':
+        if (body.classList.contains('help-on') ||
+            body.classList.contains('overview-on')) closeOverlays();
+        else flushBuf(false);
+        break;
+      default: return;
+    }
+    e.preventDefault();
+  });
+
+  /* ---------- pointer nav (leave real interactive content alone) ---------- */
+  document.getElementById('stagewrap').addEventListener('click', function (e) {
+    if (e.target.closest('a, button, input, select, textarea')) return;
+    if (e.clientX < window.innerWidth * 0.35) prev();
+    else if (e.clientX > window.innerWidth * 0.65) next();
+    else poke();
+  });
+
+  var tx = null;
+  window.addEventListener('touchstart', function (e) {
+    tx = e.changedTouches[0].clientX;
+  }, { passive: true });
+  window.addEventListener('touchend', function (e) {
+    if (tx === null) return;
+    var dx = e.changedTouches[0].clientX - tx;
+    if (Math.abs(dx) > 55) { if (dx < 0) next(); else prev(); }
+    tx = null;
+  }, { passive: true });
+
+  cards.forEach(function (c) {
+    c.addEventListener('click', function () {
+      show(parseInt(c.getAttribute('data-go'), 10));
+      body.classList.remove('overview-on');
+      poke();
+    });
+  });
+
+  /* ---------- image slots with no file on disk ---------- */
+  Array.prototype.forEach.call(document.querySelectorAll('.imgslot img'), function (img) {
+    function miss() { img.parentNode.classList.add('no-img'); }
+    img.addEventListener('error', miss);
+    if (img.complete && img.naturalWidth === 0) miss();
+  });
+
+  /* ---------- go ---------- */
+  var start = parseInt((location.hash || '').replace('#', ''), 10);
+  fit();
+  show(isFinite(start) && start >= 1 ? start - 1 : 0, false);
+  window.addEventListener('hashchange', function () {
+    var n = parseInt((location.hash || '').replace('#', ''), 10);
+    if (isFinite(n)) show(n - 1, false);
+  });
+  poke();
+})();
+</script>
+<script>
+/* vendor/ 가 함께 오지 않으면 차트는 조용히 빈 칸이 된다 — 슬라이드는 멀쩡해
+   보이고 그림만 사라져서, 발표 중에야 알아채게 된다. 그때만 그 자리에 이유를
+   적는다. 이 스크립트는 인라인이라 vendor/ 가 없어도 반드시 실행된다.
+
+   런타임이 살아 있는데 슬롯이 비어 있는 것은 전혀 다른 버그다. 그 경우에는
+   손대지 않고 콘솔에만 남긴다 — 슬롯을 지워버리면 verify_all 이 문제를 보지
+   못하고 통과시켜 버린다. */
+addEventListener('load', function () {
+  setTimeout(function () {
+    var live = (typeof React !== 'undefined') && (window.DC_DECKS || []).length > 0;
+    var bad = [].slice.call(document.querySelectorAll('[data-dc-slot]'))
+                .filter(function (e) { return !e.firstElementChild; });
+    if (!bad.length) return;
+    if (live) {
+      console.warn('[deck] 런타임은 정상인데 비어 있는 슬롯: '
+        + bad.map(function (e) { return e.dataset.dcSlot; }).join(', '));
+      return;
+    }
+    bad.forEach(function (e) {
+      e.removeAttribute('data-dc-slot');
+      e.style.cssText = 'display:flex;align-items:center;justify-content:center;'
+        + 'width:100%;min-height:200px;box-sizing:border-box;border:3px dashed #CE3A3A;'
+        + 'border-radius:12px;background:rgba(206,58,58,.08);color:#CE3A3A;'
+        + 'font-size:26px;font-weight:700;text-align:center;padding:26px;line-height:1.5';
+      e.textContent = '차트를 그릴 수 없습니다 — vendor/ 폴더가 present.html 과 같은 위치에 있어야 합니다';
+    });
+    console.error('[deck] 차트 런타임 없음(vendor/ 누락). 빈 슬롯 ' + bad.length + '개');
+  }, 800);
+});
+</script>
+</body>
+</html>
