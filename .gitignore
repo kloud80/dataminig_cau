@@ -286,6 +286,24 @@
 !/중앙대26특강/W04_주소에서_3D건물까지/uploads/w4_teheran_block.png
 !/중앙대26특강/W04_주소에서_3D건물까지/uploads/w4_ui_explore.jpg
 
+# 중앙대26특강/notebooks/
+/중앙대26특강/notebooks/*
+!/중앙대26특강/notebooks/w04_colab/
+!/중앙대26특강/notebooks/거리뷰분할_DeepLab_SAM.ipynb
+!/중앙대26특강/notebooks/거리지표로_연구하기.ipynb
+!/중앙대26특강/notebooks/건물외벽학습.ipynb
+
+# 중앙대26특강/notebooks/w04_colab/
+/중앙대26특강/notebooks/w04_colab/*
+!/중앙대26특강/notebooks/w04_colab/W04_1 주소에서 건물 외곽선까지.ipynb
+!/중앙대26특강/notebooks/w04_colab/W04_2 건물 속성 모으기.ipynb
+!/중앙대26특강/notebooks/w04_colab/W04_3 입면 분할과 LOD1 매스.ipynb
+!/중앙대26특강/notebooks/w04_colab/W04_4 위성영상으로 지붕 읽기.ipynb
+!/중앙대26특강/notebooks/w04_colab/W04_5 사진을 치수로 읽기 — BDS.ipynb
+!/중앙대26특강/notebooks/w04_colab/W04_6 astra — 모델이 스크립트를 쓴다.ipynb
+!/중앙대26특강/notebooks/w04_colab/data/
+!/중앙대26특강/notebooks/w04_colab/w04_tools.py
+
 # 로컬 전용 — 실수로 되살아나지 않게 못 박아 둔다
 .env
 .venv/

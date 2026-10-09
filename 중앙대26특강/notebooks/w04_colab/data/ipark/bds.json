@@ -1,0 +1,4242 @@
+{
+  "building_id": "2004205337044457153800000000",
+  "typology": "Modern 15-storey commercial/office tower with contrasting faces: one highly refl",
+  "floors": 15,
+  "floor_heights_m": [
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332,
+    6.235333333333332
+  ],
+  "massing": [],
+  "ground_z_m": 0.0,
+  "corner": {
+    "type": "sharp",
+    "size_m": 0.0
+  },
+  "facades": {
+    "f_0": {
+      "id": "f_0",
+      "role": "front",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          3.8811940352186247
+        ],
+        [
+          3.8811940352186247,
+          7.762388070437249
+        ],
+        [
+          7.762388070437249,
+          11.643582105655874
+        ],
+        [
+          11.643582105655874,
+          15.524776140874499
+        ],
+        [
+          15.524776140874499,
+          19.405970176093124
+        ],
+        [
+          19.405970176093124,
+          23.287164211311747
+        ],
+        [
+          23.287164211311747,
+          27.16835824653037
+        ],
+        [
+          27.16835824653037,
+          31.049552281748998
+        ],
+        [
+          31.049552281748998,
+          34.93074631696762
+        ],
+        [
+          34.93074631696762,
+          38.81194035218625
+        ],
+        [
+          38.81194035218625,
+          42.69313438740487
+        ],
+        [
+          42.69313438740487,
+          46.574328422623495
+        ],
+        [
+          46.574328422623495,
+          50.45552245784212
+        ],
+        [
+          50.45552245784212,
+          54.33671649306074
+        ],
+        [
+          54.33671649306074,
+          58.21791052827936
+        ],
+        [
+          58.21791052827936,
+          62.099104563497995
+        ],
+        [
+          62.099104563497995,
+          65.98029859871662
+        ],
+        [
+          65.98029859871662,
+          69.86149263393524
+        ]
+      ],
+      "bay_count": 18,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 3.56,
+            "h_m": 5.52,
+            "sill_m": 0.38,
+            "per_bay": 1,
+            "mullions": [
+              1,
+              1
+            ],
+            "frame_color": "#26363A",
+            "frame_w_m": 0.06,
+            "recess_m": 0.126,
+            "glass_color": "#5C7B8E",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": true,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 3.56,
+            "h_m": 5.52,
+            "sill_m": 0.38,
+            "per_bay": 1,
+            "mullions": [
+              1,
+              1
+            ],
+            "frame_color": "#26363A",
+            "frame_w_m": 0.06,
+            "recess_m": 0.126,
+            "glass_color": "#5C7B8E",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": true,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 3.56,
+            "h_m": 5.52,
+            "sill_m": 0.38,
+            "per_bay": 1,
+            "mullions": [
+              1,
+              1
+            ],
+            "frame_color": "#26363A",
+            "frame_w_m": 0.06,
+            "recess_m": 0.126,
+            "glass_color": "#5C7B8E",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": true,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "band": {
+            "h_m": 1.0,
+            "proj_m": 0.05,
+            "color": "#9B1F2E",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [
+        {
+          "kind": "channel_letters",
+          "text": "MetLife",
+          "x0_m": 18.86,
+          "x1_m": 25.15,
+          "z_m": 17.41,
+          "h_m": 1.69,
+          "board_color": "#000000",
+          "text_color": "#FFFFFF",
+          "depth_m": 0.12,
+          "floors": [],
+          "ev": {
+            "confidence": 0.68,
+            "evidence": [
+              "f_0"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        },
+        {
+          "kind": "window_text",
+          "text": "파아치과",
+          "x0_m": 1.4,
+          "x1_m": 16.07,
+          "z_m": 17.88,
+          "h_m": 2.35,
+          "board_color": "#000000",
+          "text_color": "#DCE3E5",
+          "depth_m": 0.12,
+          "floors": [],
+          "ev": {
+            "confidence": 0.68,
+            "evidence": [
+              "f_0"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        },
+        {
+          "kind": "board",
+          "text": "MBC",
+          "x0_m": 27.25,
+          "x1_m": 32.83,
+          "z_m": 85.66,
+          "h_m": 5.18,
+          "board_color": "#4B2630",
+          "text_color": "#FFFFFF",
+          "depth_m": 0.12,
+          "floors": [],
+          "ev": {
+            "confidence": 0.68,
+            "evidence": [
+              "f_0"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        }
+      ],
+      "balconies": [],
+      "attachments": [
+        {
+          "kind": "louver",
+          "x_m": 16.07,
+          "floor": 1,
+          "z_m": null,
+          "count": 2,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.68,
+            "evidence": [
+              "f_0"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        },
+        {
+          "kind": "louver",
+          "x_m": 54.49,
+          "floor": 1,
+          "z_m": null,
+          "count": 2,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.68,
+            "evidence": [
+              "f_0"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        },
+        {
+          "kind": "pipe_rack",
+          "x_m": 34.93,
+          "floor": 9,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": 94.15,
+          "color": null,
+          "ev": {
+            "confidence": 0.68,
+            "evidence": [
+              "f_0"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        }
+      ],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.68,
+        "evidence": [
+          "f_0"
+        ],
+        "inferred": false,
+        "note": "로드뷰 판독"
+      }
+    },
+    "f_1": {
+      "id": "f_1",
+      "role": "front",
+      "wall": {
+        "class": "curtain_wall",
+        "color": "#5C7B8E",
+        "accent_color": "#C8DAE6",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.5,
+          "evidence": [],
+          "inferred": false,
+          "note": ""
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          2.6576768922015876
+        ],
+        [
+          2.6576768922015876,
+          5.315353784403175
+        ],
+        [
+          5.315353784403175,
+          7.973030676604763
+        ],
+        [
+          7.973030676604763,
+          10.63070756880635
+        ]
+      ],
+      "bay_count": 4,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 3.19,
+            "h_m": 2.17,
+            "sill_m": 0.5,
+            "per_bay": 1,
+            "mullions": [
+              1,
+              2
+            ],
+            "frame_color": "#D7E2E6",
+            "frame_w_m": 0.06,
+            "recess_m": 0.126,
+            "glass_color": "#6F9EAA",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": true,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 3.19,
+            "h_m": 2.17,
+            "sill_m": 0.5,
+            "per_bay": 1,
+            "mullions": [
+              1,
+              2
+            ],
+            "frame_color": "#D7E2E6",
+            "frame_w_m": 0.06,
+            "recess_m": 0.126,
+            "glass_color": "#6F9EAA",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": true,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 3.19,
+            "h_m": 2.17,
+            "sill_m": 0.5,
+            "per_bay": 1,
+            "mullions": [
+              1,
+              2
+            ],
+            "frame_color": "#D7E2E6",
+            "frame_w_m": 0.06,
+            "recess_m": 0.126,
+            "glass_color": "#6F9EAA",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": true,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "band": {
+            "h_m": 0.88,
+            "proj_m": 0.05,
+            "color": "#3D4447",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.5,
+              "evidence": [],
+              "inferred": false,
+              "note": ""
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [
+        {
+          "kind": "channel_letters",
+          "text": "MetLife 생명보험주식회사",
+          "x0_m": 2.66,
+          "x1_m": 9.78,
+          "z_m": 17.41,
+          "h_m": 1.13,
+          "board_color": "#3D4447",
+          "text_color": "#F2F0E8",
+          "depth_m": 0.12,
+          "floors": [],
+          "ev": {
+            "confidence": 0.78,
+            "evidence": [
+              "f_1"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        },
+        {
+          "kind": "channel_letters",
+          "text": "ING생명",
+          "x0_m": 4.04,
+          "x1_m": 8.72,
+          "z_m": 34.83,
+          "h_m": 0.94,
+          "board_color": "#3D4447",
+          "text_color": "#F2F0E8",
+          "depth_m": 0.12,
+          "floors": [],
+          "ev": {
+            "confidence": 0.78,
+            "evidence": [
+              "f_1"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        },
+        {
+          "kind": "channel_letters",
+          "text": "신한금융투자",
+          "x0_m": 3.4,
+          "x1_m": 9.36,
+          "z_m": 27.3,
+          "h_m": 0.94,
+          "board_color": "#3D4447",
+          "text_color": "#F2F0E8",
+          "depth_m": 0.12,
+          "floors": [],
+          "ev": {
+            "confidence": 0.78,
+            "evidence": [
+              "f_1"
+            ],
+            "inferred": false,
+            "note": "로드뷰 판독"
+          }
+        }
+      ],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.78,
+        "evidence": [
+          "f_1"
+        ],
+        "inferred": false,
+        "note": "로드뷰 판독"
+      }
+    },
+    "f_2": {
+      "id": "f_2",
+      "role": "party_wall",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          5.105557479462738
+        ]
+      ],
+      "bay_count": 1,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_3": {
+      "id": "f_3",
+      "role": "party_wall",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          0.5156070986520546
+        ]
+      ],
+      "bay_count": 1,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_4": {
+      "id": "f_4",
+      "role": "party_wall",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          3.197827431326584
+        ],
+        [
+          3.197827431326584,
+          6.395654862653168
+        ]
+      ],
+      "bay_count": 2,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_5": {
+      "id": "f_5",
+      "role": "party_wall",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          2.111190881206299
+        ]
+      ],
+      "bay_count": 1,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_6": {
+      "id": "f_6",
+      "role": "front",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          5.140492023989583
+        ],
+        [
+          5.140492023989583,
+          10.280984047979166
+        ]
+      ],
+      "bay_count": 2,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "storefront",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [
+        {
+          "x0_m": 0.0,
+          "x1_m": 5.140492023989583,
+          "glazing": 0.8,
+          "door_x_m": 2.5702460119947914,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 0.1,
+              "x1_m": 5.040492023989583,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 5.140492023989583,
+          "x1_m": 10.280984047979166,
+          "glazing": 0.8,
+          "door_x_m": 7.710738035984374,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": null,
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 5.2404920239895825,
+              "x1_m": 10.180984047979166,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        }
+      ],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_7": {
+      "id": "f_7",
+      "role": "front",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          4.257265638201376
+        ],
+        [
+          4.257265638201376,
+          8.514531276402751
+        ],
+        [
+          8.514531276402751,
+          12.771796914604126
+        ],
+        [
+          12.771796914604126,
+          17.029062552805502
+        ],
+        [
+          17.029062552805502,
+          21.286328191006877
+        ],
+        [
+          21.286328191006877,
+          25.543593829208252
+        ],
+        [
+          25.543593829208252,
+          29.800859467409627
+        ],
+        [
+          29.800859467409627,
+          34.058125105611005
+        ],
+        [
+          34.058125105611005,
+          38.31539074381238
+        ],
+        [
+          38.31539074381238,
+          42.572656382013754
+        ],
+        [
+          42.572656382013754,
+          46.82992202021513
+        ]
+      ],
+      "bay_count": 11,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "storefront",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [
+        {
+          "x0_m": 0.0,
+          "x1_m": 5.853740252526891,
+          "glazing": 0.8,
+          "door_x_m": 2.9268701262634456,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 0.1,
+              "x1_m": 5.7537402525268915,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 5.853740252526891,
+          "x1_m": 11.707480505053782,
+          "glazing": 0.8,
+          "door_x_m": 8.780610378790337,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": null,
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 5.953740252526891,
+              "x1_m": 11.607480505053783,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 11.707480505053782,
+          "x1_m": 17.561220757580674,
+          "glazing": 0.8,
+          "door_x_m": 14.634350631317227,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 11.807480505053782,
+              "x1_m": 17.461220757580673,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 17.561220757580674,
+          "x1_m": 23.414961010107564,
+          "glazing": 0.8,
+          "door_x_m": 20.48809088384412,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": null,
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 17.661220757580676,
+              "x1_m": 23.314961010107563,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 23.414961010107564,
+          "x1_m": 29.268701262634455,
+          "glazing": 0.8,
+          "door_x_m": 26.34183113637101,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 23.514961010107566,
+              "x1_m": 29.168701262634453,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 29.268701262634455,
+          "x1_m": 35.12244151516135,
+          "glazing": 0.8,
+          "door_x_m": 32.1955713888979,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": null,
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 29.368701262634456,
+              "x1_m": 35.02244151516135,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 35.12244151516135,
+          "x1_m": 40.97618176768824,
+          "glazing": 0.8,
+          "door_x_m": 38.049311641424794,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 35.22244151516135,
+              "x1_m": 40.87618176768824,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 40.97618176768824,
+          "x1_m": 46.82992202021513,
+          "glazing": 0.8,
+          "door_x_m": 43.903051893951684,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": null,
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 41.07618176768824,
+              "x1_m": 46.72992202021513,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        }
+      ],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_8": {
+      "id": "f_8",
+      "role": "side",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          4.396830481930733
+        ]
+      ],
+      "bay_count": 1,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [],
+      "balconies": [],
+      "attachments": [
+        {
+          "kind": "downpipe",
+          "x_m": 0.53,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": 94.13,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "downpipe",
+          "x_m": 3.87,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": 94.13,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 2,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 3,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 4,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 5,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 6,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 7,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 8,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 9,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 10,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 11,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 12,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 13,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 14,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "ac_unit",
+          "x_m": 0.9673027060247613,
+          "floor": 15,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 2.6380982891584397,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "pipe_rack",
+          "x_m": 2.29,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": 94.13,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "gas_meter",
+          "x_m": 0.99,
+          "floor": 1,
+          "z_m": 0.85,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 2,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 3,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 4,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 5,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 6,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 7,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 8,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 9,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 10,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 11,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 12,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 13,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 14,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "vent_grille",
+          "x_m": 3.52,
+          "floor": 15,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 0.7,
+          "h_m": 0.5,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "service_door",
+          "x_m": 0.7,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": 1.0,
+          "h_m": 2.1,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "security_bars",
+          "x_m": 1.85,
+          "floor": 1,
+          "z_m": 1.0,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": null,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        }
+      ],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_9": {
+      "id": "f_9",
+      "role": "side",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          1.9923969871602063
+        ]
+      ],
+      "bay_count": 1,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "lobby",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [],
+      "signs": [],
+      "balconies": [],
+      "attachments": [
+        {
+          "kind": "downpipe",
+          "x_m": 0.24,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": 94.13,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "kind": "downpipe",
+          "x_m": 1.75,
+          "floor": 1,
+          "z_m": null,
+          "count": 1,
+          "spacing_m": 1.0,
+          "w_m": null,
+          "h_m": null,
+          "top_z_m": 94.13,
+          "color": null,
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        }
+      ],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    },
+    "f_10": {
+      "id": "f_10",
+      "role": "front",
+      "wall": {
+        "class": "metal_panel",
+        "color": "#C8DAE6",
+        "accent_color": "#5C7B8E",
+        "unit_m": null,
+        "ev": {
+          "confidence": 0.77,
+          "evidence": [
+            "appearance"
+          ],
+          "inferred": false,
+          "note": "외관 총평(전경 실사)"
+        }
+      },
+      "bays": [
+        [
+          0.0,
+          2.7235596823959436
+        ],
+        [
+          2.7235596823959436,
+          5.447119364791887
+        ],
+        [
+          5.447119364791887,
+          8.17067904718783
+        ],
+        [
+          8.17067904718783,
+          10.894238729583774
+        ],
+        [
+          10.894238729583774,
+          13.617798411979718
+        ],
+        [
+          13.617798411979718,
+          16.34135809437566
+        ]
+      ],
+      "bay_count": 6,
+      "patterns": [
+        {
+          "floors": [
+            1,
+            2,
+            3
+          ],
+          "use": "storefront",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#6E898D",
+            "accent_color": "#D8E1E4",
+            "unit_m": [
+              1.5,
+              1.6
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11,
+            12
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": null,
+          "wall": {
+            "class": "curtain_wall",
+            "color": "#5C7B8E",
+            "accent_color": "#E0E6E8",
+            "unit_m": [
+              1.4,
+              1.4
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        },
+        {
+          "floors": [
+            13,
+            14,
+            15
+          ],
+          "use": "office",
+          "window": {
+            "kind": "curtain_wall",
+            "w_m": 1.5,
+            "h_m": 1.4,
+            "sill_m": 0.9,
+            "per_bay": 1,
+            "mullions": [
+              3,
+              2
+            ],
+            "frame_color": "#D6DEE1",
+            "frame_w_m": 0.06,
+            "recess_m": 0.05,
+            "glass_color": "#6E95A8",
+            "spandrel_color": null,
+            "glass_reflect": 0.35,
+            "has_sill_shelf": false,
+            "ribbon_margin_m": 0.35,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "band": {
+            "h_m": 0.25,
+            "proj_m": 0.05,
+            "color": "#E1E6E7",
+            "material": "plaster",
+            "every_floor": true,
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "wall": {
+            "class": "metal_panel",
+            "color": "#C8DAE6",
+            "accent_color": "#5C7B8E",
+            "unit_m": [
+              1.3,
+              1.2
+            ],
+            "ev": {
+              "confidence": 0.77,
+              "evidence": [
+                "appearance"
+              ],
+              "inferred": false,
+              "note": "외관 총평(전경 실사)"
+            }
+          },
+          "panel": null
+        }
+      ],
+      "storefront": [
+        {
+          "x0_m": 0.0,
+          "x1_m": 5.447119364791887,
+          "glazing": 0.8,
+          "door_x_m": 2.7235596823959436,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 0.1,
+              "x1_m": 5.3471193647918875,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 5.447119364791887,
+          "x1_m": 10.894238729583774,
+          "glazing": 0.8,
+          "door_x_m": 8.17067904718783,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": null,
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 5.547119364791887,
+              "x1_m": 10.794238729583775,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        },
+        {
+          "x0_m": 10.894238729583774,
+          "x1_m": 16.34135809437566,
+          "glazing": 0.8,
+          "door_x_m": 13.617798411979718,
+          "door_w_m": 1.0,
+          "bulkhead_m": 0.5,
+          "bulkhead_color": null,
+          "header_m": 0.5,
+          "awning": {
+            "color": "#7E7468",
+            "depth_m": 0.9,
+            "h_m": 0.35
+          },
+          "interior_depth_m": 4.0,
+          "shutter": false,
+          "signs": [
+            {
+              "kind": "board",
+              "text": "",
+              "x0_m": 10.994238729583774,
+              "x1_m": 16.24135809437566,
+              "z_m": 5.815333333333333,
+              "h_m": 0.42,
+              "board_color": "#1A1A1A",
+              "text_color": "#F2F2F0",
+              "depth_m": 0.12,
+              "floors": [],
+              "ev": {
+                "confidence": 0.5,
+                "evidence": [],
+                "inferred": false,
+                "note": ""
+              }
+            }
+          ],
+          "ev": {
+            "confidence": 0.5,
+            "evidence": [],
+            "inferred": false,
+            "note": ""
+          }
+        }
+      ],
+      "signs": [],
+      "balconies": [],
+      "attachments": [],
+      "entrance": null,
+      "ev": {
+        "confidence": 0.77,
+        "evidence": [
+          "appearance"
+        ],
+        "inferred": false,
+        "note": "외관 총평(전경 실사)"
+      }
+    }
+  },
+  "roof": {
+    "axis_deg": 22.246440121387238,
+    "parapet_h_m": 0.6,
+    "parapet_thickness_m": 0.25,
+    "parapet_color": "#C8DAE6",
+    "coping_color": "#B4B0A8",
+    "railing": "none",
+    "railing_h_m": 1.1,
+    "railing_color": "#8A8884",
+    "slope": "flat",
+    "items": [
+      {
+        "kind": "stair_core",
+        "x_m": 0.58,
+        "y_m": 0.83,
+        "w_m": 8.0,
+        "d_m": 13.0,
+        "h_m": 2.9,
+        "count": 1,
+        "z_m": null,
+        "run_axis": "x",
+        "pipes": null,
+        "color": null,
+        "ev": {
+          "confidence": 0.72,
+          "evidence": [
+            "roof_ortho"
+          ],
+          "inferred": false,
+          "note": "옥상 정사영상 판독"
+        }
+      },
+      {
+        "kind": "ac_cluster",
+        "x_m": 0.43,
+        "y_m": 0.4224,
+        "w_m": 7.5,
+        "d_m": 1.5,
+        "h_m": 0.9,
+        "count": 6,
+        "z_m": null,
+        "run_axis": "y",
+        "pipes": null,
+        "color": null,
+        "ev": {
+          "confidence": 0.78,
+          "evidence": [
+            "roof_ortho"
+          ],
+          "inferred": false,
+          "note": "옥상 정사영상 판독"
+        }
+      },
+      {
+        "kind": "duct",
+        "x_m": 0.69,
+        "y_m": 0.47,
+        "w_m": 2.2,
+        "d_m": 18.0,
+        "h_m": 0.55,
+        "count": 1,
+        "z_m": null,
+        "run_axis": "x",
+        "pipes": null,
+        "color": null,
+        "ev": {
+          "confidence": 0.55,
+          "evidence": [
+            "roof_ortho"
+          ],
+          "inferred": false,
+          "note": "옥상 정사영상 판독"
+        }
+      },
+      {
+        "kind": "condenser",
+        "x_m": 0.66,
+        "y_m": 0.778,
+        "w_m": 4.5,
+        "d_m": 2.48,
+        "h_m": 1.2,
+        "count": 5,
+        "z_m": null,
+        "run_axis": "y",
+        "pipes": null,
+        "color": null,
+        "ev": {
+          "confidence": 0.52,
+          "evidence": [
+            "roof_ortho"
+          ],
+          "inferred": false,
+          "note": "옥상 정사영상 판독"
+        }
+      },
+      {
+        "kind": "solar",
+        "x_m": 0.47,
+        "y_m": 0.14,
+        "w_m": 9.0,
+        "d_m": 10.5,
+        "h_m": 0.5,
+        "count": 1,
+        "z_m": null,
+        "run_axis": "x",
+        "pipes": null,
+        "color": null,
+        "ev": {
+          "confidence": 0.42,
+          "evidence": [
+            "roof_ortho"
+          ],
+          "inferred": false,
+          "note": "옥상 정사영상 판독"
+        }
+      }
+    ],
+    "ev": {
+      "confidence": 0.5,
+      "evidence": [],
+      "inferred": false,
+      "note": ""
+    }
+  },
+  "appearance": {
+    "data": {
+      "character": "Modern 15-storey commercial/office tower with contrasting faces: one highly reflective dark blue-green curtain-wall side carrying a large circular clock/graphic feature, and other sides made of a pale silver-white metal-panel frame with regular blue glass office windows. The tower has a narrow light-clad service/core strip with only sparse small openings, plus a more transparent office grid and glazed lower floors.",
+      "windowless": false,
+      "levels": [
+        {
+          "from_frac": 0,
+          "to_frac": 0.18,
+          "material": "curtain_wall",
+          "color_hex": "#6E898D",
+          "accent_color_hex": "#D8E1E4",
+          "window_kind": "curtain_wall",
+          "panel_cols_per_bay": 0,
+          "panel_rows_per_floor": 0,
+          "panel_reveal_frac": 0,
+          "joint_w_m": 1.5,
+          "joint_h_m": 1.6,
+          "note": "Ground and low podium levels are mostly full-height blue-green glass with light silver/white framing. On the clock/feature facade this reads as very dark reflective curtain wall; on the street-front office side it is a large glazed storefront/office wall with horizontal sign bands."
+        },
+        {
+          "from_frac": 0.18,
+          "to_frac": 0.82,
+          "material": "curtain_wall",
+          "color_hex": "#5C7B8E",
+          "accent_color_hex": "#E0E6E8",
+          "window_kind": "curtain_wall",
+          "panel_cols_per_bay": 0,
+          "panel_rows_per_floor": 0,
+          "panel_reveal_frac": 0,
+          "joint_w_m": 1.4,
+          "joint_h_m": 1.4,
+          "note": "Main occupied tower floors. The typical office elevations have a regular grid of blue tinted glazing set in broad pale silver-white metal-panel spandrels and mullion bands, roughly one horizontal band per floor. One side is a continuous darker reflective glass curtain wall; another has an oval/circular metal rim with red clock-like beams and red projecting box accents over the glass. A narrow vertical core/side bay is mostly pale panel cladding with a thin vertical dark-glass slot and a few small punched windows."
+        },
+        {
+          "from_frac": 0.82,
+          "to_frac": 1,
+          "material": "metal_panel",
+          "color_hex": "#C8DAE6",
+          "accent_color_hex": "#5C7B8E",
+          "window_kind": "curtain_wall",
+          "panel_cols_per_bay": 0,
+          "panel_rows_per_floor": 0,
+          "panel_reveal_frac": 0,
+          "joint_w_m": 1.3,
+          "joint_h_m": 1.2,
+          "note": "Upper crown/mechanical and top office zone becomes brighter and more silvery in daylight. It keeps the same glass-and-panel rhythm on office faces, with pale metal-clad parapet/crown edges and a rooftop guardrail. The service-core strip remains mostly light metal panel with sparse narrow openings and signage near the top."
+        }
+      ],
+      "glazing_color_hex": "#6E95A8",
+      "mullion_color_hex": "#D6DEE1",
+      "trim_color_hex": "#E1E6E7",
+      "parapet_color_hex": "#C8DAE6",
+      "bay_rhythm_m": 4.2,
+      "confidence": 0.77,
+      "notes": "Colours follow the measured samples: dark reflective lower/mid glass reads blue-green grey, while upper and trim areas read pale blue-silver. The building is not windowless: most faces have regular curtain-wall or window-wall office glazing. However, some side/core surfaces are nearly blank light metal panel with only small slit or punched openings. Use the regular office grid on unphotographed occupied elevations, but include at least one dark reflective curtain-wall feature face if modelling the whole tower."
+    },
+    "palette": {
+      "overall": [
+        {
+          "hex": "#C8DBE5",
+          "frac": 0.231
+        },
+        {
+          "hex": "#8DA7B3",
+          "frac": 0.231
+        },
+        {
+          "hex": "#657F8D",
+          "frac": 0.213
+        },
+        {
+          "hex": "#3D515D",
+          "frac": 0.177
+        },
+        {
+          "hex": "#141F24",
+          "frac": 0.147
+        }
+      ],
+      "bands": [
+        {
+          "from_frac": 0.0,
+          "to_frac": 0.33,
+          "hex": "#6E898D",
+          "frac": 0.403
+        },
+        {
+          "from_frac": 0.33,
+          "to_frac": 0.67,
+          "hex": "#5C7B8E",
+          "frac": 0.38
+        },
+        {
+          "from_frac": 0.67,
+          "to_frac": 1.0,
+          "hex": "#C8DAE6",
+          "frac": 0.428
+        }
+      ]
+    },
+    "confidence": 0.77,
+    "meta": {
+      "model": "gpt-5.5",
+      "latency_s": 18.21,
+      "usage": {
+        "input_tokens": 9595,
+        "input_tokens_details": {
+          "cache_write_tokens": 0,
+          "cached_tokens": 0
+        },
+        "output_tokens": 746,
+        "output_tokens_details": {
+          "reasoning_tokens": 0
+        },
+        "total_tokens": 10341
+      },
+      "snapped": [],
+      "notes": "Colours follow the measured samples: dark reflective lower/mid glass reads blue-green grey, while upper and trim areas read pale blue-silver. The building is not windowless: most faces have regular curtain-wall or window-wall office glazing. However, some side/core surfaces are nearly blank light me"
+    }
+  },
+  "open_questions": [],
+  "sources": {
+    "height": "ledger",
+    "floors": "gis_building"
+  },
+  "revision": 0,
+  "revision_log": []
+}

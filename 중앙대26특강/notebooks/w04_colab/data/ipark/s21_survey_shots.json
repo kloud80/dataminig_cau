@@ -1,0 +1,835 @@
+{
+ "plan": [
+  {
+   "pano_id": "1212433522",
+   "facade_id": "f_0",
+   "distance_m": 36.16364401670214,
+   "incidence_deg": 65.13495728758255,
+   "vis_geo": 1.0,
+   "score": 1.8352635389126037
+  },
+  {
+   "pano_id": "1212433520",
+   "facade_id": "f_0",
+   "distance_m": 27.482999709955436,
+   "incidence_deg": 55.98626652454518,
+   "vis_geo": 1.0,
+   "score": 2.1051835529100957
+  },
+  {
+   "pano_id": "1212433518",
+   "facade_id": "f_0",
+   "distance_m": 20.10226987351831,
+   "incidence_deg": 39.36565182262225,
+   "vis_geo": 1.0,
+   "score": 2.5192983392814514
+  },
+  {
+   "pano_id": "1212433516",
+   "facade_id": "f_0",
+   "distance_m": 16.329955766441163,
+   "incidence_deg": 10.176736173956753,
+   "vis_geo": 1.0,
+   "score": 2.9028247238478295
+  },
+  {
+   "pano_id": "1212433514",
+   "facade_id": "f_0",
+   "distance_m": 17.7429746957991,
+   "incidence_deg": 23.747746000863714,
+   "vis_geo": 1.0,
+   "score": 2.760732349248321
+  },
+  {
+   "pano_id": "1212433512",
+   "facade_id": "f_0",
+   "distance_m": 23.75370923302106,
+   "incidence_deg": 46.30935594109005,
+   "vis_geo": 1.0,
+   "score": 2.3222446710197406
+  },
+  {
+   "pano_id": "1212433510",
+   "facade_id": "f_0",
+   "distance_m": 31.85818747164923,
+   "incidence_deg": 58.64765152385261,
+   "vis_geo": 1.0,
+   "score": 1.9911361529633014
+  },
+  {
+   "pano_id": "1212433508",
+   "facade_id": "f_0",
+   "distance_m": 40.42805020835754,
+   "incidence_deg": 65.79160590975322,
+   "vis_geo": 1.0,
+   "score": 1.781086177588061
+  },
+  {
+   "pano_id": "1212302142",
+   "facade_id": "f_1",
+   "distance_m": 7.185847523753189,
+   "incidence_deg": 2.881592494187451,
+   "vis_geo": 0.625,
+   "score": 3.711172003422684
+  },
+  {
+   "pano_id": "1212302146",
+   "facade_id": "f_1",
+   "distance_m": 11.784926317649644,
+   "incidence_deg": 52.145377574142806,
+   "vis_geo": 0.625,
+   "score": 2.5114724326098
+  },
+  {
+   "pano_id": "1212433506",
+   "facade_id": "f_1",
+   "distance_m": 25.085122667712152,
+   "incidence_deg": 61.234970375114585,
+   "vis_geo": 0.625,
+   "score": 1.7041827206138516
+  },
+  {
+   "pano_id": "1212433504",
+   "facade_id": "f_1",
+   "distance_m": 31.490034388922304,
+   "incidence_deg": 44.05423864801107,
+   "vis_geo": 0.625,
+   "score": 1.8200230602322687
+  },
+  {
+   "pano_id": "1212433500",
+   "facade_id": "f_1",
+   "distance_m": 48.13290348376475,
+   "incidence_deg": 28.33205086999151,
+   "vis_geo": 0.625,
+   "score": 1.8168491461107785
+  },
+  {
+   "pano_id": "1212302138",
+   "facade_id": "f_6",
+   "distance_m": 22.750228139415892,
+   "incidence_deg": 69.19027008395857,
+   "vis_geo": 0.75,
+   "score": 1.7645997559835966
+  },
+  {
+   "pano_id": "1212302217",
+   "facade_id": "f_6",
+   "distance_m": 46.74624924129596,
+   "incidence_deg": 68.81944188488426,
+   "vis_geo": 0.625,
+   "score": 1.307189547912123
+  },
+  {
+   "pano_id": "1212302213",
+   "facade_id": "f_6",
+   "distance_m": 40.28585448558936,
+   "incidence_deg": 58.67308523972975,
+   "vis_geo": 0.5,
+   "score": 1.3922595673319051
+  },
+  {
+   "pano_id": "1212302206",
+   "facade_id": "f_6",
+   "distance_m": 33.200393686039156,
+   "incidence_deg": 28.932317774023627,
+   "vis_geo": 0.75,
+   "score": 2.0769936630072787
+  },
+  {
+   "pano_id": "1212302202",
+   "facade_id": "f_6",
+   "distance_m": 33.820762202772144,
+   "incidence_deg": 11.747633803647433,
+   "vis_geo": 0.5,
+   "score": 1.922568427815047
+  },
+  {
+   "pano_id": "1212302122",
+   "facade_id": "f_6",
+   "distance_m": 46.41752945181188,
+   "incidence_deg": 10.725730208586212,
+   "vis_geo": 0.625,
+   "score": 1.9306830967169557
+  },
+  {
+   "pano_id": "1212302221",
+   "facade_id": "f_7",
+   "distance_m": 34.24261302852729,
+   "incidence_deg": 26.35564696076348,
+   "vis_geo": 0.7291666666666666,
+   "score": 2.0632730357849316
+  },
+  {
+   "pano_id": "1212302217",
+   "facade_id": "f_7",
+   "distance_m": 31.19502142033887,
+   "incidence_deg": 9.539920125665013,
+   "vis_geo": 0.875,
+   "score": 2.342016326567895
+  },
+  {
+   "pano_id": "1212302213",
+   "facade_id": "f_7",
+   "distance_m": 31.224702240147153,
+   "incidence_deg": 8.95709643883311,
+   "vis_geo": 0.8958333333333334,
+   "score": 2.364027424861673
+  },
+  {
+   "pano_id": "1212302209",
+   "facade_id": "f_7",
+   "distance_m": 34.32367335086217,
+   "incidence_deg": 25.715517449287287,
+   "vis_geo": 0.5416666666666666,
+   "score": 1.8796423689898094
+  },
+  {
+   "pano_id": "1212302206",
+   "facade_id": "f_7",
+   "distance_m": 39.7809870178229,
+   "incidence_deg": 38.79603454445097,
+   "vis_geo": 0.5833333333333334,
+   "score": 1.7397792146017892
+  },
+  {
+   "pano_id": "1212302229",
+   "facade_id": "f_7",
+   "distance_m": 46.137006331331506,
+   "incidence_deg": 49.44375854247305,
+   "vis_geo": 0.6875,
+   "score": 1.6628127724642043
+  },
+  {
+   "pano_id": "1212302202",
+   "facade_id": "f_7",
+   "distance_m": 46.77840481670518,
+   "incidence_deg": 48.354995387838535,
+   "vis_geo": 0.7291666666666666,
+   "score": 1.7143408386830479
+  },
+  {
+   "pano_id": "1212302233",
+   "facade_id": "f_7",
+   "distance_m": 54.108503083789934,
+   "incidence_deg": 56.43240526274089,
+   "vis_geo": 0.8125,
+   "score": 1.6426411319689918
+  },
+  {
+   "pano_id": "1212302122",
+   "facade_id": "f_7",
+   "distance_m": 65.25418893275453,
+   "incidence_deg": 56.10511043578128,
+   "vis_geo": 0.8333333333333334,
+   "score": 1.6208747082474222
+  },
+  {
+   "pano_id": "1212583578",
+   "facade_id": "f_7",
+   "distance_m": 69.68492429402667,
+   "incidence_deg": 64.09251432170463,
+   "vis_geo": 0.8333333333333334,
+   "score": 1.4855072377103193
+  },
+  {
+   "pano_id": "1212583581",
+   "facade_id": "f_7",
+   "distance_m": 72.78375778331274,
+   "incidence_deg": 56.60225620050386,
+   "vis_geo": 0.8333333333333334,
+   "score": 1.5898711344740786
+  },
+  {
+   "pano_id": "1212433526",
+   "facade_id": "f_10",
+   "distance_m": 29.332340585192544,
+   "incidence_deg": 53.25632768080159,
+   "vis_geo": 1.0,
+   "score": 2.109617050741208
+  },
+  {
+   "pano_id": "1212433528",
+   "facade_id": "f_10",
+   "distance_m": 36.29749862035408,
+   "incidence_deg": 40.55262948333113,
+   "vis_geo": 1.0,
+   "score": 2.173060706396149
+  },
+  {
+   "pano_id": "1212302233",
+   "facade_id": "f_10",
+   "distance_m": 46.79051000429071,
+   "incidence_deg": 65.2969302361443,
+   "vis_geo": 1.0,
+   "score": 1.7384935753286537
+  },
+  {
+   "pano_id": "1212433530",
+   "facade_id": "f_10",
+   "distance_m": 44.45121444065035,
+   "incidence_deg": 32.20880455316353,
+   "vis_geo": 1.0,
+   "score": 2.183559868040925
+  },
+  {
+   "pano_id": "1212583569",
+   "facade_id": "f_10",
+   "distance_m": 44.81331949327389,
+   "incidence_deg": 17.213690828607252,
+   "vis_geo": 1.0,
+   "score": 2.2899295877620975
+  },
+  {
+   "pano_id": "1212583572",
+   "facade_id": "f_10",
+   "distance_m": 46.86768853625428,
+   "incidence_deg": 29.22329512699842,
+   "vis_geo": 1.0,
+   "score": 2.1927735734850424
+  },
+  {
+   "pano_id": "1212583566",
+   "facade_id": "f_10",
+   "distance_m": 44.85762857723774,
+   "incidence_deg": 4.6573535005730315,
+   "vis_geo": 1.0,
+   "score": 2.3310893829749952
+  },
+  {
+   "pano_id": "1212583575",
+   "facade_id": "f_10",
+   "distance_m": 51.26604037682822,
+   "incidence_deg": 40.10550427993807,
+   "vis_geo": 1.0,
+   "score": 2.057450868565196
+  },
+  {
+   "pano_id": "1212583563",
+   "facade_id": "f_10",
+   "distance_m": 46.854025799380025,
+   "incidence_deg": 7.976338869677246,
+   "vis_geo": 1.0,
+   "score": 2.310468705840356
+  },
+  {
+   "pano_id": "1212583578",
+   "facade_id": "f_10",
+   "distance_m": 56.836634257970275,
+   "incidence_deg": 49.181937333582034,
+   "vis_geo": 1.0,
+   "score": 1.9175735068980866
+  },
+  {
+   "pano_id": "1212583581",
+   "facade_id": "f_10",
+   "distance_m": 63.345632747906855,
+   "incidence_deg": 56.18976169682667,
+   "vis_geo": 1.0,
+   "score": 1.7932402161311263
+  },
+  {
+   "pano_id": "1212583553",
+   "facade_id": "f_10",
+   "distance_m": 62.883603147388406,
+   "incidence_deg": 34.96918827834775,
+   "vis_geo": 1.0,
+   "score": 2.057996325471258
+  },
+  {
+   "pano_id": "1212583550",
+   "facade_id": "f_10",
+   "distance_m": 70.10798572441146,
+   "incidence_deg": 40.8070020602424,
+   "vis_geo": 1.0,
+   "score": 1.970870851025546
+  }
+ ],
+ "shots": [
+  {
+   "view_id": "v_000",
+   "pano_id": "1212433516",
+   "facade_ids": [
+    "f_0"
+   ],
+   "pan_deg": 67.38642587319463,
+   "tilt_deg": -35.60299738035799,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    -23.51369719637693,
+    -9.912650414971914,
+    2.5
+   ],
+   "heading_correction_deg": 3.0,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_001",
+   "pano_id": "1212433514",
+   "facade_ids": [
+    "f_0"
+   ],
+   "pan_deg": 60.981195235262284,
+   "tilt_deg": -35.5987974964841,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    -19.519679185398374,
+    -19.115245061958856,
+    2.5
+   ],
+   "heading_correction_deg": 3.0,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_002",
+   "pano_id": "1212433518",
+   "facade_ids": [
+    "f_0"
+   ],
+   "pan_deg": 74.06392620908117,
+   "tilt_deg": -8.360173299981927,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    -27.107715428363324,
+    -0.7103157454931814,
+    2.5
+   ],
+   "heading_correction_deg": 0.0,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_003",
+   "pano_id": "1212433512",
+   "facade_ids": [
+    "f_0"
+   ],
+   "pan_deg": 52.94973214293486,
+   "tilt_deg": -8.006509530433926,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    -15.525661162180489,
+    -28.317839698324065,
+    2.5
+   ],
+   "heading_correction_deg": -4.75,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_004",
+   "pano_id": "1212433520",
+   "facade_ids": [
+    "f_0"
+   ],
+   "pan_deg": 83.96340210358943,
+   "tilt_deg": -49.93792440906256,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    -31.101733423193355,
+    8.492278922737222,
+    2.5
+   ],
+   "heading_correction_deg": 3.0,
+   "capture_date": null,
+   "framing": "upper"
+  },
+  {
+   "view_id": "v_005",
+   "pano_id": "1212433508",
+   "facade_ids": [
+    "f_0"
+   ],
+   "pan_deg": 23.740901739340188,
+   "tilt_deg": -47.80276552443513,
+   "zoom": -1,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 70.0,
+   "position": [
+    -7.537365104276678,
+    -46.323029171601746,
+    2.5
+   ],
+   "heading_correction_deg": -3.75,
+   "capture_date": null,
+   "framing": "upper"
+  },
+  {
+   "view_id": "v_006",
+   "pano_id": "1212302213",
+   "facade_ids": [
+    "f_7"
+   ],
+   "pan_deg": 252.7400712825343,
+   "tilt_deg": -33.38091407757598,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    37.304467219128625,
+    18.047815308055625,
+    2.5
+   ],
+   "heading_correction_deg": 4.25,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_007",
+   "pano_id": "1212302217",
+   "facade_ids": [
+    "f_7"
+   ],
+   "pan_deg": 240.88390173736903,
+   "tilt_deg": -33.39760612880505,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    33.31044928112889,
+    27.2504099061826,
+    2.5
+   ],
+   "heading_correction_deg": -5.0,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_008",
+   "pano_id": "1212302221",
+   "facade_ids": [
+    "f_7"
+   ],
+   "pan_deg": 228.72478052980637,
+   "tilt_deg": -4.574490721080389,
+   "zoom": 0,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 60.0,
+   "position": [
+    29.316431353106683,
+    36.453004513515076,
+    2.5
+   ],
+   "heading_correction_deg": -2.5,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_009",
+   "pano_id": "1212302209",
+   "facade_ids": [
+    "f_7"
+   ],
+   "pan_deg": 264.83796879673287,
+   "tilt_deg": -4.540495177696527,
+   "zoom": 0,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 60.0,
+   "position": [
+    41.29848516480544,
+    8.845220721966614,
+    2.5
+   ],
+   "heading_correction_deg": -2.0,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_010",
+   "pano_id": "1212302202",
+   "facade_ids": [
+    "f_7"
+   ],
+   "pan_deg": 288.16360946103896,
+   "tilt_deg": -43.874400933810165,
+   "zoom": 0,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 60.0,
+   "position": [
+    49.286521085735394,
+    -9.559968424719253,
+    2.5
+   ],
+   "heading_correction_deg": 4.0,
+   "capture_date": null,
+   "framing": "upper"
+  },
+  {
+   "view_id": "v_011",
+   "pano_id": "1212302229",
+   "facade_ids": [
+    "f_7"
+   ],
+   "pan_deg": 204.97526625557822,
+   "tilt_deg": -33.10406277020901,
+   "zoom": -2,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 80.0,
+   "position": [
+    20.928135763242413,
+    54.458453978463275,
+    2.5
+   ],
+   "heading_correction_deg": -2.25,
+   "capture_date": null,
+   "framing": "corner"
+  },
+  {
+   "view_id": "v_012",
+   "pano_id": "1212583566",
+   "facade_ids": [
+    "f_10"
+   ],
+   "pan_deg": 161.58448230973016,
+   "tilt_deg": -30.394914215339945,
+   "zoom": -2,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 80.0,
+   "position": [
+    -28.660656291914062,
+    71.69068313244104,
+    2.5
+   ],
+   "heading_correction_deg": -0.25,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_013",
+   "pano_id": "1212583572",
+   "facade_ids": [
+    "f_10"
+   ],
+   "pan_deg": 185.56920091570402,
+   "tilt_deg": -3.2748775061634703,
+   "zoom": 3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 30.0,
+   "position": [
+    -9.458067285098554,
+    75.67820122937509,
+    2.5
+   ],
+   "heading_correction_deg": -4.75,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_014",
+   "pano_id": "1212433530",
+   "facade_ids": [
+    "f_10"
+   ],
+   "pan_deg": 125.72750754920362,
+   "tilt_deg": -44.58179557161935,
+   "zoom": 1,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 50.0,
+   "position": [
+    -51.07182325770809,
+    54.505252399139295,
+    2.5
+   ],
+   "heading_correction_deg": 2.5,
+   "capture_date": null,
+   "framing": "upper"
+  },
+  {
+   "view_id": "v_015",
+   "pano_id": "1212433526",
+   "facade_ids": [
+    "f_10"
+   ],
+   "pan_deg": 105.99483398940727,
+   "tilt_deg": -34.80384840260981,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    -43.08378735113305,
+    36.100062979120864,
+    2.5
+   ],
+   "heading_correction_deg": 3.25,
+   "capture_date": null,
+   "framing": "corner"
+  },
+  {
+   "view_id": "v_016",
+   "pano_id": "1212302142",
+   "facade_ids": [
+    "f_1"
+   ],
+   "pan_deg": 334.0574995072409,
+   "tilt_deg": -33.15906872104571,
+   "zoom": -3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 90.0,
+   "position": [
+    14.865481937711413,
+    -41.937590901256996,
+    2.5
+   ],
+   "heading_correction_deg": 3.75,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_017",
+   "pano_id": "1212302146",
+   "facade_ids": [
+    "f_1"
+   ],
+   "pan_deg": 22.202936528907305,
+   "tilt_deg": -12.777290005915068,
+   "zoom": -1,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 70.0,
+   "position": [
+    6.062887115177675,
+    -45.93186892041511,
+    2.5
+   ],
+   "heading_correction_deg": -4.75,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_018",
+   "pano_id": "1212433500",
+   "facade_ids": [
+    "f_1"
+   ],
+   "pan_deg": 3.9624650943940063,
+   "tilt_deg": -30.148292914346595,
+   "zoom": -2,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 80.0,
+   "position": [
+    8.038447392846148,
+    -83.53314733294552,
+    2.5
+   ],
+   "heading_correction_deg": 0.5,
+   "capture_date": null,
+   "framing": "corner"
+  },
+  {
+   "view_id": "v_019",
+   "pano_id": "1212302206",
+   "facade_ids": [
+    "f_6"
+   ],
+   "pan_deg": 242.02604273388263,
+   "tilt_deg": -33.34036529722089,
+   "zoom": -2,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 80.0,
+   "position": [
+    45.292503120358,
+    -0.3573738556250118,
+    2.5
+   ],
+   "heading_correction_deg": 1.0,
+   "capture_date": null,
+   "framing": "full"
+  },
+  {
+   "view_id": "v_020",
+   "pano_id": "1212302122",
+   "facade_ids": [
+    "f_6"
+   ],
+   "pan_deg": 280.9828902670813,
+   "tilt_deg": -3.1164079736336467,
+   "zoom": 3,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 30.0,
+   "position": [
+    61.67637440317639,
+    -25.168019010364326,
+    2.5
+   ],
+   "heading_correction_deg": -0.5,
+   "capture_date": null,
+   "framing": "ground"
+  },
+  {
+   "view_id": "v_021",
+   "pano_id": "1212302202",
+   "facade_ids": [
+    "f_6"
+   ],
+   "pan_deg": 258.89493405156236,
+   "tilt_deg": -50.47228851119672,
+   "zoom": 1,
+   "width": 1600,
+   "height": 1200,
+   "vfov_deg": 50.0,
+   "position": [
+    49.286521085735394,
+    -9.559968424719253,
+    2.5
+   ],
+   "heading_correction_deg": 4.0,
+   "capture_date": null,
+   "framing": "upper"
+  }
+ ],
+ "heading_corrections": {
+  "1212433516": 3.0,
+  "1212433514": 3.0,
+  "1212433518": 0.0,
+  "1212433512": -4.75,
+  "1212433520": 3.0,
+  "1212433508": -3.75,
+  "1212302213": 4.25,
+  "1212302217": -5.0,
+  "1212302221": -2.5,
+  "1212302209": -2.0,
+  "1212302202": 4.0,
+  "1212302229": -2.25,
+  "1212583566": -0.25,
+  "1212583572": -4.75,
+  "1212433530": 2.5,
+  "1212433526": 3.25,
+  "1212302142": 3.75,
+  "1212302146": -4.75,
+  "1212433500": 0.5,
+  "1212302206": 1.0,
+  "1212302122": -0.5
+ }
+}

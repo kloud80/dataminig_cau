@@ -77,7 +77,7 @@
 #stage > section[data-deck="0"] .flow .st .t {font-size:24px;font-weight:800;line-height:1.25}
 #stage > section[data-deck="0"] .flow .st .d {font-size:20px;color:var(--fg-3);line-height:1.35}
 #stage > section[data-deck="0"] .flow .ar {align-self:center;font-size:30px;color:#C9C7D6}
-#stage > section[data-deck="0"] .btn {display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:#00B37A;color:#fff;border-radius:999px;padding:16px 30px;font-family:var(--font-display);font-size:25px;font-weight:800}
+#stage > section[data-deck="0"] .btn {text-decoration:none;display:inline-flex;align-items:center;gap:14px;align-self:flex-start;background:#00B37A;color:#fff;border-radius:999px;padding:16px 30px;font-family:var(--font-display);font-size:25px;font-weight:800}
 #stage > section[data-deck="0"] .btn.off {background:#E4E2EE;color:var(--neutral-medium)}
 
 
@@ -546,7 +546,7 @@ https://labs.ai…         <span class="r">INCORRECT_KEY</span>
   <div class="card w topg"><div class="eb mut">W04_2</div><div class="ct">건물 속성 모으기</div><p class="sm">건축물대장 · 도로명주소 → 높이 우선순위 규칙<br><b style="color:var(--fg-1)">15층 94m</b> 를 직접 검산한다</p><p class="sm">산출물 <b style="color:var(--fg-1)">prior.json</b></p></div>
 </div>
 <div class="pale">API 키가 없어도 끝까지 돈다 — 키가 없으면 <b style="color:var(--primary-dark)">실제 run 의 결과 파일</b>을 읽어 이어 간다.</div>
-<span class="btn off">Colab · W04_1 · W04_2 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a class="btn" href="https://colab.research.google.com/github/kloud80/dataminig_cau/blob/main/%EC%A4%91%EC%95%99%EB%8C%8026%ED%8A%B9%EA%B0%95/notebooks/w04_colab/W04_1%20%EC%A3%BC%EC%86%8C%EC%97%90%EC%84%9C%20%EA%B1%B4%EB%AC%BC%20%EC%99%B8%EA%B3%BD%EC%84%A0%EA%B9%8C%EC%A7%80.ipynb" target="_blank" rel="noopener">Colab · W04_1 열기</a><a class="btn" href="https://colab.research.google.com/github/kloud80/dataminig_cau/blob/main/%EC%A4%91%EC%95%99%EB%8C%8026%ED%8A%B9%EA%B0%95/notebooks/w04_colab/W04_2%20%EA%B1%B4%EB%AC%BC%20%EC%86%8D%EC%84%B1%20%EB%AA%A8%EC%9C%BC%EA%B8%B0.ipynb" target="_blank" rel="noopener">Colab · W04_2 열기</a></div>
 </section>
 
 <section data-deck="0" data-label="3부 · 기하" data-screen-label="19" data-speaker-notes="출처: 신규 — 3부, 기하. 외곽선과 높이로 형상의 뼈대를 세운다. 여기까지는 사진이 없다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
@@ -623,7 +623,7 @@ https://labs.ai…         <span class="r">INCORRECT_KEY</span>
   <div class="card w topg"><div class="eb mut">W04_3</div><div class="ct">입면 분할과 LOD1 매스</div><p class="sm">외곽선 단순화 → 입면 표(폭·향·맞벽) → 높이만큼 올리기<br>노트북 안에서 3D 로 돌려 본다</p><p class="sm">산출물 <b style="color:var(--fg-1)">facades.json · lod1.glb</b></p></div>
   <div class="card w topg"><div class="eb mut">W04_4</div><div class="ct">위성영상으로 지붕 읽기</div><p class="sm">타일 이어 붙이기 → 외곽선으로 자르기 → 기복변위 보정</p><p class="sm">산출물 <b style="color:var(--fg-1)">roof_crop.png · roof_items.json</b></p></div>
 </div>
-<span class="btn off">Colab · W04_3 · W04_4 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a class="btn" href="https://colab.research.google.com/github/kloud80/dataminig_cau/blob/main/%EC%A4%91%EC%95%99%EB%8C%8026%ED%8A%B9%EA%B0%95/notebooks/w04_colab/W04_3%20%EC%9E%85%EB%A9%B4%20%EB%B6%84%ED%95%A0%EA%B3%BC%20LOD1%20%EB%A7%A4%EC%8A%A4.ipynb" target="_blank" rel="noopener">Colab · W04_3 열기</a><a class="btn" href="https://colab.research.google.com/github/kloud80/dataminig_cau/blob/main/%EC%A4%91%EC%95%99%EB%8C%8026%ED%8A%B9%EA%B0%95/notebooks/w04_colab/W04_4%20%EC%9C%84%EC%84%B1%EC%98%81%EC%83%81%EC%9C%BC%EB%A1%9C%20%EC%A7%80%EB%B6%95%20%EC%9D%BD%EA%B8%B0.ipynb" target="_blank" rel="noopener">Colab · W04_4 열기</a></div>
 </section>
 
 <section data-deck="0" data-label="4부 · v0.2" data-screen-label="26" data-speaker-notes="출처: 신규 — 4부. 첫 번째 설계, v0.2. 사진을 벽에 붙인다. 지난주 배운 이미지 기술이 전부 들어간다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
@@ -925,7 +925,7 @@ sign.z_m = <span class="y">z_frac</span> * height_m</pre>
   <div class="card w topg"><div class="eb mut">W04_5</div><div class="ct">사진을 치수로 읽기 — BDS</div><p class="sm">산출물 <b style="color:var(--fg-1)">bds.json · building.glb</b></p></div>
   <div class="card"><div class="cb">키가 없으면</div><p class="sm">아이파크타워의 <b style="color:var(--fg-1)">실제 판독 결과</b>로 이어 간다 — 같은 JSON 이면 같은 메시</p></div>
 </div>
-<span class="btn off">Colab · W04_5 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a class="btn" href="https://colab.research.google.com/github/kloud80/dataminig_cau/blob/main/%EC%A4%91%EC%95%99%EB%8C%8026%ED%8A%B9%EA%B0%95/notebooks/w04_colab/W04_5%20%EC%82%AC%EC%A7%84%EC%9D%84%20%EC%B9%98%EC%88%98%EB%A1%9C%20%EC%9D%BD%EA%B8%B0%20%E2%80%94%20BDS.ipynb" target="_blank" rel="noopener">Colab · W04_5 열기</a></div>
 </section>
 
 <section data-deck="0" data-label="6부 · v0.4 astra" data-screen-label="47" data-speaker-notes="출처: addr2blend 저장소(3d-building-rederer) · docs/presentation (2026-09-21 진행 보고) · v0.4 — 6부, 마지막 설계. astra 자유 생성. 원본 발표 자료의 제목을 그대로 가져왔다. 덜 알려 줬더니 더 닮아졌다." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">
@@ -1129,7 +1129,7 @@ mat(&quot;ring_face&quot;, &quot;#bbc5c5&quot;, kind=&quot;metal_panel&quot;, un
   <div class="card w topg"><div class="eb mut">W04_6</div><div class="ct">astra — 모델이 스크립트를 쓴다</div><p class="sm">산출물 <b style="color:var(--fg-1)">build.py · building.glb</b></p></div>
   <div class="card"><div class="cb">키가 없으면</div><p class="sm">astra 가 아이파크타워에 쓴 <b style="color:var(--fg-1)">실제 스크립트</b>를 같은 검사·샌드박스로 — 악성 코드 3줄이 걸리는 것도 본다</p></div>
 </div>
-<span class="btn off">Colab · W04_6 &nbsp;—&nbsp; 링크는 실습 저장소 공개 후 연결</span>
+<div style="display:flex;gap:18px;flex-wrap:wrap"><a class="btn" href="https://colab.research.google.com/github/kloud80/dataminig_cau/blob/main/%EC%A4%91%EC%95%99%EB%8C%8026%ED%8A%B9%EA%B0%95/notebooks/w04_colab/W04_6%20astra%20%E2%80%94%20%EB%AA%A8%EB%8D%B8%EC%9D%B4%20%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A5%BC%20%EC%93%B4%EB%8B%A4.ipynb" target="_blank" rel="noopener">Colab · W04_6 열기</a></div>
 </section>
 
 <section data-deck="0" data-label="7부 · 정리" data-screen-label="65" data-speaker-notes="출처: 신규 — 7부, 정리." style="background:var(--neutral-black);color:#fff;padding:var(--pad-top) var(--pad-x) var(--pad-bottom);display:flex;flex-direction:column;gap:30px;font-family:var(--font-sans);overflow:hidden;background-image:radial-gradient(1000px 640px at 78% 24%,rgba(158,93,249,.30),transparent 62%);justify-content:center">

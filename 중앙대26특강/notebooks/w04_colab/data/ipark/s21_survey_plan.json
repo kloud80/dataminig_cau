@@ -1,0 +1,87 @@
+{
+  "targets": [
+    {
+      "facade_id": "f_0",
+      "importance": 10,
+      "shots": 7,
+      "framings": [
+        "full",
+        "full",
+        "ground",
+        "ground",
+        "upper",
+        "upper",
+        "corner"
+      ],
+      "why": "Widest visible facade at 69.9 m and likely the primary street elevation. Needs redundant full views to establish full length and floor lines, close ground shots for commercial use/signage/entrances/ma"
+    },
+    {
+      "facade_id": "f_7",
+      "importance": 9,
+      "shots": 6,
+      "framings": [
+        "full",
+        "full",
+        "ground",
+        "ground",
+        "upper",
+        "corner"
+      ],
+      "why": "Second-largest visible facade at 46.8 m with the most street-view positions. Important for reconstructing massing and elevations; needs full views for proportions, ground views for street-level detail"
+    },
+    {
+      "facade_id": "f_10",
+      "importance": 7,
+      "shots": 4,
+      "framings": [
+        "full",
+        "ground",
+        "upper",
+        "corner"
+      ],
+      "why": "Substantial visible NW facade, 16.3 m wide, with many available panoramas. Requires one full view, ground detail, upper-floor grid/roofline, and an oblique corner shot to tie it to the main facades."
+    },
+    {
+      "facade_id": "f_1",
+      "importance": 5,
+      "shots": 3,
+      "framings": [
+        "full",
+        "ground",
+        "corner"
+      ],
+      "why": "Narrow but visible SE facade at 10.6 m. A full shot captures proportions and vertical bay pattern, ground shot records any entrance/signage/material transition, and corner shot helps connect it to the"
+    },
+    {
+      "facade_id": "f_6",
+      "importance": 5,
+      "shots": 3,
+      "framings": [
+        "full",
+        "ground",
+        "upper"
+      ],
+      "why": "Visible E-facing return facade, 10.3 m wide. Needs a full elevation view, ground-floor detail, and one upper shot to capture window alignment and floor expression on this side."
+    }
+  ],
+  "budget": 24,
+  "strategy": "Use the 24-shot budget on the visible, measurable facades only. Prioritize the very wide SW facade f_0 and NE facade f_7 for overall proportions, floor-height control, upper-floor grid, and ground-floor commercial/signage detail. Use corner shots to tie the main facades together, especially at transitions to the narrow SE/E/NW visible returns. Allocate fewer shots to narrow facades, but include enough full/ground/upper views to resolve entrances, materials, and window layout on this 15-floor tow",
+  "source": "llm",
+  "meta": {
+    "model": "gpt-5.5",
+    "latency_s": 10.45,
+    "usage": {
+      "input_tokens": 650,
+      "input_tokens_details": {
+        "cache_write_tokens": 0,
+        "cached_tokens": 0
+      },
+      "output_tokens": 745,
+      "output_tokens_details": {
+        "reasoning_tokens": 0
+      },
+      "total_tokens": 1395
+    },
+    "shots": 23
+  }
+}
